@@ -30,11 +30,24 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.applicantBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.middleNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateOfBirthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.educationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateOfEmploymentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateOfDismissalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.positionEmployeeIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.structuralDivisionIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.employeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.employeeManageAppDBDataSet = new Employee_Manage_App__WinForms_.EmployeeManageAppDBDataSet();
+            this.ComBoxApplicant = new System.Windows.Forms.ComboBox();
+            this.applicant1BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.applicantBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.applicantBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.positionemployeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.comboBox3 = new System.Windows.Forms.ComboBox();
@@ -42,68 +55,170 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.applicantTableAdapter = new Employee_Manage_App__WinForms_.EmployeeManageAppDBDataSetTableAdapters.applicantTableAdapter();
             this.position_employeeTableAdapter = new Employee_Manage_App__WinForms_.EmployeeManageAppDBDataSetTableAdapters.position_employeeTableAdapter();
             this.structural_divisionTableAdapter = new Employee_Manage_App__WinForms_.EmployeeManageAppDBDataSetTableAdapters.structural_divisionTableAdapter();
-            this.applicant1BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.applicant1TableAdapter = new Employee_Manage_App__WinForms_.EmployeeManageAppDBDataSetTableAdapters.applicant1TableAdapter();
+            this.employeeTableAdapter = new Employee_Manage_App__WinForms_.EmployeeManageAppDBDataSetTableAdapters.employeeTableAdapter();
+            this.btnSave = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.applicantBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeManageAppDBDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.applicant1BindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.applicantBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicantBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.positionemployeeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.structuraldivisionBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.applicant1BindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
             // 
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.iDDataGridViewTextBoxColumn,
+            this.lastNameDataGridViewTextBoxColumn,
+            this.firstNameDataGridViewTextBoxColumn,
+            this.middleNameDataGridViewTextBoxColumn,
+            this.dateOfBirthDataGridViewTextBoxColumn,
+            this.educationDataGridViewTextBoxColumn,
+            this.statusDataGridViewTextBoxColumn,
+            this.dateOfEmploymentDataGridViewTextBoxColumn,
+            this.dateOfDismissalDataGridViewTextBoxColumn,
+            this.positionEmployeeIDDataGridViewTextBoxColumn,
+            this.structuralDivisionIDDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.employeeBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(12, 83);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(776, 326);
             this.dataGridView1.TabIndex = 0;
             // 
-            // comboBox1
+            // iDDataGridViewTextBoxColumn
             // 
-            this.comboBox1.DataSource = this.applicant1BindingSource;
-            this.comboBox1.DisplayMember = "ФИО";
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(12, 27);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(306, 21);
-            this.comboBox1.TabIndex = 1;
-            this.comboBox1.ValueMember = "ID";
+            this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
+            this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
+            this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
+            this.iDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.iDDataGridViewTextBoxColumn.Visible = false;
             // 
-            // applicantBindingSource1
+            // lastNameDataGridViewTextBoxColumn
             // 
-            this.applicantBindingSource1.DataMember = "applicant";
-            this.applicantBindingSource1.DataSource = this.employeeManageAppDBDataSet;
+            this.lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
+            this.lastNameDataGridViewTextBoxColumn.HeaderText = "LastName";
+            this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
+            // 
+            // firstNameDataGridViewTextBoxColumn
+            // 
+            this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
+            this.firstNameDataGridViewTextBoxColumn.HeaderText = "FirstName";
+            this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
+            // 
+            // middleNameDataGridViewTextBoxColumn
+            // 
+            this.middleNameDataGridViewTextBoxColumn.DataPropertyName = "MiddleName";
+            this.middleNameDataGridViewTextBoxColumn.HeaderText = "MiddleName";
+            this.middleNameDataGridViewTextBoxColumn.Name = "middleNameDataGridViewTextBoxColumn";
+            // 
+            // dateOfBirthDataGridViewTextBoxColumn
+            // 
+            this.dateOfBirthDataGridViewTextBoxColumn.DataPropertyName = "DateOfBirth";
+            this.dateOfBirthDataGridViewTextBoxColumn.HeaderText = "DateOfBirth";
+            this.dateOfBirthDataGridViewTextBoxColumn.Name = "dateOfBirthDataGridViewTextBoxColumn";
+            // 
+            // educationDataGridViewTextBoxColumn
+            // 
+            this.educationDataGridViewTextBoxColumn.DataPropertyName = "Education";
+            this.educationDataGridViewTextBoxColumn.HeaderText = "Education";
+            this.educationDataGridViewTextBoxColumn.Name = "educationDataGridViewTextBoxColumn";
+            // 
+            // statusDataGridViewTextBoxColumn
+            // 
+            this.statusDataGridViewTextBoxColumn.DataPropertyName = "Status";
+            this.statusDataGridViewTextBoxColumn.HeaderText = "Status";
+            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
+            this.statusDataGridViewTextBoxColumn.ReadOnly = true;
+            this.statusDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // dateOfEmploymentDataGridViewTextBoxColumn
+            // 
+            this.dateOfEmploymentDataGridViewTextBoxColumn.DataPropertyName = "DateOfEmployment";
+            this.dateOfEmploymentDataGridViewTextBoxColumn.HeaderText = "DateOfEmployment";
+            this.dateOfEmploymentDataGridViewTextBoxColumn.Name = "dateOfEmploymentDataGridViewTextBoxColumn";
+            // 
+            // dateOfDismissalDataGridViewTextBoxColumn
+            // 
+            this.dateOfDismissalDataGridViewTextBoxColumn.DataPropertyName = "DateOfDismissal";
+            this.dateOfDismissalDataGridViewTextBoxColumn.HeaderText = "DateOfDismissal";
+            this.dateOfDismissalDataGridViewTextBoxColumn.Name = "dateOfDismissalDataGridViewTextBoxColumn";
+            // 
+            // positionEmployeeIDDataGridViewTextBoxColumn
+            // 
+            this.positionEmployeeIDDataGridViewTextBoxColumn.DataPropertyName = "PositionEmployeeID";
+            this.positionEmployeeIDDataGridViewTextBoxColumn.HeaderText = "PositionEmployeeID";
+            this.positionEmployeeIDDataGridViewTextBoxColumn.Name = "positionEmployeeIDDataGridViewTextBoxColumn";
+            // 
+            // structuralDivisionIDDataGridViewTextBoxColumn
+            // 
+            this.structuralDivisionIDDataGridViewTextBoxColumn.DataPropertyName = "StructuralDivisionID";
+            this.structuralDivisionIDDataGridViewTextBoxColumn.HeaderText = "StructuralDivisionID";
+            this.structuralDivisionIDDataGridViewTextBoxColumn.Name = "structuralDivisionIDDataGridViewTextBoxColumn";
+            // 
+            // employeeBindingSource
+            // 
+            this.employeeBindingSource.DataMember = "employee";
+            this.employeeBindingSource.DataSource = this.employeeManageAppDBDataSet;
             // 
             // employeeManageAppDBDataSet
             // 
             this.employeeManageAppDBDataSet.DataSetName = "EmployeeManageAppDBDataSet";
             this.employeeManageAppDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
+            // ComBoxApplicant
+            // 
+            this.ComBoxApplicant.DataSource = this.applicant1BindingSource;
+            this.ComBoxApplicant.DisplayMember = "ФИО";
+            this.ComBoxApplicant.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComBoxApplicant.FormattingEnabled = true;
+            this.ComBoxApplicant.Location = new System.Drawing.Point(12, 27);
+            this.ComBoxApplicant.Name = "ComBoxApplicant";
+            this.ComBoxApplicant.Size = new System.Drawing.Size(306, 21);
+            this.ComBoxApplicant.TabIndex = 1;
+            this.ComBoxApplicant.ValueMember = "ID";
+            // 
+            // applicant1BindingSource
+            // 
+            this.applicant1BindingSource.DataMember = "applicant1";
+            this.applicant1BindingSource.DataSource = this.employeeManageAppDBDataSet;
+            // 
+            // applicantBindingSource1
+            // 
+            this.applicantBindingSource1.DataMember = "applicant";
+            this.applicantBindingSource1.DataSource = this.employeeManageAppDBDataSet;
+            // 
             // applicantBindingSource
             // 
             this.applicantBindingSource.DataMember = "applicant";
             this.applicantBindingSource.DataSource = this.employeeManageAppDBDataSet;
             // 
-            // button1
+            // btnAdd
             // 
-            this.button1.Location = new System.Drawing.Point(627, 54);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(161, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Добавить сотрудника";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnAdd.Location = new System.Drawing.Point(627, 54);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(161, 23);
+            this.btnAdd.TabIndex = 4;
+            this.btnAdd.Text = "Добавить сотрудника";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // comboBox2
             // 
             this.comboBox2.DataSource = this.positionemployeeBindingSource;
             this.comboBox2.DisplayMember = "Name";
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Location = new System.Drawing.Point(324, 27);
             this.comboBox2.Name = "comboBox2";
@@ -120,6 +235,7 @@
             // 
             this.comboBox3.DataSource = this.structuraldivisionBindingSource;
             this.comboBox3.DisplayMember = "Name";
+            this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox3.FormattingEnabled = true;
             this.comboBox3.Location = new System.Drawing.Point(497, 27);
             this.comboBox3.Name = "comboBox3";
@@ -159,14 +275,16 @@
             this.label3.TabIndex = 10;
             this.label3.Text = "Выберите структурное подразделение";
             // 
-            // button2
+            // btnDelete
             // 
-            this.button2.Location = new System.Drawing.Point(627, 415);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(161, 23);
-            this.button2.TabIndex = 11;
-            this.button2.Text = "Удалить сотрудника";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnDelete.Location = new System.Drawing.Point(12, 415);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(161, 23);
+            this.btnDelete.TabIndex = 11;
+            this.btnDelete.Text = "Увольнение сотрудника";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // applicantTableAdapter
             // 
@@ -180,40 +298,51 @@
             // 
             this.structural_divisionTableAdapter.ClearBeforeFill = true;
             // 
-            // applicant1BindingSource
-            // 
-            this.applicant1BindingSource.DataMember = "applicant1";
-            this.applicant1BindingSource.DataSource = this.employeeManageAppDBDataSet;
-            // 
             // applicant1TableAdapter
             // 
             this.applicant1TableAdapter.ClearBeforeFill = true;
+            // 
+            // employeeTableAdapter
+            // 
+            this.employeeTableAdapter.ClearBeforeFill = true;
+            // 
+            // btnSave
+            // 
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSave.Location = new System.Drawing.Point(682, 415);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(106, 23);
+            this.btnSave.TabIndex = 12;
+            this.btnSave.Text = "Сохранить";
+            this.btnSave.UseVisualStyleBackColor = true;
             // 
             // employeeWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBox3);
             this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.btnAdd);
+            this.Controls.Add(this.ComBoxApplicant);
             this.Controls.Add(this.dataGridView1);
             this.Name = "employeeWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "employeeWindow";
             this.Load += new System.EventHandler(this.employeeWindow_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.applicantBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeManageAppDBDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.applicant1BindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.applicantBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicantBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.positionemployeeBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.structuraldivisionBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.applicant1BindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -222,14 +351,14 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ComboBox ComBoxApplicant;
+        private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnDelete;
         private EmployeeManageAppDBDataSet employeeManageAppDBDataSet;
         private System.Windows.Forms.BindingSource applicantBindingSource;
         private EmployeeManageAppDBDataSetTableAdapters.applicantTableAdapter applicantTableAdapter;
@@ -240,5 +369,19 @@
         private System.Windows.Forms.BindingSource applicantBindingSource1;
         private System.Windows.Forms.BindingSource applicant1BindingSource;
         private EmployeeManageAppDBDataSetTableAdapters.applicant1TableAdapter applicant1TableAdapter;
+        private System.Windows.Forms.BindingSource employeeBindingSource;
+        private EmployeeManageAppDBDataSetTableAdapters.employeeTableAdapter employeeTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lastNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn firstNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn middleNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dateOfBirthDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn educationDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dateOfEmploymentDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dateOfDismissalDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn positionEmployeeIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn structuralDivisionIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button btnSave;
     }
 }
