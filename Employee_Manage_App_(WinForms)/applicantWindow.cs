@@ -15,6 +15,7 @@ namespace Employee_Manage_App__WinForms_
     public partial class applicantWindow : Form
     {
         string id;
+        DateTimePicker dateTimePicker;
         public applicantWindow()
         {
             InitializeComponent();
@@ -31,15 +32,15 @@ namespace Employee_Manage_App__WinForms_
             Cursor.Current = Cursors.WaitCursor;
 
             
+
             try
             {
                 applicantBindingSource.EndEdit();
 
+                // Create the UpdateCommand.
                 SqlCommand command = new SqlCommand("UPDATE applicant SET LastName = @LastName, FirstName = @FirstName, MiddleName = @MiddleName, DateOfBirth = @DateOfBirth, Education = @Education WHERE ID = @ID");
                 command.Connection = applicantTableAdapter.Connection;
-
-
-                // Create the UpdateCommand.
+                         
                 command.Parameters.Add("@ID", dataGridApplicant[0, dataGridApplicant.CurrentRow.Index].Value.ToString());
                 command.Parameters.Add("@LastName", dataGridApplicant[1, dataGridApplicant.CurrentRow.Index].Value.ToString());
                 command.Parameters.Add("@FirstName", dataGridApplicant[2, dataGridApplicant.CurrentRow.Index].Value.ToString());
@@ -52,6 +53,7 @@ namespace Employee_Manage_App__WinForms_
                 // Create the DeleteCommand.
                 SqlCommand command1 = new SqlCommand("DELETE FROM applicant WHERE ID = @ID");
                 command1.Connection = applicantTableAdapter.Connection;
+
                 command1.Parameters.Add("@ID", id);
 
                 applicantTableAdapter.Adapter.DeleteCommand = command1;
@@ -82,7 +84,20 @@ namespace Employee_Manage_App__WinForms_
 
         private void dataGridApplicant_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            id  = dataGridApplicant[0, dataGridApplicant.CurrentRow.Index].Value.ToString();
+            // DatePicker TODO
+            if(e.ColumnIndex == 4)
+            {
+                DateTimePicker dateTimePicker = new DateTimePicker();
+                dataGridApplicant.Controls.Add(dateTimePicker);
+                dateTimePicker.Format = DateTimePickerFormat.Short;
+                Rectangle displayColendar = dataGridApplicant.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, true);
+                dateTimePicker.Size = new Size(displayColendar.Width, displayColendar.Height);
+                dateTimePicker.Location = new Point(displayColendar.X, displayColendar.Y);
+                dataGridApplicant[4, dataGridApplicant.CurrentRow.Index].Value = dateTimePicker.Text; //????????????????
+            }
+           
+
+            id = dataGridApplicant[0, dataGridApplicant.CurrentRow.Index].Value.ToString();
         }
     }
 }
