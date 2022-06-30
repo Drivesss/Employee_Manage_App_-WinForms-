@@ -31,8 +31,6 @@ namespace Employee_Manage_App__WinForms_
         {
             Cursor.Current = Cursors.WaitCursor;
 
-            
-
             try
             {
                 applicantBindingSource.EndEdit();
@@ -41,12 +39,12 @@ namespace Employee_Manage_App__WinForms_
                 SqlCommand command = new SqlCommand("UPDATE applicant SET LastName = @LastName, FirstName = @FirstName, MiddleName = @MiddleName, DateOfBirth = @DateOfBirth, Education = @Education WHERE ID = @ID");
                 command.Connection = applicantTableAdapter.Connection;
                          
-                command.Parameters.Add("@ID", dataGridApplicant[0, dataGridApplicant.CurrentRow.Index].Value.ToString());
-                command.Parameters.Add("@LastName", dataGridApplicant[1, dataGridApplicant.CurrentRow.Index].Value.ToString());
-                command.Parameters.Add("@FirstName", dataGridApplicant[2, dataGridApplicant.CurrentRow.Index].Value.ToString());
-                command.Parameters.Add("@MiddleName", dataGridApplicant[3, dataGridApplicant.CurrentRow.Index].Value.ToString());
-                command.Parameters.Add("@DateOfBirth", dataGridApplicant[4, dataGridApplicant.CurrentRow.Index].Value.ToString());
-                command.Parameters.Add("@Education", dataGridApplicant[5, dataGridApplicant.CurrentRow.Index].Value.ToString());
+                command.Parameters.AddWithValue("@ID", dataGridApplicant[0, dataGridApplicant.CurrentRow.Index].Value.ToString());
+                command.Parameters.AddWithValue("@LastName", dataGridApplicant[1, dataGridApplicant.CurrentRow.Index].Value.ToString());
+                command.Parameters.AddWithValue("@FirstName", dataGridApplicant[2, dataGridApplicant.CurrentRow.Index].Value.ToString());
+                command.Parameters.AddWithValue("@MiddleName", dataGridApplicant[3, dataGridApplicant.CurrentRow.Index].Value.ToString());
+                command.Parameters.AddWithValue("@DateOfBirth", dataGridApplicant[4, dataGridApplicant.CurrentRow.Index].Value.ToString());
+                command.Parameters.AddWithValue("@Education", dataGridApplicant[5, dataGridApplicant.CurrentRow.Index].Value.ToString());
 
                 applicantTableAdapter.Adapter.UpdateCommand = command;
 
@@ -54,7 +52,7 @@ namespace Employee_Manage_App__WinForms_
                 SqlCommand command1 = new SqlCommand("DELETE FROM applicant WHERE ID = @ID");
                 command1.Connection = applicantTableAdapter.Connection;
 
-                command1.Parameters.Add("@ID", id);
+                command1.Parameters.AddWithValue("@ID", id);
 
                 applicantTableAdapter.Adapter.DeleteCommand = command1;
 
