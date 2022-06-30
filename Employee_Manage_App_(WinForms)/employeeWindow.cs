@@ -42,22 +42,40 @@ namespace Employee_Manage_App__WinForms_
             //Добавляется сотрудник в таблицу employee SQL и отображается в dataGrid
             try
             {
-                employeeBindingSource.EndEdit();
+               employeeBindingSource.EndEdit();
 
-                // Create the InsertCommand
-                //SqlCommand command = new SqlCommand("INSERT INTO employee (LastName, FirstName, MiddleName, DateOfBirth, Education) VALUES(@LastName, @FirstName, @MiddleName, @DateOfBirth)");
-                SqlCommand command = new SqlCommand(
-                    "INSERT INTO employee (LastName, FirstName, MiddleName, DateOfBirth, Education) " +
-                    "SELECT LastName, FirstName, MiddleName, DateOfBirth, Education " +
-                    "FROM applicant WHERE id = @ID");
-                command.Connection = employeeTableAdapter.Connection;
-
-                command.Parameters.Add("@ID", IDComboBox);
+                string Work = "Работает";
+                DateTime DateOfEmployment = DateTime.Now;
 
 
-                employeeTableAdapter.Adapter.InsertCommand = command;
+                // Команда добавления строки из applicant
+                SqlCommand insertCommand = new SqlCommand(
+                    "INSERT INTO employee (LastName, FirstName, MiddleName, DateOfBirth, Education, Status, DateOfEmployment, PositionEmployeeID, StructuralDivisionID) " +
+                    "SELECT LastName, FirstName, MiddleName, DateOfBirth, Education, @Status, @DateOfEmployment, @PositionEmployeeID, @StructuralDivisionID FROM applicant " +
+                    "WHERE id = @ID");
+                insertCommand.Connection = employeeTableAdapter.Connection;
+
+                //Открыл подключение к базе данных
+                insertCommand.Connection.Open();
+
+                insertCommand.Parameters.AddWithValue("@ID", IDComboBox);
+                insertCommand.Parameters.AddWithValue("@Status", Work);
+                insertCommand.Parameters.AddWithValue("@DateOfEmployment", DateOfEmployment);
+                insertCommand.Parameters.AddWithValue("@PositionEmployeeID", 1);
+                insertCommand.Parameters.AddWithValue("@StructuralDivisionID", 2);
+
+                employeeTableAdapter.Adapter.InsertCommand = insertCommand;
+
+                //Выполнил команду
+                employeeTableAdapter.Adapter.InsertCommand.ExecuteNonQuery();
+
+                //Закрыл подключение к базе данных
+                insertCommand.Connection.Close();
 
                 employeeTableAdapter.Update(this.employeeManageAppDBDataSet.employee);
+
+                //Обновил данные в таблице
+                employeeWindow_Load(sender, e);
 
                 MessageBox.Show("Сотрудник добавлен", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -69,16 +87,15 @@ namespace Employee_Manage_App__WinForms_
         }
 
 
-        private void btnDelete_Click(object sender, EventArgs e)
+        private void btnDismissal_Click(object sender, EventArgs e)
         {
-
 
             if (MessageBox.Show("Вы действительно хотите уволить сотрудника?", "Сообщение", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 //Ставится статус "уволен"
                 //Ставится дата увольнения
                 //Удаляется должность
-                //Удаляется структурне подразделение
+                //Удаляется структурное подразделение
             }
         }
     }
