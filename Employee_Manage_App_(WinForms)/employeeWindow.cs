@@ -14,6 +14,7 @@ namespace Employee_Manage_App__WinForms_
     public partial class employeeWindow : Form
     {
         string IDComboBox;
+        string IdRowDataGrid;
         public employeeWindow()
         {
             InitializeComponent();
@@ -86,10 +87,12 @@ namespace Employee_Manage_App__WinForms_
 
         }
 
+        
+
+
 
         private void btnDismissal_Click(object sender, EventArgs e)
         {
-
             if (MessageBox.Show("Вы действительно хотите уволить сотрудника?", "Сообщение", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 //Ставится статус "уволен"
@@ -97,6 +100,15 @@ namespace Employee_Manage_App__WinForms_
                 //Удаляется должность
                 //Удаляется структурное подразделение
             }
+        }
+
+
+
+        //При выборе строки получает её индекс
+        private void dataGridEmployee_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            IdRowDataGrid = dataGridEmployee[0, dataGridEmployee.CurrentRow.Index].Value.ToString();
+            label4.Text = IdRowDataGrid;
         }
     }
 }
