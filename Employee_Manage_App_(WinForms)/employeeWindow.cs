@@ -14,6 +14,7 @@ namespace Employee_Manage_App__WinForms_
     public partial class employeeWindow : Form
     {
         string IDComboBox;
+        string IdRowDataGrid;
         public employeeWindow()
         {
             InitializeComponent();
@@ -34,6 +35,14 @@ namespace Employee_Manage_App__WinForms_
 
         }
 
+        //При выборе строки получает её индекс
+        private void dataGridEmployee_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            IdRowDataGrid = dataGridEmployee[0, dataGridEmployee.CurrentRow.Index].Value.ToString();
+        }
+
+
+        //Перенос из списка соискателй в сотрудники
         private void btnAdd_Click(object sender, EventArgs e)
         {
             // Получаем ID элемента ComboBox в таблице applicant SQL
@@ -74,6 +83,19 @@ namespace Employee_Manage_App__WinForms_
 
                 employeeTableAdapter.Update(this.employeeManageAppDBDataSet.employee);
 
+
+                // Команда удаления из списка соискателей 
+                SqlCommand DeleteCommand = new SqlCommand("DELETE FROM applicant WHERE ID = @ID");
+                DeleteCommand.Connection = applicantTableAdapter.Connection;
+                DeleteCommand.Connection.Open();
+
+                DeleteCommand.Parameters.AddWithValue("@ID", IDComboBox);
+
+                applicantTableAdapter.Adapter.DeleteCommand = DeleteCommand;
+                applicantTableAdapter.Adapter.DeleteCommand.ExecuteNonQuery();
+                DeleteCommand.Connection.Close();
+                applicantTableAdapter.Update(this.employeeManageAppDBDataSet.applicant);
+
                 //Обновил данные в таблице
                 employeeWindow_Load(sender, e);
 
@@ -87,16 +109,119 @@ namespace Employee_Manage_App__WinForms_
         }
 
 
+
         private void btnDismissal_Click(object sender, EventArgs e)
         {
-
             if (MessageBox.Show("Вы действительно хотите уволить сотрудника?", "Сообщение", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                //Ставится статус "уволен"
-                //Ставится дата увольнения
-                //Удаляется должность
-                //Удаляется структурное подразделение
+                try
+                {
+                    string Work = "Уволен";
+                    DateTime DateOfDismissal = DateTime.Now;
+
+                    employeeBindingSource.EndEdit();
+                    //Ставится статус "уволен"
+                    //Ставится дата увольнения
+                    //Удаляется должность
+                    //Удаляется структурное подразделение
+                    //SqlCommand UpdateCommand = new SqlCommand("UPDATE employee SET Status = @Status, DateOfDismissal = @DateOfDismissal, PositionEmployeeID = @PositionEmployeeID, StructuralDivisionID = @StructuralDivisionID WHERE ID = @ID");
+                    SqlCommand UpdateCommand = new SqlCommand("UPDATE employee SET Status = @Status, DateOfDismissal = @DateOfDismissal WHERE ID = @ID");
+
+                    UpdateCommand.Connection = employeeTableAdapter.Connection;
+                    UpdateCommand.Connection.Open();
+
+                    UpdateCommand.Parameters.AddWithValue("@ID", IdRowDataGrid);
+                    UpdateCommand.Parameters.AddWithValue("@Status", Work);
+                    UpdateCommand.Parameters.AddWithValue("@DateOfDismissal", DateOfDismissal);
+                    //UpdateCommand.Parameters.AddWithValue("@PositionEmployeeID", "");
+                    //UpdateCommand.Parameters.AddWithValue("@StructuralDivisionID", "");
+
+                    employeeTableAdapter.Adapter.UpdateCommand = UpdateCommand;
+                    employeeTableAdapter.Adapter.UpdateCommand.ExecuteNonQuery();
+                    UpdateCommand.Connection.Close();
+                    employeeTableAdapter.Update(this.employeeManageAppDBDataSet.employee);
+                    employeeWindow_Load(sender, e);
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
+        }
+
+
+
+        //Сохранение внесенных изменений в таблицу
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                applicantBindingSource.EndEdit();
+
+                // Create the UpdateCommand.
+                SqlCommand UpdateCommand = new SqlCommand(
+                    "UPDATE employee " +
+                    "SET LastName = @LastName, " +
+                    "FirstName = @FirstName, " +
+                    "MiddleName = @MiddleName, " +
+                    "DateOfBirth = @DateOfBirth, " +
+                    "Education = @Education " +
+                    //"PositionEmployeeID = @PositionEmployeeID " +
+                    //"StructuralDivisionID = @StructuralDivisionID " +
+                    "WHERE ID = @ID");
+                UpdateCommand.Connection = employeeTableAdapter.Connection;
+                UpdateCommand.Connection.Open();
+
+                UpdateCommand.Parameters.AddWithValue("@ID", IdRowDataGrid);
+                UpdateCommand.Parameters.AddWithValue("@LastName", dataGridEmployee[1, dataGridEmployee.CurrentRow.Index].Value.ToString());
+                UpdateCommand.Parameters.AddWithValue("@FirstName", dataGridEmployee[2, dataGridEmployee.CurrentRow.Index].Value.ToString());
+                UpdateCommand.Parameters.AddWithValue("@MiddleName", dataGridEmployee[3, dataGridEmployee.CurrentRow.Index].Value.ToString());
+                UpdateCommand.Parameters.AddWithValue("@DateOfBirth", dataGridEmployee[4, dataGridEmployee.CurrentRow.Index].Value.ToString());
+                UpdateCommand.Parameters.AddWithValue("@Education", dataGridEmployee[5, dataGridEmployee.CurrentRow.Index].Value.ToString());
+                //UpdateCommand.Parameters.AddWithValue("@PositionEmployeeID", dataGridEmployee[9, dataGridEmployee.CurrentRow.Index].Value.ToString());
+                //UpdateCommand.Parameters.AddWithValue("@StructuralDivisionID", dataGridEmployee[10, dataGridEmployee.CurrentRow.Index].Value.ToString());
+
+                employeeTableAdapter.Adapter.UpdateCommand = UpdateCommand;
+
+                employeeTableAdapter.Adapter.UpdateCommand.ExecuteNonQuery();
+                UpdateCommand.Connection.Close();
+                employeeTableAdapter.Update(this.employeeManageAppDBDataSet.employee);
+                employeeWindow_Load(sender, e);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        //Удаление строки сотрудника
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (MessageBox.Show("Вы действительно хотите удалить строку?", "Сообщение", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    applicantBindingSource.EndEdit();
+
+                    SqlCommand DeleteCommand = new SqlCommand("DELETE FROM employee WHERE ID = @ID");
+                    DeleteCommand.Connection = applicantTableAdapter.Connection;
+                    DeleteCommand.Connection.Open();
+
+                    DeleteCommand.Parameters.AddWithValue("@ID", IdRowDataGrid);
+
+                    employeeTableAdapter.Adapter.DeleteCommand = DeleteCommand;
+                    employeeTableAdapter.Adapter.DeleteCommand.ExecuteNonQuery();
+                    DeleteCommand.Connection.Close();
+                    employeeTableAdapter.Update(this.employeeManageAppDBDataSet.employee);
+                    employeeWindow_Load(sender, e);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
     }
 }
