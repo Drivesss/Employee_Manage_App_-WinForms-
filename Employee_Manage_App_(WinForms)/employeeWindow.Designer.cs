@@ -30,17 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridEmployee = new System.Windows.Forms.DataGridView();
-            this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.middleNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateOfBirthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.educationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateOfEmploymentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateOfDismissalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.positionEmployeeIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.structuralDivisionIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.employeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.employeeManageAppDBDataSet = new Employee_Manage_App__WinForms_.EmployeeManageAppDBDataSet();
             this.ComBoxApplicant = new System.Windows.Forms.ComboBox();
@@ -62,7 +51,18 @@
             this.applicant1TableAdapter = new Employee_Manage_App__WinForms_.EmployeeManageAppDBDataSetTableAdapters.applicant1TableAdapter();
             this.employeeTableAdapter = new Employee_Manage_App__WinForms_.EmployeeManageAppDBDataSetTableAdapters.employeeTableAdapter();
             this.btnSave = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
+            this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.middleNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateOfBirthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.educationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateOfEmploymentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateOfDismissalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.positionEmployeeIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.structuralDivisionIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnDelete = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridEmployee)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeManageAppDBDataSet)).BeginInit();
@@ -93,80 +93,11 @@
             this.positionEmployeeIDDataGridViewTextBoxColumn,
             this.structuralDivisionIDDataGridViewTextBoxColumn});
             this.dataGridEmployee.DataSource = this.employeeBindingSource;
-            this.dataGridEmployee.Location = new System.Drawing.Point(12, 83);
+            this.dataGridEmployee.Location = new System.Drawing.Point(12, 56);
             this.dataGridEmployee.Name = "dataGridEmployee";
-            this.dataGridEmployee.Size = new System.Drawing.Size(776, 326);
+            this.dataGridEmployee.Size = new System.Drawing.Size(1160, 364);
             this.dataGridEmployee.TabIndex = 0;
             this.dataGridEmployee.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridEmployee_CellClick);
-            // 
-            // iDDataGridViewTextBoxColumn
-            // 
-            this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
-            this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
-            this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
-            this.iDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // lastNameDataGridViewTextBoxColumn
-            // 
-            this.lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
-            this.lastNameDataGridViewTextBoxColumn.HeaderText = "LastName";
-            this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
-            // 
-            // firstNameDataGridViewTextBoxColumn
-            // 
-            this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
-            this.firstNameDataGridViewTextBoxColumn.HeaderText = "FirstName";
-            this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
-            // 
-            // middleNameDataGridViewTextBoxColumn
-            // 
-            this.middleNameDataGridViewTextBoxColumn.DataPropertyName = "MiddleName";
-            this.middleNameDataGridViewTextBoxColumn.HeaderText = "MiddleName";
-            this.middleNameDataGridViewTextBoxColumn.Name = "middleNameDataGridViewTextBoxColumn";
-            // 
-            // dateOfBirthDataGridViewTextBoxColumn
-            // 
-            this.dateOfBirthDataGridViewTextBoxColumn.DataPropertyName = "DateOfBirth";
-            this.dateOfBirthDataGridViewTextBoxColumn.HeaderText = "DateOfBirth";
-            this.dateOfBirthDataGridViewTextBoxColumn.Name = "dateOfBirthDataGridViewTextBoxColumn";
-            // 
-            // educationDataGridViewTextBoxColumn
-            // 
-            this.educationDataGridViewTextBoxColumn.DataPropertyName = "Education";
-            this.educationDataGridViewTextBoxColumn.HeaderText = "Education";
-            this.educationDataGridViewTextBoxColumn.Name = "educationDataGridViewTextBoxColumn";
-            // 
-            // statusDataGridViewTextBoxColumn
-            // 
-            this.statusDataGridViewTextBoxColumn.DataPropertyName = "Status";
-            this.statusDataGridViewTextBoxColumn.HeaderText = "Status";
-            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
-            this.statusDataGridViewTextBoxColumn.ReadOnly = true;
-            this.statusDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // dateOfEmploymentDataGridViewTextBoxColumn
-            // 
-            this.dateOfEmploymentDataGridViewTextBoxColumn.DataPropertyName = "DateOfEmployment";
-            this.dateOfEmploymentDataGridViewTextBoxColumn.HeaderText = "DateOfEmployment";
-            this.dateOfEmploymentDataGridViewTextBoxColumn.Name = "dateOfEmploymentDataGridViewTextBoxColumn";
-            // 
-            // dateOfDismissalDataGridViewTextBoxColumn
-            // 
-            this.dateOfDismissalDataGridViewTextBoxColumn.DataPropertyName = "DateOfDismissal";
-            this.dateOfDismissalDataGridViewTextBoxColumn.HeaderText = "DateOfDismissal";
-            this.dateOfDismissalDataGridViewTextBoxColumn.Name = "dateOfDismissalDataGridViewTextBoxColumn";
-            // 
-            // positionEmployeeIDDataGridViewTextBoxColumn
-            // 
-            this.positionEmployeeIDDataGridViewTextBoxColumn.DataPropertyName = "PositionEmployeeID";
-            this.positionEmployeeIDDataGridViewTextBoxColumn.HeaderText = "PositionEmployeeID";
-            this.positionEmployeeIDDataGridViewTextBoxColumn.Name = "positionEmployeeIDDataGridViewTextBoxColumn";
-            // 
-            // structuralDivisionIDDataGridViewTextBoxColumn
-            // 
-            this.structuralDivisionIDDataGridViewTextBoxColumn.DataPropertyName = "StructuralDivisionID";
-            this.structuralDivisionIDDataGridViewTextBoxColumn.HeaderText = "StructuralDivisionID";
-            this.structuralDivisionIDDataGridViewTextBoxColumn.Name = "structuralDivisionIDDataGridViewTextBoxColumn";
             // 
             // employeeBindingSource
             // 
@@ -209,7 +140,7 @@
             // 
             this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAdd.BackColor = System.Drawing.SystemColors.Control;
-            this.btnAdd.Location = new System.Drawing.Point(627, 54);
+            this.btnAdd.Location = new System.Drawing.Point(1011, 27);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(161, 23);
             this.btnAdd.TabIndex = 4;
@@ -281,7 +212,7 @@
             // btnDismissal
             // 
             this.btnDismissal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnDismissal.Location = new System.Drawing.Point(12, 415);
+            this.btnDismissal.Location = new System.Drawing.Point(12, 426);
             this.btnDismissal.Name = "btnDismissal";
             this.btnDismissal.Size = new System.Drawing.Size(161, 23);
             this.btnDismissal.TabIndex = 11;
@@ -312,28 +243,103 @@
             // btnSave
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSave.Location = new System.Drawing.Point(682, 415);
+            this.btnSave.Location = new System.Drawing.Point(1066, 426);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(106, 23);
             this.btnSave.TabIndex = 12;
             this.btnSave.Text = "Сохранить";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // label4
+            // iDDataGridViewTextBoxColumn
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(247, 63);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 13);
-            this.label4.TabIndex = 13;
-            this.label4.Text = "label4";
+            this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
+            this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
+            this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
+            this.iDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // lastNameDataGridViewTextBoxColumn
+            // 
+            this.lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
+            this.lastNameDataGridViewTextBoxColumn.HeaderText = "Фамилия";
+            this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
+            // 
+            // firstNameDataGridViewTextBoxColumn
+            // 
+            this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
+            this.firstNameDataGridViewTextBoxColumn.HeaderText = "Имя";
+            this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
+            // 
+            // middleNameDataGridViewTextBoxColumn
+            // 
+            this.middleNameDataGridViewTextBoxColumn.DataPropertyName = "MiddleName";
+            this.middleNameDataGridViewTextBoxColumn.HeaderText = "Отчество";
+            this.middleNameDataGridViewTextBoxColumn.Name = "middleNameDataGridViewTextBoxColumn";
+            // 
+            // dateOfBirthDataGridViewTextBoxColumn
+            // 
+            this.dateOfBirthDataGridViewTextBoxColumn.DataPropertyName = "DateOfBirth";
+            this.dateOfBirthDataGridViewTextBoxColumn.HeaderText = "Дата рождения";
+            this.dateOfBirthDataGridViewTextBoxColumn.Name = "dateOfBirthDataGridViewTextBoxColumn";
+            // 
+            // educationDataGridViewTextBoxColumn
+            // 
+            this.educationDataGridViewTextBoxColumn.DataPropertyName = "Education";
+            this.educationDataGridViewTextBoxColumn.HeaderText = "Образование";
+            this.educationDataGridViewTextBoxColumn.Name = "educationDataGridViewTextBoxColumn";
+            // 
+            // statusDataGridViewTextBoxColumn
+            // 
+            this.statusDataGridViewTextBoxColumn.DataPropertyName = "Status";
+            this.statusDataGridViewTextBoxColumn.HeaderText = "Статус";
+            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
+            this.statusDataGridViewTextBoxColumn.ReadOnly = true;
+            this.statusDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // dateOfEmploymentDataGridViewTextBoxColumn
+            // 
+            this.dateOfEmploymentDataGridViewTextBoxColumn.DataPropertyName = "DateOfEmployment";
+            this.dateOfEmploymentDataGridViewTextBoxColumn.HeaderText = "Дата трудоустройства";
+            this.dateOfEmploymentDataGridViewTextBoxColumn.Name = "dateOfEmploymentDataGridViewTextBoxColumn";
+            this.dateOfEmploymentDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // dateOfDismissalDataGridViewTextBoxColumn
+            // 
+            this.dateOfDismissalDataGridViewTextBoxColumn.DataPropertyName = "DateOfDismissal";
+            this.dateOfDismissalDataGridViewTextBoxColumn.HeaderText = "Дата увольнения";
+            this.dateOfDismissalDataGridViewTextBoxColumn.Name = "dateOfDismissalDataGridViewTextBoxColumn";
+            this.dateOfDismissalDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // positionEmployeeIDDataGridViewTextBoxColumn
+            // 
+            this.positionEmployeeIDDataGridViewTextBoxColumn.DataPropertyName = "PositionEmployeeID";
+            this.positionEmployeeIDDataGridViewTextBoxColumn.HeaderText = "Должность";
+            this.positionEmployeeIDDataGridViewTextBoxColumn.Name = "positionEmployeeIDDataGridViewTextBoxColumn";
+            // 
+            // structuralDivisionIDDataGridViewTextBoxColumn
+            // 
+            this.structuralDivisionIDDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.structuralDivisionIDDataGridViewTextBoxColumn.DataPropertyName = "StructuralDivisionID";
+            this.structuralDivisionIDDataGridViewTextBoxColumn.HeaderText = "Структурное подразделение";
+            this.structuralDivisionIDDataGridViewTextBoxColumn.Name = "structuralDivisionIDDataGridViewTextBoxColumn";
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnDelete.Location = new System.Drawing.Point(516, 426);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(126, 23);
+            this.btnDelete.TabIndex = 13;
+            this.btnDelete.Text = "Удалить строку";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // employeeWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.label4);
+            this.ClientSize = new System.Drawing.Size(1184, 461);
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnDismissal);
             this.Controls.Add(this.label3);
@@ -396,6 +402,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dateOfDismissalDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn positionEmployeeIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn structuralDivisionIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnDelete;
     }
 }

@@ -29,7 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridDivision = new System.Windows.Forms.DataGridView();
+            this.structuraldivisionBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.employeeManageAppDBDataSet = new Employee_Manage_App__WinForms_.EmployeeManageAppDBDataSet();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -37,31 +39,51 @@
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.employeeManageAppDBDataSet = new Employee_Manage_App__WinForms_.EmployeeManageAppDBDataSet();
-            this.structuraldivisionBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.structural_divisionTableAdapter = new Employee_Manage_App__WinForms_.EmployeeManageAppDBDataSetTableAdapters.structural_divisionTableAdapter();
+            this.structuraldivisionBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.employeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.employeeTableAdapter = new Employee_Manage_App__WinForms_.EmployeeManageAppDBDataSetTableAdapters.employeeTableAdapter();
+            this.employeeManageAppDBDataSet1 = new Employee_Manage_App__WinForms_.EmployeeManageAppDBDataSet();
+            this.employeeBossComBoxBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.employeeBossComBoxTableAdapter = new Employee_Manage_App__WinForms_.EmployeeManageAppDBDataSetTableAdapters.employeeBossComBoxTableAdapter();
+            this.btnSave = new System.Windows.Forms.Button();
             this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bossDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.employeeManageAppDBDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridDivision)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.structuraldivisionBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeeManageAppDBDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.structuraldivisionBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeeManageAppDBDataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeeBossComBoxBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dataGridDivision
             // 
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridDivision.AutoGenerateColumns = false;
+            this.dataGridDivision.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridDivision.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.iDDataGridViewTextBoxColumn,
             this.nameDataGridViewTextBoxColumn,
             this.bossDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.structuraldivisionBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(15, 25);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(280, 402);
-            this.dataGridView1.TabIndex = 0;
+            this.dataGridDivision.DataSource = this.structuraldivisionBindingSource;
+            this.dataGridDivision.Location = new System.Drawing.Point(15, 25);
+            this.dataGridDivision.Name = "dataGridDivision";
+            this.dataGridDivision.Size = new System.Drawing.Size(280, 384);
+            this.dataGridDivision.TabIndex = 0;
+            this.dataGridDivision.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridDivision_CellClick);
+            // 
+            // structuraldivisionBindingSource
+            // 
+            this.structuraldivisionBindingSource.DataMember = "structural_division";
+            this.structuraldivisionBindingSource.DataSource = this.employeeManageAppDBDataSet;
+            // 
+            // employeeManageAppDBDataSet
+            // 
+            this.employeeManageAppDBDataSet.DataSetName = "EmployeeManageAppDBDataSet";
+            this.employeeManageAppDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // label2
             // 
@@ -83,27 +105,33 @@
             // 
             // comboBox1
             // 
+            this.comboBox1.DataSource = this.structuraldivisionBindingSource1;
+            this.comboBox1.DisplayMember = "Name";
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(313, 26);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(475, 21);
             this.comboBox1.TabIndex = 5;
+            this.comboBox1.ValueMember = "ID";
             // 
             // dataGridView2
             // 
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Location = new System.Drawing.Point(313, 106);
             this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(475, 321);
+            this.dataGridView2.Size = new System.Drawing.Size(475, 332);
             this.dataGridView2.TabIndex = 6;
             // 
             // comboBox2
             // 
+            this.comboBox2.DataSource = this.employeeBossComBoxBindingSource;
+            this.comboBox2.DisplayMember = "ФИО";
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Location = new System.Drawing.Point(313, 66);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(475, 21);
             this.comboBox2.TabIndex = 7;
+            this.comboBox2.ValueMember = "ID";
             // 
             // label3
             // 
@@ -123,19 +151,47 @@
             this.label4.TabIndex = 9;
             this.label4.Text = "Список сотрудников в подразделении";
             // 
-            // employeeManageAppDBDataSet
-            // 
-            this.employeeManageAppDBDataSet.DataSetName = "EmployeeManageAppDBDataSet";
-            this.employeeManageAppDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // structuraldivisionBindingSource
-            // 
-            this.structuraldivisionBindingSource.DataMember = "structural_division";
-            this.structuraldivisionBindingSource.DataSource = this.employeeManageAppDBDataSet;
-            // 
             // structural_divisionTableAdapter
             // 
             this.structural_divisionTableAdapter.ClearBeforeFill = true;
+            // 
+            // structuraldivisionBindingSource1
+            // 
+            this.structuraldivisionBindingSource1.DataMember = "structural_division";
+            this.structuraldivisionBindingSource1.DataSource = this.employeeManageAppDBDataSet;
+            // 
+            // employeeBindingSource
+            // 
+            this.employeeBindingSource.DataMember = "employee";
+            this.employeeBindingSource.DataSource = this.employeeManageAppDBDataSet;
+            // 
+            // employeeTableAdapter
+            // 
+            this.employeeTableAdapter.ClearBeforeFill = true;
+            // 
+            // employeeManageAppDBDataSet1
+            // 
+            this.employeeManageAppDBDataSet1.DataSetName = "EmployeeManageAppDBDataSet";
+            this.employeeManageAppDBDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // employeeBossComBoxBindingSource
+            // 
+            this.employeeBossComBoxBindingSource.DataMember = "employeeBossComBox";
+            this.employeeBossComBoxBindingSource.DataSource = this.employeeManageAppDBDataSet1;
+            // 
+            // employeeBossComBoxTableAdapter
+            // 
+            this.employeeBossComBoxTableAdapter.ClearBeforeFill = true;
+            // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(220, 415);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.TabIndex = 10;
+            this.btnSave.Text = "Сохранить";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // iDDataGridViewTextBoxColumn
             // 
@@ -143,6 +199,7 @@
             this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
             this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
             this.iDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.iDDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.iDDataGridViewTextBoxColumn.Visible = false;
             // 
             // nameDataGridViewTextBoxColumn
@@ -157,12 +214,15 @@
             this.bossDataGridViewTextBoxColumn.DataPropertyName = "Boss";
             this.bossDataGridViewTextBoxColumn.HeaderText = "Boss";
             this.bossDataGridViewTextBoxColumn.Name = "bossDataGridViewTextBoxColumn";
+            this.bossDataGridViewTextBoxColumn.ReadOnly = true;
+            this.bossDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // structuralDivisionWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.comboBox2);
@@ -170,15 +230,19 @@
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridDivision);
             this.Name = "structuralDivisionWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "positionWindow";
+            this.Text = "structuralDivisionWindow";
             this.Load += new System.EventHandler(this.structuralDivisionWindow_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.employeeManageAppDBDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridDivision)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.structuraldivisionBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeeManageAppDBDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.structuraldivisionBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeeManageAppDBDataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeeBossComBoxBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -186,7 +250,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridDivision;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBox1;
@@ -197,6 +261,13 @@
         private EmployeeManageAppDBDataSet employeeManageAppDBDataSet;
         private System.Windows.Forms.BindingSource structuraldivisionBindingSource;
         private EmployeeManageAppDBDataSetTableAdapters.structural_divisionTableAdapter structural_divisionTableAdapter;
+        private System.Windows.Forms.BindingSource structuraldivisionBindingSource1;
+        private System.Windows.Forms.BindingSource employeeBindingSource;
+        private EmployeeManageAppDBDataSetTableAdapters.employeeTableAdapter employeeTableAdapter;
+        private EmployeeManageAppDBDataSet employeeManageAppDBDataSet1;
+        private System.Windows.Forms.BindingSource employeeBossComBoxBindingSource;
+        private EmployeeManageAppDBDataSetTableAdapters.employeeBossComBoxTableAdapter employeeBossComBoxTableAdapter;
+        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn bossDataGridViewTextBoxColumn;

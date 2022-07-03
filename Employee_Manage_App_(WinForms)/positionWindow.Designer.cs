@@ -29,36 +29,65 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.employeeManageAppDBDataSet = new Employee_Manage_App__WinForms_.EmployeeManageAppDBDataSet();
-            this.employeeManageAppDBDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.positionemployeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.position_employeeTableAdapter = new Employee_Manage_App__WinForms_.EmployeeManageAppDBDataSetTableAdapters.position_employeeTableAdapter();
+            this.dataGridPosition = new System.Windows.Forms.DataGridView();
             this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.employeeManageAppDBDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.employeeManageAppDBDataSetBindingSource)).BeginInit();
+            this.positionemployeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.employeeManageAppDBDataSet = new Employee_Manage_App__WinForms_.EmployeeManageAppDBDataSet();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.comboBoxPosition = new System.Windows.Forms.ComboBox();
+            this.positionemployeeBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.employeeManageAppDBDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.position_employeeTableAdapter = new Employee_Manage_App__WinForms_.EmployeeManageAppDBDataSetTableAdapters.position_employeeTableAdapter();
+            this.btnSave = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridPosition)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.positionemployeeBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeeManageAppDBDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.positionemployeeBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeeManageAppDBDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dataGridPosition
             // 
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridPosition.AutoGenerateColumns = false;
+            this.dataGridPosition.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridPosition.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.iDDataGridViewTextBoxColumn,
             this.nameDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.positionemployeeBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(15, 25);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(280, 402);
-            this.dataGridView1.TabIndex = 0;
+            this.dataGridPosition.DataSource = this.positionemployeeBindingSource;
+            this.dataGridPosition.Location = new System.Drawing.Point(15, 25);
+            this.dataGridPosition.Name = "dataGridPosition";
+            this.dataGridPosition.Size = new System.Drawing.Size(280, 384);
+            this.dataGridPosition.TabIndex = 0;
+            this.dataGridPosition.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridPosition_CellClick);
+            // 
+            // iDDataGridViewTextBoxColumn
+            // 
+            this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
+            this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
+            this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
+            this.iDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.iDDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            // 
+            // positionemployeeBindingSource
+            // 
+            this.positionemployeeBindingSource.DataMember = "position_employee";
+            this.positionemployeeBindingSource.DataSource = this.employeeManageAppDBDataSet;
+            // 
+            // employeeManageAppDBDataSet
+            // 
+            this.employeeManageAppDBDataSet.DataSetName = "EmployeeManageAppDBDataSet";
+            this.employeeManageAppDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // label2
             // 
@@ -78,75 +107,71 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "Вывести сотрудников определенной должности";
             // 
-            // comboBox1
+            // comboBoxPosition
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(313, 26);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(475, 21);
-            this.comboBox1.TabIndex = 5;
+            this.comboBoxPosition.DataSource = this.positionemployeeBindingSource1;
+            this.comboBoxPosition.DisplayMember = "Name";
+            this.comboBoxPosition.FormattingEnabled = true;
+            this.comboBoxPosition.Location = new System.Drawing.Point(313, 26);
+            this.comboBoxPosition.Name = "comboBoxPosition";
+            this.comboBoxPosition.Size = new System.Drawing.Size(475, 21);
+            this.comboBoxPosition.TabIndex = 5;
+            this.comboBoxPosition.ValueMember = "ID";
+            this.comboBoxPosition.SelectionChangeCommitted += new System.EventHandler(this.comboBoxPosition_SelectionChangeCommitted);
             // 
-            // dataGridView2
+            // positionemployeeBindingSource1
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(313, 53);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(475, 374);
-            this.dataGridView2.TabIndex = 6;
-            // 
-            // employeeManageAppDBDataSet
-            // 
-            this.employeeManageAppDBDataSet.DataSetName = "EmployeeManageAppDBDataSet";
-            this.employeeManageAppDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.positionemployeeBindingSource1.DataMember = "position_employee";
+            this.positionemployeeBindingSource1.DataSource = this.employeeManageAppDBDataSetBindingSource;
             // 
             // employeeManageAppDBDataSetBindingSource
             // 
             this.employeeManageAppDBDataSetBindingSource.DataSource = this.employeeManageAppDBDataSet;
             this.employeeManageAppDBDataSetBindingSource.Position = 0;
             // 
-            // positionemployeeBindingSource
+            // dataGridView2
             // 
-            this.positionemployeeBindingSource.DataMember = "position_employee";
-            this.positionemployeeBindingSource.DataSource = this.employeeManageAppDBDataSet;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(313, 53);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.Size = new System.Drawing.Size(475, 385);
+            this.dataGridView2.TabIndex = 6;
             // 
             // position_employeeTableAdapter
             // 
             this.position_employeeTableAdapter.ClearBeforeFill = true;
             // 
-            // iDDataGridViewTextBoxColumn
+            // btnSave
             // 
-            this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
-            this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
-            this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
-            this.iDDataGridViewTextBoxColumn.ReadOnly = true;
-            this.iDDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.btnSave.Location = new System.Drawing.Point(220, 415);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.TabIndex = 7;
+            this.btnSave.Text = "Сохранить";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // positionWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.dataGridView2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.comboBoxPosition);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridPosition);
             this.Name = "positionWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "positionWindow";
             this.Load += new System.EventHandler(this.positionWindow_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.employeeManageAppDBDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.employeeManageAppDBDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridPosition)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.positionemployeeBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeeManageAppDBDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.positionemployeeBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeeManageAppDBDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -154,10 +179,10 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridPosition;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBoxPosition;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.BindingSource employeeManageAppDBDataSetBindingSource;
         private EmployeeManageAppDBDataSet employeeManageAppDBDataSet;
@@ -165,5 +190,7 @@
         private EmployeeManageAppDBDataSetTableAdapters.position_employeeTableAdapter position_employeeTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.BindingSource positionemployeeBindingSource1;
     }
 }

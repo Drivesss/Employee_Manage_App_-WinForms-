@@ -14,7 +14,7 @@ namespace Employee_Manage_App__WinForms_
 {
     public partial class applicantWindow : Form
     {
-        string id;
+        string IdRowDataGrid;
         DateTimePicker dateTimePicker;
         public applicantWindow()
         {
@@ -52,13 +52,13 @@ namespace Employee_Manage_App__WinForms_
                 SqlCommand command1 = new SqlCommand("DELETE FROM applicant WHERE ID = @ID");
                 command1.Connection = applicantTableAdapter.Connection;
 
-                command1.Parameters.AddWithValue("@ID", id);
+                command1.Parameters.AddWithValue("@ID", IdRowDataGrid);
 
                 applicantTableAdapter.Adapter.DeleteCommand = command1;
 
 
                 applicantTableAdapter.Update(this.employeeManageAppDBDataSet.applicant);
-                MessageBox.Show("You have been successfully saved", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Изменения сохранены", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
@@ -73,7 +73,7 @@ namespace Employee_Manage_App__WinForms_
 
             if (e.KeyCode == Keys.Delete)
             {
-                if (MessageBox.Show("Are you sure want to delete this record?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("Вы действительно хотите удалить запись?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     applicantBindingSource.RemoveCurrent();
                 }
@@ -95,7 +95,7 @@ namespace Employee_Manage_App__WinForms_
             }
            
 
-            id = dataGridApplicant[0, dataGridApplicant.CurrentRow.Index].Value.ToString();
+            IdRowDataGrid = dataGridApplicant[0, dataGridApplicant.CurrentRow.Index].Value.ToString();
         }
     }
 }
