@@ -47,6 +47,12 @@ namespace Employee_Manage_App__WinForms_
         {
             // Получаем ID элемента ComboBox в таблице applicant SQL
             IDComboBox = ComBoxApplicant.SelectedValue.ToString();
+            int IDcomboBoxPosition = Int32.Parse(comboBoxPosition.SelectedValue.ToString());
+            int IDcomboBoxDivision = Int32.Parse(comboBoxDivision.SelectedValue.ToString());   
+
+            
+
+
 
             //Добавляется сотрудник в таблицу employee SQL и отображается в dataGrid
             try
@@ -70,8 +76,8 @@ namespace Employee_Manage_App__WinForms_
                 insertCommand.Parameters.AddWithValue("@ID", IDComboBox);
                 insertCommand.Parameters.AddWithValue("@Status", Work);
                 insertCommand.Parameters.AddWithValue("@DateOfEmployment", DateOfEmployment);
-                insertCommand.Parameters.AddWithValue("@PositionEmployeeID", 1);
-                insertCommand.Parameters.AddWithValue("@StructuralDivisionID", 2);
+                insertCommand.Parameters.AddWithValue("@PositionEmployeeID", IDcomboBoxPosition);
+                insertCommand.Parameters.AddWithValue("@StructuralDivisionID", IDcomboBoxDivision);
 
                 employeeTableAdapter.Adapter.InsertCommand = insertCommand;
 
@@ -84,17 +90,17 @@ namespace Employee_Manage_App__WinForms_
                 employeeTableAdapter.Update(this.employeeManageAppDBDataSet.employee);
 
 
-                // Команда удаления из списка соискателей 
-                SqlCommand DeleteCommand = new SqlCommand("DELETE FROM applicant WHERE ID = @ID");
-                DeleteCommand.Connection = applicantTableAdapter.Connection;
-                DeleteCommand.Connection.Open();
+                //// Команда удаления из списка соискателей 
+                //SqlCommand DeleteCommand = new SqlCommand("DELETE FROM applicant WHERE ID = @ID");
+                //DeleteCommand.Connection = applicantTableAdapter.Connection;
+                //DeleteCommand.Connection.Open();
 
-                DeleteCommand.Parameters.AddWithValue("@ID", IDComboBox);
+                //DeleteCommand.Parameters.AddWithValue("@ID", IDComboBox);
 
-                applicantTableAdapter.Adapter.DeleteCommand = DeleteCommand;
-                applicantTableAdapter.Adapter.DeleteCommand.ExecuteNonQuery();
-                DeleteCommand.Connection.Close();
-                applicantTableAdapter.Update(this.employeeManageAppDBDataSet.applicant);
+                //applicantTableAdapter.Adapter.DeleteCommand = DeleteCommand;
+                //applicantTableAdapter.Adapter.DeleteCommand.ExecuteNonQuery();
+                //DeleteCommand.Connection.Close();
+                //applicantTableAdapter.Update(this.employeeManageAppDBDataSet.applicant);
 
                 //Обновил данные в таблице
                 employeeWindow_Load(sender, e);
