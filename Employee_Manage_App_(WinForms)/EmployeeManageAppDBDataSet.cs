@@ -4,6 +4,9 @@
 
     partial class EmployeeManageAppDBDataSet
     {
+        partial class DataTable1DataTable
+        {
+        }
     }
 }
 

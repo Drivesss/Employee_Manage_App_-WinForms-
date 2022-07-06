@@ -15,6 +15,8 @@ namespace Employee_Manage_App__WinForms_
     {
         string IDComboBox;
         string IdRowDataGrid;
+        int IDcomboBoxPosition;
+        int IDcomboBoxDivision;
         public employeeWindow()
         {
             InitializeComponent();
@@ -22,6 +24,9 @@ namespace Employee_Manage_App__WinForms_
 
         private void employeeWindow_Load(object sender, EventArgs e)
         {
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "employeeManageAppDBDataSet2._employeeDataTable". При необходимости она может быть перемещена или удалена.
+            this.employeeDataTableTableAdapter.Fill(this.employeeManageAppDBDataSet2._employeeDataTable);
+
             // TODO: данная строка кода позволяет загрузить данные в таблицу "employeeManageAppDBDataSet.employee". При необходимости она может быть перемещена или удалена.
             this.employeeTableAdapter.Fill(this.employeeManageAppDBDataSet.employee);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "employeeManageAppDBDataSet.applicant1". При необходимости она может быть перемещена или удалена.
@@ -47,11 +52,8 @@ namespace Employee_Manage_App__WinForms_
         {
             // Получаем ID элемента ComboBox в таблице applicant SQL
             IDComboBox = ComBoxApplicant.SelectedValue.ToString();
-            int IDcomboBoxPosition = Int32.Parse(comboBoxPosition.SelectedValue.ToString());
-            int IDcomboBoxDivision = Int32.Parse(comboBoxDivision.SelectedValue.ToString());   
-
-            
-
+            IDcomboBoxPosition = Int32.Parse(comboBoxPosition.SelectedValue.ToString());
+            IDcomboBoxDivision = Int32.Parse(comboBoxDivision.SelectedValue.ToString());   
 
 
             //Добавляется сотрудник в таблицу employee SQL и отображается в dataGrid
@@ -194,6 +196,7 @@ namespace Employee_Manage_App__WinForms_
                 UpdateCommand.Connection.Close();
                 employeeTableAdapter.Update(this.employeeManageAppDBDataSet.employee);
                 employeeWindow_Load(sender, e);
+                MessageBox.Show("Изменения сохранены", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
