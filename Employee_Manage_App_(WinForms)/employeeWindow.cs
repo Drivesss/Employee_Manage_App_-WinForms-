@@ -24,6 +24,10 @@ namespace Employee_Manage_App__WinForms_
 
         private void employeeWindow_Load(object sender, EventArgs e)
         {
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "employeeManageAppDBDataSet4._employeeDataTable". При необходимости она может быть перемещена или удалена.
+            this.employeeDataTableTableAdapter.Fill(this.employeeManageAppDBDataSet4._employeeDataTable);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "employeeManageAppDBDataSet3._employeeDataTable". При необходимости она может быть перемещена или удалена.
+            this.employeeDataTableTableAdapter.Fill(this.employeeManageAppDBDataSet3._employeeDataTable);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "employeeManageAppDBDataSet2._employeeDataTable". При необходимости она может быть перемещена или удалена.
             this.employeeDataTableTableAdapter.Fill(this.employeeManageAppDBDataSet2._employeeDataTable);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "employeeManageAppDBDataSet.employee". При необходимости она может быть перемещена или удалена.

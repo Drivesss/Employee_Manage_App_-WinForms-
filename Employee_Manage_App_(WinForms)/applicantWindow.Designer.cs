@@ -30,16 +30,16 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridApplicant = new System.Windows.Forms.DataGridView();
-            this.applicantBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.employeeManageAppDBDataSet = new Employee_Manage_App__WinForms_.EmployeeManageAppDBDataSet();
-            this.applicantTableAdapter = new Employee_Manage_App__WinForms_.EmployeeManageAppDBDataSetTableAdapters.applicantTableAdapter();
-            this.buttonSave = new System.Windows.Forms.Button();
             this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.middleNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateOfBirthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.educationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.applicantBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.employeeManageAppDBDataSet = new Employee_Manage_App__WinForms_.EmployeeManageAppDBDataSet();
+            this.applicantTableAdapter = new Employee_Manage_App__WinForms_.EmployeeManageAppDBDataSetTableAdapters.applicantTableAdapter();
+            this.buttonSave = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridApplicant)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicantBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeManageAppDBDataSet)).BeginInit();
@@ -62,35 +62,11 @@
             this.dataGridApplicant.DataSource = this.applicantBindingSource;
             this.dataGridApplicant.Location = new System.Drawing.Point(0, 0);
             this.dataGridApplicant.Name = "dataGridApplicant";
+            this.dataGridApplicant.RowHeadersVisible = false;
             this.dataGridApplicant.Size = new System.Drawing.Size(912, 447);
             this.dataGridApplicant.TabIndex = 0;
             this.dataGridApplicant.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridApplicant_CellClick);
             this.dataGridApplicant.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridApplicant_KeyDown);
-            // 
-            // applicantBindingSource
-            // 
-            this.applicantBindingSource.DataMember = "applicant";
-            this.applicantBindingSource.DataSource = this.employeeManageAppDBDataSet;
-            // 
-            // employeeManageAppDBDataSet
-            // 
-            this.employeeManageAppDBDataSet.DataSetName = "EmployeeManageAppDBDataSet";
-            this.employeeManageAppDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // applicantTableAdapter
-            // 
-            this.applicantTableAdapter.ClearBeforeFill = true;
-            // 
-            // buttonSave
-            // 
-            this.buttonSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSave.Location = new System.Drawing.Point(777, 453);
-            this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(123, 36);
-            this.buttonSave.TabIndex = 1;
-            this.buttonSave.Text = "Сохранить";
-            this.buttonSave.UseVisualStyleBackColor = true;
-            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // iDDataGridViewTextBoxColumn
             // 
@@ -131,6 +107,31 @@
             this.educationDataGridViewTextBoxColumn.DataPropertyName = "Education";
             this.educationDataGridViewTextBoxColumn.HeaderText = "Образование";
             this.educationDataGridViewTextBoxColumn.Name = "educationDataGridViewTextBoxColumn";
+            // 
+            // applicantBindingSource
+            // 
+            this.applicantBindingSource.DataMember = "applicant";
+            this.applicantBindingSource.DataSource = this.employeeManageAppDBDataSet;
+            // 
+            // employeeManageAppDBDataSet
+            // 
+            this.employeeManageAppDBDataSet.DataSetName = "EmployeeManageAppDBDataSet";
+            this.employeeManageAppDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // applicantTableAdapter
+            // 
+            this.applicantTableAdapter.ClearBeforeFill = true;
+            // 
+            // buttonSave
+            // 
+            this.buttonSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonSave.Location = new System.Drawing.Point(777, 453);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(123, 36);
+            this.buttonSave.TabIndex = 1;
+            this.buttonSave.Text = "Сохранить";
+            this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // applicantWindow
             // 

@@ -70,7 +70,7 @@ namespace Employee_Manage_App__WinForms_
         }
 
         
-        //Вывод сотрудников определенной должности TODO
+        //Вывод сотрудников определенной должности
         private void comboBoxPosition_SelectionChangeCommitted(object sender, EventArgs e)
         {
             try
@@ -88,8 +88,8 @@ namespace Employee_Manage_App__WinForms_
                     "employee.Education As Образование, " +
                     "employee.Status As Статус, " +
                     "employee.DateOfEmployment \"Дата трудоустройства\", " +
-                    "position_employee.Name As Должность, " +
-                    "structural_division.Name AS \"Структурное подразделение\" " +
+                    "structural_division.Name AS \"Структурное подразделение\", " +
+                    "position_employee.Name As Должность " +
                     "FROM employee " +
                     "INNER JOIN position_employee ON employee.PositionEmployeeID = position_employee.ID " +
                     "INNER JOIN structural_division ON employee.StructuralDivisionID = structural_division.ID " +
@@ -104,6 +104,8 @@ namespace Employee_Manage_App__WinForms_
                 dataGridSelectedEmployee.DataSource = ds.Tables[0];
 
                 connection.Close();
+
+                dataGridSelectedEmployee.ReadOnly = true;
 
             }
             catch (Exception ex)

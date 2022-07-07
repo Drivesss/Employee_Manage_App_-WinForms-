@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridPosition = new System.Windows.Forms.DataGridView();
+            this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.positionemployeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.employeeManageAppDBDataSet = new Employee_Manage_App__WinForms_.EmployeeManageAppDBDataSet();
             this.label2 = new System.Windows.Forms.Label();
@@ -40,8 +42,6 @@
             this.dataGridSelectedEmployee = new System.Windows.Forms.DataGridView();
             this.position_employeeTableAdapter = new Employee_Manage_App__WinForms_.EmployeeManageAppDBDataSetTableAdapters.position_employeeTableAdapter();
             this.btnSave = new System.Windows.Forms.Button();
-            this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridPosition)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.positionemployeeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeManageAppDBDataSet)).BeginInit();
@@ -60,9 +60,25 @@
             this.dataGridPosition.DataSource = this.positionemployeeBindingSource;
             this.dataGridPosition.Location = new System.Drawing.Point(15, 25);
             this.dataGridPosition.Name = "dataGridPosition";
+            this.dataGridPosition.RowHeadersVisible = false;
             this.dataGridPosition.Size = new System.Drawing.Size(280, 384);
             this.dataGridPosition.TabIndex = 0;
             this.dataGridPosition.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridPosition_CellClick);
+            // 
+            // iDDataGridViewTextBoxColumn
+            // 
+            this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
+            this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
+            this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
+            this.iDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.iDDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
             // 
             // positionemployeeBindingSource
             // 
@@ -117,9 +133,11 @@
             // 
             // dataGridSelectedEmployee
             // 
+            this.dataGridSelectedEmployee.AllowUserToAddRows = false;
             this.dataGridSelectedEmployee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridSelectedEmployee.Location = new System.Drawing.Point(313, 53);
             this.dataGridSelectedEmployee.Name = "dataGridSelectedEmployee";
+            this.dataGridSelectedEmployee.RowHeadersVisible = false;
             this.dataGridSelectedEmployee.Size = new System.Drawing.Size(859, 385);
             this.dataGridSelectedEmployee.TabIndex = 6;
             // 
@@ -136,21 +154,6 @@
             this.btnSave.Text = "Сохранить";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // iDDataGridViewTextBoxColumn
-            // 
-            this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
-            this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
-            this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
-            this.iDDataGridViewTextBoxColumn.ReadOnly = true;
-            this.iDDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
             // 
             // positionWindow
             // 
