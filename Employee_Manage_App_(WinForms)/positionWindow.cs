@@ -14,6 +14,8 @@ namespace Employee_Manage_App__WinForms_
     public partial class positionWindow : Form
     {
         string IdRowDataGrid;
+        int IDPositionComBox;
+        SqlConnection connection;
         public positionWindow()
         {
             InitializeComponent();
@@ -21,9 +23,10 @@ namespace Employee_Manage_App__WinForms_
 
         private void positionWindow_Load(object sender, EventArgs e)
         {
+            connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Sergeo\Desktop\EmployeeManageAppDB.mdf;Integrated Security=True;Connect Timeout=30");
+
             // TODO: данная строка кода позволяет загрузить данные в таблицу "employeeManageAppDBDataSet.position_employee". При необходимости она может быть перемещена или удалена.
             this.position_employeeTableAdapter.Fill(this.employeeManageAppDBDataSet.position_employee);
-
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -70,6 +73,45 @@ namespace Employee_Manage_App__WinForms_
         //Вывод сотрудников определенной должности
         private void comboBoxPosition_SelectionChangeCommitted(object sender, EventArgs e)
         {
+            try
+            {
+                IDPositionComBox = Int32.Parse(comboBoxPosition.SelectedValue.ToString());
+
+                connection.Open();
+
+                SqlCommand select = new SqlCommand(
+                    "SELECT " +
+                    "employee.LastName As Фамилия, " +
+                    "employee.FirstName As Имя, " +
+                    "employee.MiddleName As Отчество, " +
+                    "employee.DateOfBirth As \"Дата рождения\", " +
+                    "employee.Education As Образование, " +
+                    "employee.Status As Статус, " +
+                    "employee.DateOfEmployment \"Дата трудоустройства\", " +
+                    "structural_division.Name AS \"Структурное подразделение\", " +
+                    "position_employee.Name As Должность " +
+                    "FROM employee " +
+                    "INNER JOIN position_employee ON employee.PositionEmployeeID = position_employee.ID " +
+                    "INNER JOIN structural_division ON employee.StructuralDivisionID = structural_division.ID " +
+                    "WHERE(position_employee.ID = @IDPositionComBox)", connection);
+
+               select.Parameters.AddWithValue("@IDPositionComBox", IDPositionComBox);
+
+                SqlDataAdapter adapter = new SqlDataAdapter(select);
+                DataSet ds = new DataSet();
+                adapter.Fill(ds);
+
+                dataGridSelectedEmployee.DataSource = ds.Tables[0];
+
+                connection.Close();
+
+                dataGridSelectedEmployee.ReadOnly = true;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
     }

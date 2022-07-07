@@ -39,7 +39,7 @@
             this.comboBoxPosition = new System.Windows.Forms.ComboBox();
             this.positionemployeeBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.employeeManageAppDBDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dataGridSelectedEmployee = new System.Windows.Forms.DataGridView();
             this.position_employeeTableAdapter = new Employee_Manage_App__WinForms_.EmployeeManageAppDBDataSetTableAdapters.position_employeeTableAdapter();
             this.btnSave = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridPosition)).BeginInit();
@@ -47,7 +47,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.employeeManageAppDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.positionemployeeBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeManageAppDBDataSetBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridSelectedEmployee)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridPosition
@@ -60,6 +60,7 @@
             this.dataGridPosition.DataSource = this.positionemployeeBindingSource;
             this.dataGridPosition.Location = new System.Drawing.Point(15, 25);
             this.dataGridPosition.Name = "dataGridPosition";
+            this.dataGridPosition.RowHeadersVisible = false;
             this.dataGridPosition.Size = new System.Drawing.Size(280, 384);
             this.dataGridPosition.TabIndex = 0;
             this.dataGridPosition.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridPosition_CellClick);
@@ -111,10 +112,11 @@
             // 
             this.comboBoxPosition.DataSource = this.positionemployeeBindingSource1;
             this.comboBoxPosition.DisplayMember = "Name";
+            this.comboBoxPosition.DropDownWidth = 859;
             this.comboBoxPosition.FormattingEnabled = true;
             this.comboBoxPosition.Location = new System.Drawing.Point(313, 26);
             this.comboBoxPosition.Name = "comboBoxPosition";
-            this.comboBoxPosition.Size = new System.Drawing.Size(475, 21);
+            this.comboBoxPosition.Size = new System.Drawing.Size(859, 21);
             this.comboBoxPosition.TabIndex = 5;
             this.comboBoxPosition.ValueMember = "ID";
             this.comboBoxPosition.SelectionChangeCommitted += new System.EventHandler(this.comboBoxPosition_SelectionChangeCommitted);
@@ -129,13 +131,15 @@
             this.employeeManageAppDBDataSetBindingSource.DataSource = this.employeeManageAppDBDataSet;
             this.employeeManageAppDBDataSetBindingSource.Position = 0;
             // 
-            // dataGridView2
+            // dataGridSelectedEmployee
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(313, 53);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(475, 385);
-            this.dataGridView2.TabIndex = 6;
+            this.dataGridSelectedEmployee.AllowUserToAddRows = false;
+            this.dataGridSelectedEmployee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridSelectedEmployee.Location = new System.Drawing.Point(313, 53);
+            this.dataGridSelectedEmployee.Name = "dataGridSelectedEmployee";
+            this.dataGridSelectedEmployee.RowHeadersVisible = false;
+            this.dataGridSelectedEmployee.Size = new System.Drawing.Size(859, 385);
+            this.dataGridSelectedEmployee.TabIndex = 6;
             // 
             // position_employeeTableAdapter
             // 
@@ -155,9 +159,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1184, 450);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.dataGridView2);
+            this.Controls.Add(this.dataGridSelectedEmployee);
             this.Controls.Add(this.comboBoxPosition);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
@@ -171,7 +175,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.employeeManageAppDBDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.positionemployeeBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeManageAppDBDataSetBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridSelectedEmployee)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -183,14 +187,14 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBoxPosition;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView dataGridSelectedEmployee;
         private System.Windows.Forms.BindingSource employeeManageAppDBDataSetBindingSource;
         private EmployeeManageAppDBDataSet employeeManageAppDBDataSet;
         private System.Windows.Forms.BindingSource positionemployeeBindingSource;
         private EmployeeManageAppDBDataSetTableAdapters.position_employeeTableAdapter position_employeeTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.BindingSource positionemployeeBindingSource1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
     }
 }

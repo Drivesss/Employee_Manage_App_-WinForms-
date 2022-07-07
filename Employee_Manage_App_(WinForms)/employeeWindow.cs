@@ -15,6 +15,8 @@ namespace Employee_Manage_App__WinForms_
     {
         string IDComboBox;
         string IdRowDataGrid;
+        int IDcomboBoxPosition;
+        int IDcomboBoxDivision;
         public employeeWindow()
         {
             InitializeComponent();
@@ -22,6 +24,12 @@ namespace Employee_Manage_App__WinForms_
 
         private void employeeWindow_Load(object sender, EventArgs e)
         {
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "employeeManageAppDBDataSet4._employeeDataTable". При необходимости она может быть перемещена или удалена.
+            this.employeeDataTableTableAdapter.Fill(this.employeeManageAppDBDataSet4._employeeDataTable);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "employeeManageAppDBDataSet3._employeeDataTable". При необходимости она может быть перемещена или удалена.
+            this.employeeDataTableTableAdapter.Fill(this.employeeManageAppDBDataSet3._employeeDataTable);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "employeeManageAppDBDataSet2._employeeDataTable". При необходимости она может быть перемещена или удалена.
+            this.employeeDataTableTableAdapter.Fill(this.employeeManageAppDBDataSet2._employeeDataTable);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "employeeManageAppDBDataSet.employee". При необходимости она может быть перемещена или удалена.
             this.employeeTableAdapter.Fill(this.employeeManageAppDBDataSet.employee);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "employeeManageAppDBDataSet.applicant1". При необходимости она может быть перемещена или удалена.
@@ -47,6 +55,9 @@ namespace Employee_Manage_App__WinForms_
         {
             // Получаем ID элемента ComboBox в таблице applicant SQL
             IDComboBox = ComBoxApplicant.SelectedValue.ToString();
+            IDcomboBoxPosition = Int32.Parse(comboBoxPosition.SelectedValue.ToString());
+            IDcomboBoxDivision = Int32.Parse(comboBoxDivision.SelectedValue.ToString());   
+
 
             //Добавляется сотрудник в таблицу employee SQL и отображается в dataGrid
             try
@@ -70,8 +81,8 @@ namespace Employee_Manage_App__WinForms_
                 insertCommand.Parameters.AddWithValue("@ID", IDComboBox);
                 insertCommand.Parameters.AddWithValue("@Status", Work);
                 insertCommand.Parameters.AddWithValue("@DateOfEmployment", DateOfEmployment);
-                insertCommand.Parameters.AddWithValue("@PositionEmployeeID", 1);
-                insertCommand.Parameters.AddWithValue("@StructuralDivisionID", 2);
+                insertCommand.Parameters.AddWithValue("@PositionEmployeeID", IDcomboBoxPosition);
+                insertCommand.Parameters.AddWithValue("@StructuralDivisionID", IDcomboBoxDivision);
 
                 employeeTableAdapter.Adapter.InsertCommand = insertCommand;
 
@@ -84,17 +95,17 @@ namespace Employee_Manage_App__WinForms_
                 employeeTableAdapter.Update(this.employeeManageAppDBDataSet.employee);
 
 
-                // Команда удаления из списка соискателей 
-                SqlCommand DeleteCommand = new SqlCommand("DELETE FROM applicant WHERE ID = @ID");
-                DeleteCommand.Connection = applicantTableAdapter.Connection;
-                DeleteCommand.Connection.Open();
+                //// Команда удаления из списка соискателей 
+                //SqlCommand DeleteCommand = new SqlCommand("DELETE FROM applicant WHERE ID = @ID");
+                //DeleteCommand.Connection = applicantTableAdapter.Connection;
+                //DeleteCommand.Connection.Open();
 
-                DeleteCommand.Parameters.AddWithValue("@ID", IDComboBox);
+                //DeleteCommand.Parameters.AddWithValue("@ID", IDComboBox);
 
-                applicantTableAdapter.Adapter.DeleteCommand = DeleteCommand;
-                applicantTableAdapter.Adapter.DeleteCommand.ExecuteNonQuery();
-                DeleteCommand.Connection.Close();
-                applicantTableAdapter.Update(this.employeeManageAppDBDataSet.applicant);
+                //applicantTableAdapter.Adapter.DeleteCommand = DeleteCommand;
+                //applicantTableAdapter.Adapter.DeleteCommand.ExecuteNonQuery();
+                //DeleteCommand.Connection.Close();
+                //applicantTableAdapter.Update(this.employeeManageAppDBDataSet.applicant);
 
                 //Обновил данные в таблице
                 employeeWindow_Load(sender, e);
@@ -124,8 +135,8 @@ namespace Employee_Manage_App__WinForms_
                     //Ставится дата увольнения
                     //Удаляется должность
                     //Удаляется структурное подразделение
-                    //SqlCommand UpdateCommand = new SqlCommand("UPDATE employee SET Status = @Status, DateOfDismissal = @DateOfDismissal, PositionEmployeeID = @PositionEmployeeID, StructuralDivisionID = @StructuralDivisionID WHERE ID = @ID");
-                    SqlCommand UpdateCommand = new SqlCommand("UPDATE employee SET Status = @Status, DateOfDismissal = @DateOfDismissal WHERE ID = @ID");
+                    SqlCommand UpdateCommand = new SqlCommand("UPDATE employee SET Status = @Status, DateOfDismissal = @DateOfDismissal, PositionEmployeeID = @PositionEmployeeID, StructuralDivisionID = @StructuralDivisionID WHERE ID = @ID");
+                    //SqlCommand UpdateCommand = new SqlCommand("UPDATE employee SET Status = @Status, DateOfDismissal = @DateOfDismissal WHERE ID = @ID");
 
                     UpdateCommand.Connection = employeeTableAdapter.Connection;
                     UpdateCommand.Connection.Open();
@@ -133,8 +144,8 @@ namespace Employee_Manage_App__WinForms_
                     UpdateCommand.Parameters.AddWithValue("@ID", IdRowDataGrid);
                     UpdateCommand.Parameters.AddWithValue("@Status", Work);
                     UpdateCommand.Parameters.AddWithValue("@DateOfDismissal", DateOfDismissal);
-                    //UpdateCommand.Parameters.AddWithValue("@PositionEmployeeID", "");
-                    //UpdateCommand.Parameters.AddWithValue("@StructuralDivisionID", "");
+                    UpdateCommand.Parameters.AddWithValue("@PositionEmployeeID", ' ');
+                    UpdateCommand.Parameters.AddWithValue("@StructuralDivisionID", ' ');
 
                     employeeTableAdapter.Adapter.UpdateCommand = UpdateCommand;
                     employeeTableAdapter.Adapter.UpdateCommand.ExecuteNonQuery();
@@ -166,9 +177,9 @@ namespace Employee_Manage_App__WinForms_
                     "FirstName = @FirstName, " +
                     "MiddleName = @MiddleName, " +
                     "DateOfBirth = @DateOfBirth, " +
-                    "Education = @Education " +
-                    //"PositionEmployeeID = @PositionEmployeeID " +
-                    //"StructuralDivisionID = @StructuralDivisionID " +
+                    "Education = @Education, " +
+                    //"PositionEmployeeID = @PositionEmployeeID, " +
+                    //"StructuralDivisionID = @StructuralDivisionID, " +
                     "WHERE ID = @ID");
                 UpdateCommand.Connection = employeeTableAdapter.Connection;
                 UpdateCommand.Connection.Open();
@@ -188,6 +199,7 @@ namespace Employee_Manage_App__WinForms_
                 UpdateCommand.Connection.Close();
                 employeeTableAdapter.Update(this.employeeManageAppDBDataSet.employee);
                 employeeWindow_Load(sender, e);
+                MessageBox.Show("Изменения сохранены", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {

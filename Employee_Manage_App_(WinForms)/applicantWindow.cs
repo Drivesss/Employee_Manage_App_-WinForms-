@@ -83,16 +83,16 @@ namespace Employee_Manage_App__WinForms_
         private void dataGridApplicant_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             // DatePicker TODO
-            if(e.ColumnIndex == 4)
-            {
-                DateTimePicker dateTimePicker = new DateTimePicker();
-                dataGridApplicant.Controls.Add(dateTimePicker);
-                dateTimePicker.Format = DateTimePickerFormat.Short;
-                Rectangle displayColendar = dataGridApplicant.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, true);
-                dateTimePicker.Size = new Size(displayColendar.Width, displayColendar.Height);
-                dateTimePicker.Location = new Point(displayColendar.X, displayColendar.Y);
-                dataGridApplicant[4, dataGridApplicant.CurrentRow.Index].Value = dateTimePicker.Text; //????????????????
-            }
+            //if(e.ColumnIndex == 4)
+            //{
+            //    DateTimePicker dateTimePicker = new DateTimePicker();
+            //    dataGridApplicant.Controls.Add(dateTimePicker);
+            //    dateTimePicker.Format = DateTimePickerFormat.Short;
+            //    Rectangle displayColendar = dataGridApplicant.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, true);
+            //    dateTimePicker.Size = new Size(displayColendar.Width, displayColendar.Height);
+            //    dateTimePicker.Location = new Point(displayColendar.X, displayColendar.Y);
+            //    dataGridApplicant[4, dataGridApplicant.CurrentRow.Index].Value = dateTimePicker.Text; //????????????????
+            //}
            
 
             IdRowDataGrid = dataGridApplicant[0, dataGridApplicant.CurrentRow.Index].Value.ToString();
