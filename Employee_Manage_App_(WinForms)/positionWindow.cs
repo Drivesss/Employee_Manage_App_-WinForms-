@@ -14,6 +14,8 @@ namespace Employee_Manage_App__WinForms_
     public partial class positionWindow : Form
     {
         string IdRowDataGrid;
+        int IDPositionComBox;
+        SqlConnection connection;
         public positionWindow()
         {
             InitializeComponent();
@@ -21,8 +23,11 @@ namespace Employee_Manage_App__WinForms_
 
         private void positionWindow_Load(object sender, EventArgs e)
         {
+            connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Sergeo\Desktop\EmployeeManageAppDB.mdf;Integrated Security=True;Connect Timeout=30");
+
             // TODO: данная строка кода позволяет загрузить данные в таблицу "employeeManageAppDBDataSet.position_employee". При необходимости она может быть перемещена или удалена.
             this.position_employeeTableAdapter.Fill(this.employeeManageAppDBDataSet.position_employee);
+
 
         }
 
@@ -67,9 +72,81 @@ namespace Employee_Manage_App__WinForms_
         }
 
         
-        //Вывод сотрудников определенной должности
+        //Вывод сотрудников определенной должности TODO
         private void comboBoxPosition_SelectionChangeCommitted(object sender, EventArgs e)
         {
+            try
+            {
+                IDPositionComBox = Int32.Parse(comboBoxPosition.SelectedValue.ToString());
+
+                connection.Open();
+
+                SqlCommand select = new SqlCommand(
+                    "SELECT LastName As Фамилия, " +
+                    "FirstName As Имя, " +
+                    "MiddleName As Отчество, " +
+                    "DateOfBirth As \"Дата рождения\" , " +
+                    "Education As Образование, " +
+                    "Status As Статус, " +
+                    "DateOfEmployment As \"Дата трудоустройства\", " +
+                    "PositionEmployeeID As Должность, " +
+                    "StructuralDivisionID As \"Структурное подразделение\"" +
+                    "FROM employee " +
+                    "WHERE PositionEmployeeID = @IDPositionComBox", connection);
+
+                select.Parameters.AddWithValue("@IDPositionComBox", IDPositionComBox);
+                //select.ExecuteNonQuery();
+                SqlDataAdapter adapter = new SqlDataAdapter(select);
+                DataSet ds = new DataSet();
+                adapter.Fill(ds);
+
+                dataGridSelectedEmployee.DataSource = ds.Tables[0];
+
+                connection.Close();
+
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
+
+
+            //try
+            //{
+            //    IDPositionComBox = Int32.Parse(comboBoxPosition.SelectedValue.ToString());
+
+            //    SqlCommand select = new SqlCommand(
+            //        "SELECT LastName, " +
+            //        "FirstName, " +
+            //        "MiddleName, " +
+            //        "DateOfBirth, " +
+            //        "Education, " +
+            //        "Status, " +
+            //        "DateOfEmployment, " +
+            //        "StructuralDivisionID " +
+            //        "FROM employee " +
+            //        "WHERE PositionEmployeeID = @IDPositionComBox");
+
+            //    select.Parameters.AddWithValue("@IDPositionComBox", IDPositionComBox);
+
+
+            //    SqlDataAdapter dataAdapter = new SqlDataAdapter(select);
+
+            //    DataTable dataTable = new DataTable();
+
+            //    dataAdapter.Fill(dataTable);
+
+            //    dataGridSelectedEmployee.DataSource = dataAdapter;
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
+
 
         }
     }
