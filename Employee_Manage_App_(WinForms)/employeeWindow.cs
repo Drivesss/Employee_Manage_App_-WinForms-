@@ -131,8 +131,8 @@ namespace Employee_Manage_App__WinForms_
                     //Ставится дата увольнения
                     //Удаляется должность
                     //Удаляется структурное подразделение
-                    //SqlCommand UpdateCommand = new SqlCommand("UPDATE employee SET Status = @Status, DateOfDismissal = @DateOfDismissal, PositionEmployeeID = @PositionEmployeeID, StructuralDivisionID = @StructuralDivisionID WHERE ID = @ID");
-                    SqlCommand UpdateCommand = new SqlCommand("UPDATE employee SET Status = @Status, DateOfDismissal = @DateOfDismissal WHERE ID = @ID");
+                    SqlCommand UpdateCommand = new SqlCommand("UPDATE employee SET Status = @Status, DateOfDismissal = @DateOfDismissal, PositionEmployeeID = @PositionEmployeeID, StructuralDivisionID = @StructuralDivisionID WHERE ID = @ID");
+                    //SqlCommand UpdateCommand = new SqlCommand("UPDATE employee SET Status = @Status, DateOfDismissal = @DateOfDismissal WHERE ID = @ID");
 
                     UpdateCommand.Connection = employeeTableAdapter.Connection;
                     UpdateCommand.Connection.Open();
@@ -140,8 +140,8 @@ namespace Employee_Manage_App__WinForms_
                     UpdateCommand.Parameters.AddWithValue("@ID", IdRowDataGrid);
                     UpdateCommand.Parameters.AddWithValue("@Status", Work);
                     UpdateCommand.Parameters.AddWithValue("@DateOfDismissal", DateOfDismissal);
-                    //UpdateCommand.Parameters.AddWithValue("@PositionEmployeeID", "");
-                    //UpdateCommand.Parameters.AddWithValue("@StructuralDivisionID", "");
+                    UpdateCommand.Parameters.AddWithValue("@PositionEmployeeID", ' ');
+                    UpdateCommand.Parameters.AddWithValue("@StructuralDivisionID", ' ');
 
                     employeeTableAdapter.Adapter.UpdateCommand = UpdateCommand;
                     employeeTableAdapter.Adapter.UpdateCommand.ExecuteNonQuery();
@@ -173,9 +173,9 @@ namespace Employee_Manage_App__WinForms_
                     "FirstName = @FirstName, " +
                     "MiddleName = @MiddleName, " +
                     "DateOfBirth = @DateOfBirth, " +
-                    "Education = @Education " +
-                    //"PositionEmployeeID = @PositionEmployeeID " +
-                    //"StructuralDivisionID = @StructuralDivisionID " +
+                    "Education = @Education, " +
+                    //"PositionEmployeeID = @PositionEmployeeID, " +
+                    //"StructuralDivisionID = @StructuralDivisionID, " +
                     "WHERE ID = @ID");
                 UpdateCommand.Connection = employeeTableAdapter.Connection;
                 UpdateCommand.Connection.Open();

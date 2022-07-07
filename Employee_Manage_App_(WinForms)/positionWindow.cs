@@ -27,8 +27,6 @@ namespace Employee_Manage_App__WinForms_
 
             // TODO: данная строка кода позволяет загрузить данные в таблицу "employeeManageAppDBDataSet.position_employee". При необходимости она может быть перемещена или удалена.
             this.position_employeeTableAdapter.Fill(this.employeeManageAppDBDataSet.position_employee);
-
-
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -82,20 +80,23 @@ namespace Employee_Manage_App__WinForms_
                 connection.Open();
 
                 SqlCommand select = new SqlCommand(
-                    "SELECT LastName As Фамилия, " +
-                    "FirstName As Имя, " +
-                    "MiddleName As Отчество, " +
-                    "DateOfBirth As \"Дата рождения\" , " +
-                    "Education As Образование, " +
-                    "Status As Статус, " +
-                    "DateOfEmployment As \"Дата трудоустройства\", " +
-                    "PositionEmployeeID As Должность, " +
-                    "StructuralDivisionID As \"Структурное подразделение\"" +
+                    "SELECT " +
+                    "employee.LastName As Фамилия, " +
+                    "employee.FirstName As Имя, " +
+                    "employee.MiddleName As Отчество, " +
+                    "employee.DateOfBirth As \"Дата рождения\", " +
+                    "employee.Education As Образование, " +
+                    "employee.Status As Статус, " +
+                    "employee.DateOfEmployment \"Дата трудоустройства\", " +
+                    "position_employee.Name As Должность, " +
+                    "structural_division.Name AS \"Структурное подразделение\" " +
                     "FROM employee " +
-                    "WHERE PositionEmployeeID = @IDPositionComBox", connection);
+                    "INNER JOIN position_employee ON employee.PositionEmployeeID = position_employee.ID " +
+                    "INNER JOIN structural_division ON employee.StructuralDivisionID = structural_division.ID " +
+                    "WHERE(position_employee.ID = @IDPositionComBox)", connection);
 
-                select.Parameters.AddWithValue("@IDPositionComBox", IDPositionComBox);
-                //select.ExecuteNonQuery();
+               select.Parameters.AddWithValue("@IDPositionComBox", IDPositionComBox);
+
                 SqlDataAdapter adapter = new SqlDataAdapter(select);
                 DataSet ds = new DataSet();
                 adapter.Fill(ds);
@@ -104,49 +105,11 @@ namespace Employee_Manage_App__WinForms_
 
                 connection.Close();
 
-
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-
-
-
-            //try
-            //{
-            //    IDPositionComBox = Int32.Parse(comboBoxPosition.SelectedValue.ToString());
-
-            //    SqlCommand select = new SqlCommand(
-            //        "SELECT LastName, " +
-            //        "FirstName, " +
-            //        "MiddleName, " +
-            //        "DateOfBirth, " +
-            //        "Education, " +
-            //        "Status, " +
-            //        "DateOfEmployment, " +
-            //        "StructuralDivisionID " +
-            //        "FROM employee " +
-            //        "WHERE PositionEmployeeID = @IDPositionComBox");
-
-            //    select.Parameters.AddWithValue("@IDPositionComBox", IDPositionComBox);
-
-
-            //    SqlDataAdapter dataAdapter = new SqlDataAdapter(select);
-
-            //    DataTable dataTable = new DataTable();
-
-            //    dataAdapter.Fill(dataTable);
-
-            //    dataGridSelectedEmployee.DataSource = dataAdapter;
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
-
 
         }
     }
