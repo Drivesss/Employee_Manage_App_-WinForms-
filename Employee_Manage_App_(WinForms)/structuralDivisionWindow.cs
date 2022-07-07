@@ -23,14 +23,35 @@ namespace Employee_Manage_App__WinForms_
 
         private void structuralDivisionWindow_Load(object sender, EventArgs e)
         {
-            connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Sergeo\Desktop\EmployeeManageAppDB.mdf;Integrated Security=True;Connect Timeout=30");
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "employeeManageAppDBDataSet6.structural_division_boss_join". При необходимости она может быть перемещена или удалена.
+            this.structural_division_boss_joinTableAdapter.Fill(this.employeeManageAppDBDataSet6.structural_division_boss_join);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "employeeManageAppDBDataSet5.structural_division_boss_join". При необходимости она может быть перемещена или удалена.
+            this.structural_division_boss_joinTableAdapter.Fill(this.employeeManageAppDBDataSet5.structural_division_boss_join);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "employeeManageAppDBDataSet4.structural_division_boss_join". При необходимости она может быть перемещена или удалена.
+            this.structural_division_boss_joinTableAdapter.Fill(this.employeeManageAppDBDataSet4.structural_division_boss_join);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "employeeManageAppDBDataSet3.structural_division_boss_join". При необходимости она может быть перемещена или удалена.
+            this.structural_division_boss_joinTableAdapter.Fill(this.employeeManageAppDBDataSet3.structural_division_boss_join);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "employeeManageAppDBDataSet.structural_division_boss_join". При необходимости она может быть перемещена или удалена.
+            this.structural_division_boss_joinTableAdapter.Fill(this.employeeManageAppDBDataSet.structural_division_boss_join);
+            try
+            {
 
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "employeeManageAppDBDataSet1.employeeBossComBox". При необходимости она может быть перемещена или удалена.
-            this.employeeBossComBoxTableAdapter.Fill(this.employeeManageAppDBDataSet1.employeeBossComBox);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "employeeManageAppDBDataSet.employee". При необходимости она может быть перемещена или удалена.
-            this.employeeTableAdapter.Fill(this.employeeManageAppDBDataSet.employee);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "employeeManageAppDBDataSet.structural_division". При необходимости она может быть перемещена или удалена.
-            this.structural_divisionTableAdapter.Fill(this.employeeManageAppDBDataSet.structural_division);
+
+                // TODO: данная строка кода позволяет загрузить данные в таблицу "employeeManageAppDBDataSet1.employeeBossComBox". При необходимости она может быть перемещена или удалена.
+                this.employeeBossComBoxTableAdapter.Fill(this.employeeManageAppDBDataSet1.employeeBossComBox);
+                // TODO: данная строка кода позволяет загрузить данные в таблицу "employeeManageAppDBDataSet.employee". При необходимости она может быть перемещена или удалена.
+                this.employeeTableAdapter.Fill(this.employeeManageAppDBDataSet.employee);
+                // TODO: данная строка кода позволяет загрузить данные в таблицу "employeeManageAppDBDataSet.structural_division". При необходимости она может быть перемещена или удалена.
+                this.structural_divisionTableAdapter.Fill(this.employeeManageAppDBDataSet.structural_division);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+
+
+            connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Sergeo\Desktop\EmployeeManageAppDB.mdf;Integrated Security=True;Connect Timeout=30");
 
         }
 
@@ -78,41 +99,66 @@ namespace Employee_Manage_App__WinForms_
         {
             IDDivisionComBox = Int32.Parse(comboBoxDivision.SelectedValue.ToString());
 
-            connection.Open();
+            try
+            {
+                connection.Open();
 
-            SqlCommand select = new SqlCommand(
-                "SELECT " +
-                "employee.LastName AS Фамилия, " +
-                "employee.FirstName AS Имя, " +
-                "employee.MiddleName AS Отчество, " +
-                "employee.DateOfBirth AS [Дата рождения], " +
-                "employee.Education AS Образование, " +
-                "employee.Status AS Статус, " +
-                "employee.DateOfEmployment AS [Дата трудоустройства], " +
-                "position_employee.Name AS Должность, " +
-                "structural_division.Name AS [Структурное подразделение] " +
-                "FROM employee " +
-                "INNER JOIN position_employee ON employee.PositionEmployeeID = position_employee.ID " +
-                "INNER JOIN structural_division ON employee.StructuralDivisionID = structural_division.ID " +
-                "WHERE(structural_division.ID = @IDDivisionComBox)", connection);
+                SqlCommand select = new SqlCommand(
+                    "SELECT " +
+                    "employee.LastName AS Фамилия, " +
+                    "employee.FirstName AS Имя, " +
+                    "employee.MiddleName AS Отчество, " +
+                    "employee.DateOfBirth AS [Дата рождения], " +
+                    "employee.Education AS Образование, " +
+                    "employee.Status AS Статус, " +
+                    "employee.DateOfEmployment AS [Дата трудоустройства], " +
+                    "position_employee.Name AS Должность, " +
+                    "structural_division.Name AS [Структурное подразделение] " +
+                    "FROM employee " +
+                    "INNER JOIN position_employee ON employee.PositionEmployeeID = position_employee.ID " +
+                    "INNER JOIN structural_division ON employee.StructuralDivisionID = structural_division.ID " +
+                    "WHERE(structural_division.ID = @IDDivisionComBox)", connection);
 
-            select.Parameters.AddWithValue("@IDDivisionComBox", IDDivisionComBox);
+                select.Parameters.AddWithValue("@IDDivisionComBox", IDDivisionComBox);
 
-            SqlDataAdapter adapter = new SqlDataAdapter(select);
-            DataSet ds = new DataSet();
-            adapter.Fill(ds);
+                SqlDataAdapter adapter = new SqlDataAdapter(select);
+                DataSet ds = new DataSet();
+                adapter.Fill(ds);
 
-            dataGridDivisionEmployee.DataSource = ds.Tables[0];
+                dataGridDivisionEmployee.DataSource = ds.Tables[0];
 
-            connection.Close();
+                connection.Close();
 
-            dataGridDivisionEmployee.ReadOnly = true; 
+                dataGridDivisionEmployee.ReadOnly = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+
         }
 
         private void btnSaveBoss_Click(object sender, EventArgs e)
         {
-            connection.Open();
-            SqlCommand update = new SqlCommand("UPDATE structural_division SET Boss = @Param2 WHERE(Boss = @Param1)");
+            try
+            {
+                connection.Open();
+                SqlCommand update = new SqlCommand("UPDATE structural_division SET Boss = @IDcomboBoxBossEmployee WHERE(ID = @ID)", connection);
+
+                update.Parameters.AddWithValue("@IDcomboBoxBossEmployee", Int32.Parse(comboBoxBossEmployee.SelectedValue.ToString()));
+                update.Parameters.AddWithValue("@ID", comboBoxDivision.SelectedValue.ToString());
+                update.ExecuteNonQuery();
+
+                connection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+
+            structuralDivisionWindow_Load(sender, e);
         }
     }
 }
