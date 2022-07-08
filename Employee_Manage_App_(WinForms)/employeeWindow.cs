@@ -120,7 +120,7 @@ namespace Employee_Manage_App__WinForms_
         }
 
 
-
+        //Увольнение сотрудника
         private void btnDismissal_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Вы действительно хотите уволить сотрудника?", "Сообщение", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
