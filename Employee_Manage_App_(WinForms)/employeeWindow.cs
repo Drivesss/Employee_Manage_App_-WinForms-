@@ -135,8 +135,19 @@ namespace Employee_Manage_App__WinForms_
                     //Ставится дата увольнения
                     //Удаляется должность
                     //Удаляется структурное подразделение
-                    //SqlCommand UpdateCommand = new SqlCommand("UPDATE employee SET Status = @Status, DateOfDismissal = @DateOfDismissal, PositionEmployeeID = @PositionEmployeeID, StructuralDivisionID = @StructuralDivisionID WHERE ID = @ID");
-                    SqlCommand UpdateCommand = new SqlCommand("UPDATE employee SET Status = @Status, DateOfDismissal = @DateOfDismissal WHERE ID = @ID");
+                    SqlCommand UpdateCommand = new SqlCommand(
+                        "UPDATE employee " +
+                        "SET Status = @Status, " +
+                        "DateOfDismissal = @DateOfDismissal, " +
+                        "PositionEmployeeID = @PositionEmployeeID, " +
+                        "StructuralDivisionID = @StructuralDivisionID " +
+                        "WHERE ID = @ID");
+
+                    //SqlCommand UpdateCommand = new SqlCommand(
+                    //    "UPDATE employee " +
+                    //    "SET Status = @Status, " +
+                    //    "DateOfDismissal = @DateOfDismissal " +
+                    //    "WHERE ID = @ID");
 
                     UpdateCommand.Connection = employeeTableAdapter.Connection;
                     UpdateCommand.Connection.Open();
@@ -144,8 +155,8 @@ namespace Employee_Manage_App__WinForms_
                     UpdateCommand.Parameters.AddWithValue("@ID", IdRowDataGrid);
                     UpdateCommand.Parameters.AddWithValue("@Status", Work);
                     UpdateCommand.Parameters.AddWithValue("@DateOfDismissal", DateOfDismissal);
-                    //UpdateCommand.Parameters.AddWithValue("@PositionEmployeeID", ' ');
-                    //UpdateCommand.Parameters.AddWithValue("@StructuralDivisionID", ' ');
+                    UpdateCommand.Parameters.AddWithValue("@PositionEmployeeID", DBNull.Value);
+                    UpdateCommand.Parameters.AddWithValue("@StructuralDivisionID", DBNull.Value);
 
                     employeeTableAdapter.Adapter.UpdateCommand = UpdateCommand;
                     employeeTableAdapter.Adapter.UpdateCommand.ExecuteNonQuery();
@@ -234,6 +245,13 @@ namespace Employee_Manage_App__WinForms_
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+        }
+
+        private void btnDismissalEmployeeView_Click(object sender, EventArgs e)
+        {
+            Form DismissalEmployeeWindow = new DismissalEmployeeWindow();
+            DismissalEmployeeWindow.ShowDialog();
+            
         }
     }
 }

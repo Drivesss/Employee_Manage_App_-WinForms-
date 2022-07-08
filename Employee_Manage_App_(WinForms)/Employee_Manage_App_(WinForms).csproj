@@ -67,6 +67,12 @@
     <Compile Include="applicantWindow.Designer.cs">
       <DependentUpon>applicantWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="DismissalEmployeeWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DismissalEmployeeWindow.Designer.cs">
+      <DependentUpon>DismissalEmployeeWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="EmployeeManageAppDBDataSet.cs">
       <DependentUpon>EmployeeManageAppDBDataSet.xsd</DependentUpon>
     </Compile>
@@ -107,6 +113,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="applicantWindow.resx">
       <DependentUpon>applicantWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DismissalEmployeeWindow.resx">
+      <DependentUpon>DismissalEmployeeWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="employeeWindow.resx">
       <DependentUpon>employeeWindow.cs</DependentUpon>
