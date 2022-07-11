@@ -15,10 +15,12 @@ namespace Employee_Manage_App__WinForms_
     public partial class applicantWindow : Form
     {
         string IdRowDataGrid;
+        string Date;
         DateTimePicker dateTimePicker;
         public applicantWindow()
         {
             InitializeComponent();
+
         }
 
 
@@ -80,20 +82,45 @@ namespace Employee_Manage_App__WinForms_
             }
         }
 
+        private void dateTimePicker_OnTextChange(object sender, EventArgs e)
+        {
+            Date = dateTimePicker.Text;
+            dataGridApplicant.CurrentCell.Value = Date.ToString();
+
+        }
+
+
         private void dataGridApplicant_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            // DatePicker TODO
-            //if(e.ColumnIndex == 4)
-            //{
-            //    DateTimePicker dateTimePicker = new DateTimePicker();
-            //    dataGridApplicant.Controls.Add(dateTimePicker);
-            //    dateTimePicker.Format = DateTimePickerFormat.Short;
-            //    Rectangle displayColendar = dataGridApplicant.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, true);
-            //    dateTimePicker.Size = new Size(displayColendar.Width, displayColendar.Height);
-            //    dateTimePicker.Location = new Point(displayColendar.X, displayColendar.Y);
-            //    dataGridApplicant[4, dataGridApplicant.CurrentRow.Index].Value = dateTimePicker.Text; //????????????????
-            //}
-           
+            try
+            {
+                // DatePicker TODO
+                if (e.ColumnIndex == 4)
+                {
+                    //initialize dateTimePicker
+                    dateTimePicker = new DateTimePicker();
+                    dateTimePicker.Format = DateTimePickerFormat.Short;
+                    dateTimePicker.Visible = true;
+
+
+                    //set size and locition
+                    Rectangle displayColendar = dataGridApplicant.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, true);
+                    dateTimePicker.Size = new Size(displayColendar.Width, displayColendar.Height);
+                    dateTimePicker.Location = new Point(displayColendar.X, displayColendar.Y);
+                    
+
+                    // evants
+                    dateTimePicker.TextChanged += new EventHandler(dateTimePicker_OnTextChange);
+
+                    dataGridApplicant.Controls.Add(dateTimePicker);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
 
             IdRowDataGrid = dataGridApplicant[0, dataGridApplicant.CurrentRow.Index].Value.ToString();
         }

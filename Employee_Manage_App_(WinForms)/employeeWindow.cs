@@ -17,6 +17,7 @@ namespace Employee_Manage_App__WinForms_
         string IdRowDataGrid;
         int IDcomboBoxPosition;
         int IDcomboBoxDivision;
+        SqlConnection connection;
         public employeeWindow()
         {
             InitializeComponent();
@@ -24,6 +25,10 @@ namespace Employee_Manage_App__WinForms_
 
         private void employeeWindow_Load(object sender, EventArgs e)
         {
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "employeeManageAppDBDataSet6._employeeDataTable". При необходимости она может быть перемещена или удалена.
+            this.employeeDataTableTableAdapter.Fill(this.employeeManageAppDBDataSet6._employeeDataTable);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "employeeManageAppDBDataSet5._employeeDataTable". При необходимости она может быть перемещена или удалена.
+            this.employeeDataTableTableAdapter.Fill(this.employeeManageAppDBDataSet5._employeeDataTable);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "employeeManageAppDBDataSet4._employeeDataTable". При необходимости она может быть перемещена или удалена.
             this.employeeDataTableTableAdapter.Fill(this.employeeManageAppDBDataSet4._employeeDataTable);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "employeeManageAppDBDataSet3._employeeDataTable". При необходимости она может быть перемещена или удалена.
@@ -40,6 +45,9 @@ namespace Employee_Manage_App__WinForms_
             this.position_employeeTableAdapter.Fill(this.employeeManageAppDBDataSet.position_employee);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "employeeManageAppDBDataSet.applicant". При необходимости она может быть перемещена или удалена.
             this.applicantTableAdapter.Fill(this.employeeManageAppDBDataSet.applicant);
+
+
+            connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Sergeo\Desktop\EmployeeManageAppDB.mdf;Integrated Security=True;Connect Timeout=30");
 
         }
 
@@ -130,11 +138,22 @@ namespace Employee_Manage_App__WinForms_
                     string Work = "Уволен";
                     DateTime DateOfDismissal = DateTime.Now;
 
+                    //Сотрудник удаляется с позиции начальника подразделения
+                    connection.Open();
+                    SqlCommand UpdateBossCommand = new SqlCommand(
+                        "UPDATE structural_division " +
+                        "SET Boss = @Boss " +
+                        "WHERE Name = @Name",connection);
+
+                    UpdateBossCommand.Parameters.AddWithValue("@Boss", DBNull.Value);
+                    UpdateBossCommand.Parameters.AddWithValue("@Name", dataGridEmployee[10, dataGridEmployee.CurrentRow.Index].Value.ToString());
+
+                    UpdateBossCommand.ExecuteNonQuery();
+
+                    connection.Close();
+
                     employeeBindingSource.EndEdit();
-                    //Ставится статус "уволен"
-                    //Ставится дата увольнения
-                    //Удаляется должность
-                    //Удаляется структурное подразделение
+
                     SqlCommand UpdateCommand = new SqlCommand(
                         "UPDATE employee " +
                         "SET Status = @Status, " +
@@ -143,25 +162,25 @@ namespace Employee_Manage_App__WinForms_
                         "StructuralDivisionID = @StructuralDivisionID " +
                         "WHERE ID = @ID");
 
-                    //SqlCommand UpdateCommand = new SqlCommand(
-                    //    "UPDATE employee " +
-                    //    "SET Status = @Status, " +
-                    //    "DateOfDismissal = @DateOfDismissal " +
-                    //    "WHERE ID = @ID");
-
                     UpdateCommand.Connection = employeeTableAdapter.Connection;
                     UpdateCommand.Connection.Open();
 
                     UpdateCommand.Parameters.AddWithValue("@ID", IdRowDataGrid);
+                    //Ставится статус "уволен"
                     UpdateCommand.Parameters.AddWithValue("@Status", Work);
+                    //Ставится дата увольнения
                     UpdateCommand.Parameters.AddWithValue("@DateOfDismissal", DateOfDismissal);
+                    //Удаляется должность
                     UpdateCommand.Parameters.AddWithValue("@PositionEmployeeID", DBNull.Value);
+                    //Удаляется структурное подразделение
                     UpdateCommand.Parameters.AddWithValue("@StructuralDivisionID", DBNull.Value);
 
                     employeeTableAdapter.Adapter.UpdateCommand = UpdateCommand;
                     employeeTableAdapter.Adapter.UpdateCommand.ExecuteNonQuery();
+
                     UpdateCommand.Connection.Close();
                     employeeTableAdapter.Update(this.employeeManageAppDBDataSet.employee);
+
                     employeeWindow_Load(sender, e);
 
                 }

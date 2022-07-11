@@ -329,7 +329,7 @@ FROM            employee</CommandText>
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        employee.ID, employee.LastName, employee.FirstName, employee.MiddleName, employee.DateOfBirth, employee.Education, employee.Status, employee.DateOfEmployment, employee.DateOfDismissal, 
-                         position_employee.Name, structural_division.Name
+                         position_employee.Name AS Position, structural_division.Name AS Division
 FROM            employee INNER JOIN
                          position_employee ON employee.PositionEmployeeID = position_employee.ID INNER JOIN
                          structural_division ON employee.StructuralDivisionID = structural_division.ID</CommandText>
@@ -348,8 +348,8 @@ FROM            employee INNER JOIN
               <Mapping SourceColumn="Status" DataSetColumn="Status" />
               <Mapping SourceColumn="DateOfEmployment" DataSetColumn="DateOfEmployment" />
               <Mapping SourceColumn="DateOfDismissal" DataSetColumn="DateOfDismissal" />
-              <Mapping SourceColumn="Name" DataSetColumn="Name" />
-              <Mapping SourceColumn="Name1" DataSetColumn="Name1" />
+              <Mapping SourceColumn="Position" DataSetColumn="Position" />
+              <Mapping SourceColumn="Division" DataSetColumn="Division" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -360,7 +360,7 @@ FROM            employee INNER JOIN
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        structural_division.Name AS [Структурное подразделение], RTRIM(employee.FirstName) + ' ' + RTRIM(employee.LastName) + ' ' + RTRIM(employee.MiddleName) AS [Начальник ФИО]
 FROM            structural_division INNER JOIN
-                         employee ON structural_division.ID = employee.StructuralDivisionID</CommandText>
+                         employee ON employee.ID = structural_division.Boss</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -568,14 +568,14 @@ FROM            structural_division INNER JOIN
               </xs:element>
               <xs:element name="DateOfEmployment" msprop:Generator_ColumnPropNameInTable="DateOfEmploymentColumn" msprop:Generator_ColumnPropNameInRow="DateOfEmployment" msprop:Generator_UserColumnName="DateOfEmployment" msprop:Generator_ColumnVarNameInTable="columnDateOfEmployment" type="xs:dateTime" minOccurs="0" />
               <xs:element name="DateOfDismissal" msprop:Generator_ColumnPropNameInTable="DateOfDismissalColumn" msprop:Generator_ColumnPropNameInRow="DateOfDismissal" msprop:Generator_UserColumnName="DateOfDismissal" msprop:Generator_ColumnVarNameInTable="columnDateOfDismissal" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_UserColumnName="Name" msprop:Generator_ColumnVarNameInTable="columnName" minOccurs="0">
+              <xs:element name="Position" msprop:Generator_ColumnPropNameInRow="Position" msprop:Generator_ColumnPropNameInTable="PositionColumn" msprop:Generator_ColumnVarNameInTable="columnPosition" msprop:Generator_UserColumnName="Position" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="150" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Name1" msprop:Generator_ColumnPropNameInTable="Name1Column" msprop:Generator_ColumnPropNameInRow="Name1" msprop:Generator_UserColumnName="Name1" msprop:Generator_ColumnVarNameInTable="columnName1" minOccurs="0">
+              <xs:element name="Division" msprop:Generator_ColumnPropNameInRow="Division" msprop:Generator_ColumnPropNameInTable="DivisionColumn" msprop:Generator_ColumnVarNameInTable="columnDivision" msprop:Generator_UserColumnName="Division" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="150" />
@@ -634,8 +634,8 @@ FROM            structural_division INNER JOIN
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="FK_employee_position_employee" msdata:parent="position_employee" msdata:child="employee" msdata:parentkey="ID" msdata:childkey="PositionEmployeeID" msprop:Generator_UserParentTable="position_employee" msprop:Generator_UserChildTable="employee" msprop:Generator_RelationVarName="relationFK_employee_position_employee" msprop:Generator_ChildPropName="GetemployeeRows" msprop:Generator_ParentPropName="position_employeeRow" msprop:Generator_UserRelationName="FK_employee_position_employee" />
-      <msdata:Relationship name="FK_employee_structural_division" msdata:parent="structural_division" msdata:child="employee" msdata:parentkey="ID" msdata:childkey="StructuralDivisionID" msprop:Generator_UserParentTable="structural_division" msprop:Generator_UserChildTable="employee" msprop:Generator_RelationVarName="relationFK_employee_structural_division" msprop:Generator_ChildPropName="GetemployeeRows" msprop:Generator_ParentPropName="structural_divisionRow" msprop:Generator_UserRelationName="FK_employee_structural_division" />
+      <msdata:Relationship name="FK_employee_position_employee" msdata:parent="position_employee" msdata:child="employee" msdata:parentkey="ID" msdata:childkey="PositionEmployeeID" msprop:Generator_UserParentTable="position_employee" msprop:Generator_UserChildTable="employee" msprop:Generator_RelationVarName="relationFK_employee_position_employee" msprop:Generator_ChildPropName="GetemployeeRows" msprop:Generator_UserRelationName="FK_employee_position_employee" msprop:Generator_ParentPropName="position_employeeRow" />
+      <msdata:Relationship name="FK_employee_structural_division" msdata:parent="structural_division" msdata:child="employee" msdata:parentkey="ID" msdata:childkey="StructuralDivisionID" msprop:Generator_UserParentTable="structural_division" msprop:Generator_UserChildTable="employee" msprop:Generator_RelationVarName="relationFK_employee_structural_division" msprop:Generator_ChildPropName="GetemployeeRows" msprop:Generator_UserRelationName="FK_employee_structural_division" msprop:Generator_ParentPropName="structural_divisionRow" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>

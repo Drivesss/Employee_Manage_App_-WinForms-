@@ -2420,9 +2420,9 @@ namespace Employee_Manage_App__WinForms_ {
             
             private global::System.Data.DataColumn columnDateOfDismissal;
             
-            private global::System.Data.DataColumn columnName;
+            private global::System.Data.DataColumn columnPosition;
             
-            private global::System.Data.DataColumn columnName1;
+            private global::System.Data.DataColumn columnDivision;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
@@ -2531,17 +2531,17 @@ namespace Employee_Manage_App__WinForms_ {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn NameColumn {
+            public global::System.Data.DataColumn PositionColumn {
                 get {
-                    return this.columnName;
+                    return this.columnPosition;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn Name1Column {
+            public global::System.Data.DataColumn DivisionColumn {
                 get {
-                    return this.columnName1;
+                    return this.columnDivision;
                 }
             }
             
@@ -2582,7 +2582,7 @@ namespace Employee_Manage_App__WinForms_ {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public employeeDataTableRow AddemployeeDataTableRow(string LastName, string FirstName, string MiddleName, System.DateTime DateOfBirth, string Education, string Status, System.DateTime DateOfEmployment, System.DateTime DateOfDismissal, string Name, string Name1) {
+            public employeeDataTableRow AddemployeeDataTableRow(string LastName, string FirstName, string MiddleName, System.DateTime DateOfBirth, string Education, string Status, System.DateTime DateOfEmployment, System.DateTime DateOfDismissal, string Position, string Division) {
                 employeeDataTableRow rowemployeeDataTableRow = ((employeeDataTableRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -2594,8 +2594,8 @@ namespace Employee_Manage_App__WinForms_ {
                         Status,
                         DateOfEmployment,
                         DateOfDismissal,
-                        Name,
-                        Name1};
+                        Position,
+                        Division};
                 rowemployeeDataTableRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowemployeeDataTableRow);
                 return rowemployeeDataTableRow;
@@ -2634,8 +2634,8 @@ namespace Employee_Manage_App__WinForms_ {
                 this.columnStatus = base.Columns["Status"];
                 this.columnDateOfEmployment = base.Columns["DateOfEmployment"];
                 this.columnDateOfDismissal = base.Columns["DateOfDismissal"];
-                this.columnName = base.Columns["Name"];
-                this.columnName1 = base.Columns["Name1"];
+                this.columnPosition = base.Columns["Position"];
+                this.columnDivision = base.Columns["Division"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2659,10 +2659,10 @@ namespace Employee_Manage_App__WinForms_ {
                 base.Columns.Add(this.columnDateOfEmployment);
                 this.columnDateOfDismissal = new global::System.Data.DataColumn("DateOfDismissal", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDateOfDismissal);
-                this.columnName = new global::System.Data.DataColumn("Name", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnName);
-                this.columnName1 = new global::System.Data.DataColumn("Name1", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnName1);
+                this.columnPosition = new global::System.Data.DataColumn("Position", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPosition);
+                this.columnDivision = new global::System.Data.DataColumn("Division", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDivision);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnID.AutoIncrement = true;
@@ -2676,8 +2676,8 @@ namespace Employee_Manage_App__WinForms_ {
                 this.columnMiddleName.MaxLength = 150;
                 this.columnEducation.MaxLength = 150;
                 this.columnStatus.MaxLength = 150;
-                this.columnName.MaxLength = 150;
-                this.columnName1.MaxLength = 150;
+                this.columnPosition.MaxLength = 150;
+                this.columnDivision.MaxLength = 150;
                 this.ExtendedProperties.Add("Generator_TablePropName", "_employeeDataTable");
                 this.ExtendedProperties.Add("Generator_UserTableName", "employeeDataTable");
             }
@@ -3987,33 +3987,33 @@ namespace Employee_Manage_App__WinForms_ {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Name {
+            public string Position {
                 get {
                     try {
-                        return ((string)(this[this.tableemployeeDataTable.NameColumn]));
+                        return ((string)(this[this.tableemployeeDataTable.PositionColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Name\' в таблице \'employeeDataTable\' равно DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Position\' в таблице \'employeeDataTable\' равно DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableemployeeDataTable.NameColumn] = value;
+                    this[this.tableemployeeDataTable.PositionColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Name1 {
+            public string Division {
                 get {
                     try {
-                        return ((string)(this[this.tableemployeeDataTable.Name1Column]));
+                        return ((string)(this[this.tableemployeeDataTable.DivisionColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Name1\' в таблице \'employeeDataTable\' равно DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Division\' в таблице \'employeeDataTable\' равно DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableemployeeDataTable.Name1Column] = value;
+                    this[this.tableemployeeDataTable.DivisionColumn] = value;
                 }
             }
             
@@ -4115,26 +4115,26 @@ namespace Employee_Manage_App__WinForms_ {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsNameNull() {
-                return this.IsNull(this.tableemployeeDataTable.NameColumn);
+            public bool IsPositionNull() {
+                return this.IsNull(this.tableemployeeDataTable.PositionColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetNameNull() {
-                this[this.tableemployeeDataTable.NameColumn] = global::System.Convert.DBNull;
+            public void SetPositionNull() {
+                this[this.tableemployeeDataTable.PositionColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsName1Null() {
-                return this.IsNull(this.tableemployeeDataTable.Name1Column);
+            public bool IsDivisionNull() {
+                return this.IsNull(this.tableemployeeDataTable.DivisionColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetName1Null() {
-                this[this.tableemployeeDataTable.Name1Column] = global::System.Convert.DBNull;
+            public void SetDivisionNull() {
+                this[this.tableemployeeDataTable.DivisionColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -6769,8 +6769,8 @@ SELECT ID, Name, Boss FROM structural_division WHERE (ID = @ID)";
             tableMapping.ColumnMappings.Add("Status", "Status");
             tableMapping.ColumnMappings.Add("DateOfEmployment", "DateOfEmployment");
             tableMapping.ColumnMappings.Add("DateOfDismissal", "DateOfDismissal");
-            tableMapping.ColumnMappings.Add("Name", "Name");
-            tableMapping.ColumnMappings.Add("Name1", "Name1");
+            tableMapping.ColumnMappings.Add("Position", "Position");
+            tableMapping.ColumnMappings.Add("Division", "Division");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -6788,7 +6788,7 @@ SELECT ID, Name, Boss FROM structural_division WHERE (ID = @ID)";
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = @"SELECT        employee.ID, employee.LastName, employee.FirstName, employee.MiddleName, employee.DateOfBirth, employee.Education, employee.Status, employee.DateOfEmployment, employee.DateOfDismissal, 
-                         position_employee.Name, structural_division.Name
+                         position_employee.Name AS Position, structural_division.Name AS Division
 FROM            employee INNER JOIN
                          position_employee ON employee.PositionEmployeeID = position_employee.ID INNER JOIN
                          structural_division ON employee.StructuralDivisionID = structural_division.ID";
@@ -6961,7 +6961,7 @@ FROM            employee INNER JOIN
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = @"SELECT        structural_division.Name AS [Структурное подразделение], RTRIM(employee.FirstName) + ' ' + RTRIM(employee.LastName) + ' ' + RTRIM(employee.MiddleName) AS [Начальник ФИО]
 FROM            structural_division INNER JOIN
-                         employee ON structural_division.ID = employee.StructuralDivisionID";
+                         employee ON employee.ID = structural_division.Boss";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

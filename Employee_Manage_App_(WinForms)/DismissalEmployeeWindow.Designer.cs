@@ -52,6 +52,7 @@
             this.ClientSize = new System.Drawing.Size(834, 450);
             this.Controls.Add(this.dataGridDismissalEmployeeView);
             this.Name = "DismissalEmployeeWindow";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DismissalEmployeeWindow";
             this.Load += new System.EventHandler(this.DismissalEmployeeWindow_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridDismissalEmployeeView)).EndInit();
