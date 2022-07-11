@@ -219,7 +219,7 @@
             this.btnDismissal.Name = "btnDismissal";
             this.btnDismissal.Size = new System.Drawing.Size(161, 23);
             this.btnDismissal.TabIndex = 11;
-            this.btnDismissal.Text = "Увольнение сотрудника";
+            this.btnDismissal.Text = "Уволить сотрудника";
             this.btnDismissal.UseVisualStyleBackColor = true;
             this.btnDismissal.Click += new System.EventHandler(this.btnDismissal_Click);
             // 

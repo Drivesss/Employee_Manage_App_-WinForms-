@@ -23,6 +23,8 @@ namespace Employee_Manage_App__WinForms_
 
         private void structuralDivisionWindow_Load(object sender, EventArgs e)
         {
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "employeeManageAppDBDataSet7.structural_division_boss_join". При необходимости она может быть перемещена или удалена.
+            this.structural_division_boss_joinTableAdapter.Fill(this.employeeManageAppDBDataSet7.structural_division_boss_join);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "employeeManageAppDBDataSet6.structural_division_boss_join". При необходимости она может быть перемещена или удалена.
             this.structural_division_boss_joinTableAdapter.Fill(this.employeeManageAppDBDataSet6.structural_division_boss_join);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "employeeManageAppDBDataSet5.structural_division_boss_join". При необходимости она может быть перемещена или удалена.
@@ -55,13 +57,16 @@ namespace Employee_Manage_App__WinForms_
 
         }
 
+
+        //Сохранение изменеий в названии отдела
         private void btnSave_Click(object sender, EventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
 
             try
             {
-                structuraldivisionBindingSource.EndEdit();
+                //structuraldivisionBindingSource.EndEdit();
+                structuraldivisionbossjoinBindingSource5.EndEdit(); 
 
                 // Create the UpdateCommand.
                 SqlCommand command = new SqlCommand("UPDATE structural_division SET Name = @Name WHERE ID = @ID");

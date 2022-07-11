@@ -44,6 +44,8 @@ namespace Employee_Manage_App__WinForms_ {
         
         private global::System.Data.DataRelation relationFK_employee_structural_division;
         
+        private global::System.Data.DataRelation relationFK_employee_structural_division1;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -368,6 +370,7 @@ namespace Employee_Manage_App__WinForms_ {
             }
             this.relationFK_employee_position_employee = this.Relations["FK_employee_position_employee"];
             this.relationFK_employee_structural_division = this.Relations["FK_employee_structural_division"];
+            this.relationFK_employee_structural_division1 = this.Relations["FK_employee_structural_division1"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -402,6 +405,10 @@ namespace Employee_Manage_App__WinForms_ {
                         this.tablestructural_division.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableemployee.StructuralDivisionIDColumn}, false);
             this.Relations.Add(this.relationFK_employee_structural_division);
+            this.relationFK_employee_structural_division1 = new global::System.Data.DataRelation("FK_employee_structural_division1", new global::System.Data.DataColumn[] {
+                        this.tablestructural_division_boss_join.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableemployee.StructuralDivisionIDColumn}, false);
+            this.Relations.Add(this.relationFK_employee_structural_division1);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2817,6 +2824,8 @@ namespace Employee_Manage_App__WinForms_ {
             
             private global::System.Data.DataColumn columnНачальник_ФИО;
             
+            private global::System.Data.DataColumn columnID;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public structural_division_boss_joinDataTable() {
@@ -2868,6 +2877,14 @@ namespace Employee_Manage_App__WinForms_ {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn IDColumn {
+                get {
+                    return this.columnID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2907,10 +2924,18 @@ namespace Employee_Manage_App__WinForms_ {
                 structural_division_boss_joinRow rowstructural_division_boss_joinRow = ((structural_division_boss_joinRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Структурное_подразделение,
-                        Начальник_ФИО};
+                        Начальник_ФИО,
+                        null};
                 rowstructural_division_boss_joinRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowstructural_division_boss_joinRow);
                 return rowstructural_division_boss_joinRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public structural_division_boss_joinRow FindByID(int ID) {
+                return ((structural_division_boss_joinRow)(this.Rows.Find(new object[] {
+                            ID})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2932,6 +2957,7 @@ namespace Employee_Manage_App__WinForms_ {
             internal void InitVars() {
                 this.columnСтруктурное_подразделение = base.Columns["Структурное подразделение"];
                 this.columnНачальник_ФИО = base.Columns["Начальник ФИО"];
+                this.columnID = base.Columns["ID"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2941,9 +2967,19 @@ namespace Employee_Manage_App__WinForms_ {
                 base.Columns.Add(this.columnСтруктурное_подразделение);
                 this.columnНачальник_ФИО = new global::System.Data.DataColumn("Начальник ФИО", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnНачальник_ФИО);
+                this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnID);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnID}, true));
                 this.columnСтруктурное_подразделение.MaxLength = 150;
                 this.columnНачальник_ФИО.ReadOnly = true;
                 this.columnНачальник_ФИО.MaxLength = 452;
+                this.columnID.AutoIncrement = true;
+                this.columnID.AutoIncrementSeed = -1;
+                this.columnID.AutoIncrementStep = -1;
+                this.columnID.AllowDBNull = false;
+                this.columnID.ReadOnly = true;
+                this.columnID.Unique = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3440,6 +3476,17 @@ namespace Employee_Manage_App__WinForms_ {
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK_employee_structural_division"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public structural_division_boss_joinRow structural_division_boss_joinRow {
+                get {
+                    return ((structural_division_boss_joinRow)(this.GetParentRow(this.Table.ParentRelations["FK_employee_structural_division1"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_employee_structural_division1"]);
                 }
             }
             
@@ -4188,6 +4235,17 @@ namespace Employee_Manage_App__WinForms_ {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int ID {
+                get {
+                    return ((int)(this[this.tablestructural_division_boss_join.IDColumn]));
+                }
+                set {
+                    this[this.tablestructural_division_boss_join.IDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsСтруктурное_подразделениеNull() {
                 return this.IsNull(this.tablestructural_division_boss_join.Структурное_подразделениеColumn);
             }
@@ -4208,6 +4266,17 @@ namespace Employee_Manage_App__WinForms_ {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetНачальник_ФИОNull() {
                 this[this.tablestructural_division_boss_join.Начальник_ФИОColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public employeeRow[] GetemployeeRows() {
+                if ((this.Table.ChildRelations["FK_employee_structural_division1"] == null)) {
+                    return new employeeRow[0];
+                }
+                else {
+                    return ((employeeRow[])(base.GetChildRows(this.Table.ChildRelations["FK_employee_structural_division1"])));
+                }
             }
         }
         
@@ -6943,6 +7012,7 @@ FROM            employee INNER JOIN
             tableMapping.DataSetTable = "structural_division_boss_join";
             tableMapping.ColumnMappings.Add("Структурное подразделение", "Структурное подразделение");
             tableMapping.ColumnMappings.Add("Начальник ФИО", "Начальник ФИО");
+            tableMapping.ColumnMappings.Add("ID", "ID");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -6959,9 +7029,11 @@ FROM            employee INNER JOIN
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT        structural_division.Name AS [Структурное подразделение], RTRIM(employee.FirstName) + ' ' + RTRIM(employee.LastName) + ' ' + RTRIM(employee.MiddleName) AS [Начальник ФИО]
-FROM            structural_division INNER JOIN
-                         employee ON employee.ID = structural_division.Boss";
+            this._commandCollection[0].CommandText = @"SELECT        structural_division.ID, structural_division.Name AS [Структурное подразделение], RTRIM(employee.FirstName) + ' ' + RTRIM(employee.LastName) + ' ' + RTRIM(employee.MiddleName) AS [Начальник ФИО]
+FROM            structural_division LEFT OUTER JOIN
+                         employee ON employee.ID = structural_division.Boss
+WHERE        (structural_division.Boss IS NULL) OR
+                         (structural_division.Boss IS NOT NULL)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
