@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClosedXML.Excel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,11 +16,17 @@ namespace Employee_Manage_App__WinForms_
         public MainWindow()
         {
             InitializeComponent();
+
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void ExportToExcelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void applicantButton_Click(object sender, EventArgs e)
@@ -45,5 +52,7 @@ namespace Employee_Manage_App__WinForms_
             Form structuralDivisionWindow = new structuralDivisionWindow();
             structuralDivisionWindow.ShowDialog();
         }
+
+
     }
 }

@@ -23,20 +23,12 @@ namespace Employee_Manage_App__WinForms_
 
         private void structuralDivisionWindow_Load(object sender, EventArgs e)
         {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "employeeManageAppDBDataSet6.structural_division_boss_join". При необходимости она может быть перемещена или удалена.
-            this.structural_division_boss_joinTableAdapter.Fill(this.employeeManageAppDBDataSet6.structural_division_boss_join);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "employeeManageAppDBDataSet5.structural_division_boss_join". При необходимости она может быть перемещена или удалена.
-            this.structural_division_boss_joinTableAdapter.Fill(this.employeeManageAppDBDataSet5.structural_division_boss_join);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "employeeManageAppDBDataSet4.structural_division_boss_join". При необходимости она может быть перемещена или удалена.
-            this.structural_division_boss_joinTableAdapter.Fill(this.employeeManageAppDBDataSet4.structural_division_boss_join);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "employeeManageAppDBDataSet3.structural_division_boss_join". При необходимости она может быть перемещена или удалена.
-            this.structural_division_boss_joinTableAdapter.Fill(this.employeeManageAppDBDataSet3.structural_division_boss_join);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "employeeManageAppDBDataSet.structural_division_boss_join". При необходимости она может быть перемещена или удалена.
-            this.structural_division_boss_joinTableAdapter.Fill(this.employeeManageAppDBDataSet.structural_division_boss_join);
+
+
             try
             {
-
-
+                // TODO: данная строка кода позволяет загрузить данные в таблицу "employeeManageAppDBDataSet.DivisionJoinBossName". При необходимости она может быть перемещена или удалена.
+                this.divisionJoinBossNameTableAdapter.Fill(this.employeeManageAppDBDataSet.DivisionJoinBossName);
                 // TODO: данная строка кода позволяет загрузить данные в таблицу "employeeManageAppDBDataSet1.employeeBossComBox". При необходимости она может быть перемещена или удалена.
                 this.employeeBossComBoxTableAdapter.Fill(this.employeeManageAppDBDataSet1.employeeBossComBox);
                 // TODO: данная строка кода позволяет загрузить данные в таблицу "employeeManageAppDBDataSet.employee". При необходимости она может быть перемещена или удалена.
@@ -55,46 +47,12 @@ namespace Employee_Manage_App__WinForms_
 
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            Cursor.Current = Cursors.WaitCursor;
-
-            try
-            {
-                structuraldivisionBindingSource.EndEdit();
-
-                // Create the UpdateCommand.
-                SqlCommand command = new SqlCommand("UPDATE structural_division SET Name = @Name WHERE ID = @ID");
-                command.Connection = structural_divisionTableAdapter.Connection;
-
-                command.Parameters.AddWithValue("@ID", dataGridDivision[0, dataGridDivision.CurrentRow.Index].Value.ToString());
-                command.Parameters.AddWithValue("@Name", dataGridDivision[1, dataGridDivision.CurrentRow.Index].Value.ToString());
-
-                structural_divisionTableAdapter.Adapter.UpdateCommand = command;
-
-                // Create the DeleteCommand.
-                SqlCommand command1 = new SqlCommand("DELETE FROM structural_division WHERE ID = @ID");
-                command1.Connection = structural_divisionTableAdapter.Connection;
-
-                command1.Parameters.AddWithValue("@ID", IdRowDataGrid);
-
-                structural_divisionTableAdapter.Adapter.DeleteCommand = command1;
-
-                structural_divisionTableAdapter.Update(this.employeeManageAppDBDataSet.structural_division);
-                MessageBox.Show("Изменения сохранены", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            Cursor.Current = Cursors.Default;
-        }
-
         private void dataGridDivision_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             IdRowDataGrid = dataGridDivision[0, dataGridDivision.CurrentRow.Index].Value.ToString();
         }
 
+        //Вывод сотрудников в подразделении 
         private void comboBoxDivision_SelectionChangeCommitted(object sender, EventArgs e)
         {
             IDDivisionComBox = Int32.Parse(comboBoxDivision.SelectedValue.ToString());
@@ -139,6 +97,7 @@ namespace Employee_Manage_App__WinForms_
 
         }
 
+        //Добавление начальниа подразделения
         private void btnSaveBoss_Click(object sender, EventArgs e)
         {
             try
@@ -160,5 +119,112 @@ namespace Employee_Manage_App__WinForms_
 
             structuralDivisionWindow_Load(sender, e);
         }
+
+        //Удаление начальника подразделения
+        private void btnDeleteBoss_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                connection.Open();
+                SqlCommand UpdateBossCommand = new SqlCommand(
+                    "UPDATE structural_division " +
+                    "SET Boss = @Boss " +
+                    "WHERE ID = @ID", connection);
+
+                UpdateBossCommand.Parameters.AddWithValue("@Boss", DBNull.Value);
+                UpdateBossCommand.Parameters.AddWithValue("@ID", Int32.Parse(comboBoxDivision.SelectedValue.ToString()));
+
+                UpdateBossCommand.ExecuteNonQuery();
+
+                connection.Close();
+                structuralDivisionWindow_Load(sender, e);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        //Добавление отдела
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                connection.Open();
+
+                SqlCommand addCommand = new SqlCommand("INSERT INTO structural_division (Name) VALUES(@Name)", connection);
+                addCommand.Parameters.AddWithValue("@Name", dataGridDivision[1, dataGridDivision.CurrentRow.Index].Value.ToString());
+                addCommand.ExecuteNonQuery();
+
+                connection.Close();
+
+                structuralDivisionWindow_Load(sender, e);
+
+                MessageBox.Show("Подразделение добавлено", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        //Сохранение изменеий в названии отдела
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            Cursor.Current = Cursors.WaitCursor;
+
+            try
+            {
+                connection.Open();
+
+                SqlCommand command = new SqlCommand("UPDATE structural_division SET Name = @Name WHERE ID = @ID",connection);
+
+                command.Parameters.AddWithValue("@ID", dataGridDivision[0, dataGridDivision.CurrentRow.Index].Value.ToString());
+                command.Parameters.AddWithValue("@Name", dataGridDivision[1, dataGridDivision.CurrentRow.Index].Value.ToString());
+
+                command.ExecuteNonQuery();
+
+                connection.Close();
+
+                structuralDivisionWindow_Load(sender, e);
+
+                MessageBox.Show("Изменения сохранены", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            Cursor.Current = Cursors.Default;
+        }
+
+        //Удаление отдела
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (MessageBox.Show("Вы действительно хотите удалить подразделение?", "Сообщение", MessageBoxButtons.YesNo, MessageBoxIcon.Question) 
+                    == DialogResult.Yes)
+                {
+                    connection.Open();
+
+                    SqlCommand deleteCommand = new SqlCommand("DELETE FROM structural_division WHERE ID = @ID", connection);
+                    deleteCommand.Parameters.AddWithValue("@ID", IdRowDataGrid);
+                    deleteCommand.ExecuteNonQuery();
+
+                    connection.Close();
+
+                    structuralDivisionWindow_Load(sender, e);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
     }
 }

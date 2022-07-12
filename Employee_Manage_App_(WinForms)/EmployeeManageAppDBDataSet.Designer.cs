@@ -38,11 +38,13 @@ namespace Employee_Manage_App__WinForms_ {
         
         private employeeDataTableDataTable tableemployeeDataTable;
         
-        private structural_division_boss_joinDataTable tablestructural_division_boss_join;
+        private DivisionJoinBossNameDataTable tableDivisionJoinBossName;
         
         private global::System.Data.DataRelation relationFK_employee_position_employee;
         
         private global::System.Data.DataRelation relationFK_employee_structural_division;
+        
+        private global::System.Data.DataRelation relationFK_employee_structural_division2;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -93,8 +95,8 @@ namespace Employee_Manage_App__WinForms_ {
                 if ((ds.Tables["employeeDataTable"] != null)) {
                     base.Tables.Add(new employeeDataTableDataTable(ds.Tables["employeeDataTable"]));
                 }
-                if ((ds.Tables["structural_division_boss_join"] != null)) {
-                    base.Tables.Add(new structural_division_boss_joinDataTable(ds.Tables["structural_division_boss_join"]));
+                if ((ds.Tables["DivisionJoinBossName"] != null)) {
+                    base.Tables.Add(new DivisionJoinBossNameDataTable(ds.Tables["DivisionJoinBossName"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -188,9 +190,9 @@ namespace Employee_Manage_App__WinForms_ {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public structural_division_boss_joinDataTable structural_division_boss_join {
+        public DivisionJoinBossNameDataTable DivisionJoinBossName {
             get {
-                return this.tablestructural_division_boss_join;
+                return this.tableDivisionJoinBossName;
             }
         }
         
@@ -282,8 +284,8 @@ namespace Employee_Manage_App__WinForms_ {
                 if ((ds.Tables["employeeDataTable"] != null)) {
                     base.Tables.Add(new employeeDataTableDataTable(ds.Tables["employeeDataTable"]));
                 }
-                if ((ds.Tables["structural_division_boss_join"] != null)) {
-                    base.Tables.Add(new structural_division_boss_joinDataTable(ds.Tables["structural_division_boss_join"]));
+                if ((ds.Tables["DivisionJoinBossName"] != null)) {
+                    base.Tables.Add(new DivisionJoinBossNameDataTable(ds.Tables["DivisionJoinBossName"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -360,14 +362,15 @@ namespace Employee_Manage_App__WinForms_ {
                     this.tableemployeeDataTable.InitVars();
                 }
             }
-            this.tablestructural_division_boss_join = ((structural_division_boss_joinDataTable)(base.Tables["structural_division_boss_join"]));
+            this.tableDivisionJoinBossName = ((DivisionJoinBossNameDataTable)(base.Tables["DivisionJoinBossName"]));
             if ((initTable == true)) {
-                if ((this.tablestructural_division_boss_join != null)) {
-                    this.tablestructural_division_boss_join.InitVars();
+                if ((this.tableDivisionJoinBossName != null)) {
+                    this.tableDivisionJoinBossName.InitVars();
                 }
             }
             this.relationFK_employee_position_employee = this.Relations["FK_employee_position_employee"];
             this.relationFK_employee_structural_division = this.Relations["FK_employee_structural_division"];
+            this.relationFK_employee_structural_division2 = this.Relations["FK_employee_structural_division2"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -392,8 +395,8 @@ namespace Employee_Manage_App__WinForms_ {
             base.Tables.Add(this.tableemployeeBossComBox);
             this.tableemployeeDataTable = new employeeDataTableDataTable();
             base.Tables.Add(this.tableemployeeDataTable);
-            this.tablestructural_division_boss_join = new structural_division_boss_joinDataTable();
-            base.Tables.Add(this.tablestructural_division_boss_join);
+            this.tableDivisionJoinBossName = new DivisionJoinBossNameDataTable();
+            base.Tables.Add(this.tableDivisionJoinBossName);
             this.relationFK_employee_position_employee = new global::System.Data.DataRelation("FK_employee_position_employee", new global::System.Data.DataColumn[] {
                         this.tableposition_employee.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableemployee.PositionEmployeeIDColumn}, false);
@@ -402,6 +405,10 @@ namespace Employee_Manage_App__WinForms_ {
                         this.tablestructural_division.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableemployee.StructuralDivisionIDColumn}, false);
             this.Relations.Add(this.relationFK_employee_structural_division);
+            this.relationFK_employee_structural_division2 = new global::System.Data.DataRelation("FK_employee_structural_division2", new global::System.Data.DataColumn[] {
+                        this.tableDivisionJoinBossName.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableemployee.StructuralDivisionIDColumn}, false);
+            this.Relations.Add(this.relationFK_employee_structural_division2);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -448,7 +455,7 @@ namespace Employee_Manage_App__WinForms_ {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private bool ShouldSerializestructural_division_boss_join() {
+        private bool ShouldSerializeDivisionJoinBossName() {
             return false;
         }
         
@@ -529,7 +536,7 @@ namespace Employee_Manage_App__WinForms_ {
         public delegate void employeeDataTableRowChangeEventHandler(object sender, employeeDataTableRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public delegate void structural_division_boss_joinRowChangeEventHandler(object sender, structural_division_boss_joinRowChangeEvent e);
+        public delegate void DivisionJoinBossNameRowChangeEventHandler(object sender, DivisionJoinBossNameRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -2420,9 +2427,9 @@ namespace Employee_Manage_App__WinForms_ {
             
             private global::System.Data.DataColumn columnDateOfDismissal;
             
-            private global::System.Data.DataColumn columnName;
+            private global::System.Data.DataColumn columnPosition;
             
-            private global::System.Data.DataColumn columnName1;
+            private global::System.Data.DataColumn columnDivision;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
@@ -2531,17 +2538,17 @@ namespace Employee_Manage_App__WinForms_ {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn NameColumn {
+            public global::System.Data.DataColumn PositionColumn {
                 get {
-                    return this.columnName;
+                    return this.columnPosition;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn Name1Column {
+            public global::System.Data.DataColumn DivisionColumn {
                 get {
-                    return this.columnName1;
+                    return this.columnDivision;
                 }
             }
             
@@ -2582,7 +2589,7 @@ namespace Employee_Manage_App__WinForms_ {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public employeeDataTableRow AddemployeeDataTableRow(string LastName, string FirstName, string MiddleName, System.DateTime DateOfBirth, string Education, string Status, System.DateTime DateOfEmployment, System.DateTime DateOfDismissal, string Name, string Name1) {
+            public employeeDataTableRow AddemployeeDataTableRow(string LastName, string FirstName, string MiddleName, System.DateTime DateOfBirth, string Education, string Status, System.DateTime DateOfEmployment, System.DateTime DateOfDismissal, string Position, string Division) {
                 employeeDataTableRow rowemployeeDataTableRow = ((employeeDataTableRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -2594,8 +2601,8 @@ namespace Employee_Manage_App__WinForms_ {
                         Status,
                         DateOfEmployment,
                         DateOfDismissal,
-                        Name,
-                        Name1};
+                        Position,
+                        Division};
                 rowemployeeDataTableRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowemployeeDataTableRow);
                 return rowemployeeDataTableRow;
@@ -2634,8 +2641,8 @@ namespace Employee_Manage_App__WinForms_ {
                 this.columnStatus = base.Columns["Status"];
                 this.columnDateOfEmployment = base.Columns["DateOfEmployment"];
                 this.columnDateOfDismissal = base.Columns["DateOfDismissal"];
-                this.columnName = base.Columns["Name"];
-                this.columnName1 = base.Columns["Name1"];
+                this.columnPosition = base.Columns["Position"];
+                this.columnDivision = base.Columns["Division"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2659,10 +2666,10 @@ namespace Employee_Manage_App__WinForms_ {
                 base.Columns.Add(this.columnDateOfEmployment);
                 this.columnDateOfDismissal = new global::System.Data.DataColumn("DateOfDismissal", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDateOfDismissal);
-                this.columnName = new global::System.Data.DataColumn("Name", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnName);
-                this.columnName1 = new global::System.Data.DataColumn("Name1", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnName1);
+                this.columnPosition = new global::System.Data.DataColumn("Position", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPosition);
+                this.columnDivision = new global::System.Data.DataColumn("Division", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDivision);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnID.AutoIncrement = true;
@@ -2676,8 +2683,8 @@ namespace Employee_Manage_App__WinForms_ {
                 this.columnMiddleName.MaxLength = 150;
                 this.columnEducation.MaxLength = 150;
                 this.columnStatus.MaxLength = 150;
-                this.columnName.MaxLength = 150;
-                this.columnName1.MaxLength = 150;
+                this.columnPosition.MaxLength = 150;
+                this.columnDivision.MaxLength = 150;
                 this.ExtendedProperties.Add("Generator_TablePropName", "_employeeDataTable");
                 this.ExtendedProperties.Add("Generator_UserTableName", "employeeDataTable");
             }
@@ -2811,16 +2818,20 @@ namespace Employee_Manage_App__WinForms_ {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class structural_division_boss_joinDataTable : global::System.Data.TypedTableBase<structural_division_boss_joinRow> {
+        public partial class DivisionJoinBossNameDataTable : global::System.Data.TypedTableBase<DivisionJoinBossNameRow> {
+            
+            private global::System.Data.DataColumn columnID;
             
             private global::System.Data.DataColumn columnСтруктурное_подразделение;
             
             private global::System.Data.DataColumn columnНачальник_ФИО;
             
+            private global::System.Data.DataColumn columnBoss;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public structural_division_boss_joinDataTable() {
-                this.TableName = "structural_division_boss_join";
+            public DivisionJoinBossNameDataTable() {
+                this.TableName = "DivisionJoinBossName";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -2828,7 +2839,7 @@ namespace Employee_Manage_App__WinForms_ {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal structural_division_boss_joinDataTable(global::System.Data.DataTable table) {
+            internal DivisionJoinBossNameDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -2845,9 +2856,17 @@ namespace Employee_Manage_App__WinForms_ {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected structural_division_boss_joinDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected DivisionJoinBossNameDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn IDColumn {
+                get {
+                    return this.columnID;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2868,6 +2887,14 @@ namespace Employee_Manage_App__WinForms_ {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn BossColumn {
+                get {
+                    return this.columnBoss;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2877,46 +2904,55 @@ namespace Employee_Manage_App__WinForms_ {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public structural_division_boss_joinRow this[int index] {
+            public DivisionJoinBossNameRow this[int index] {
                 get {
-                    return ((structural_division_boss_joinRow)(this.Rows[index]));
+                    return ((DivisionJoinBossNameRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event structural_division_boss_joinRowChangeEventHandler structural_division_boss_joinRowChanging;
+            public event DivisionJoinBossNameRowChangeEventHandler DivisionJoinBossNameRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event structural_division_boss_joinRowChangeEventHandler structural_division_boss_joinRowChanged;
+            public event DivisionJoinBossNameRowChangeEventHandler DivisionJoinBossNameRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event structural_division_boss_joinRowChangeEventHandler structural_division_boss_joinRowDeleting;
+            public event DivisionJoinBossNameRowChangeEventHandler DivisionJoinBossNameRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event structural_division_boss_joinRowChangeEventHandler structural_division_boss_joinRowDeleted;
+            public event DivisionJoinBossNameRowChangeEventHandler DivisionJoinBossNameRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void Addstructural_division_boss_joinRow(structural_division_boss_joinRow row) {
+            public void AddDivisionJoinBossNameRow(DivisionJoinBossNameRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public structural_division_boss_joinRow Addstructural_division_boss_joinRow(string Структурное_подразделение, string Начальник_ФИО) {
-                structural_division_boss_joinRow rowstructural_division_boss_joinRow = ((structural_division_boss_joinRow)(this.NewRow()));
+            public DivisionJoinBossNameRow AddDivisionJoinBossNameRow(string Структурное_подразделение, string Начальник_ФИО, int Boss) {
+                DivisionJoinBossNameRow rowDivisionJoinBossNameRow = ((DivisionJoinBossNameRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
+                        null,
                         Структурное_подразделение,
-                        Начальник_ФИО};
-                rowstructural_division_boss_joinRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowstructural_division_boss_joinRow);
-                return rowstructural_division_boss_joinRow;
+                        Начальник_ФИО,
+                        Boss};
+                rowDivisionJoinBossNameRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowDivisionJoinBossNameRow);
+                return rowDivisionJoinBossNameRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public DivisionJoinBossNameRow FindByID(int ID) {
+                return ((DivisionJoinBossNameRow)(this.Rows.Find(new object[] {
+                            ID})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                structural_division_boss_joinDataTable cln = ((structural_division_boss_joinDataTable)(base.Clone()));
+                DivisionJoinBossNameDataTable cln = ((DivisionJoinBossNameDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -2924,23 +2960,37 @@ namespace Employee_Manage_App__WinForms_ {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new structural_division_boss_joinDataTable();
+                return new DivisionJoinBossNameDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             internal void InitVars() {
+                this.columnID = base.Columns["ID"];
                 this.columnСтруктурное_подразделение = base.Columns["Структурное подразделение"];
                 this.columnНачальник_ФИО = base.Columns["Начальник ФИО"];
+                this.columnBoss = base.Columns["Boss"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             private void InitClass() {
+                this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnID);
                 this.columnСтруктурное_подразделение = new global::System.Data.DataColumn("Структурное подразделение", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnСтруктурное_подразделение);
                 this.columnНачальник_ФИО = new global::System.Data.DataColumn("Начальник ФИО", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnНачальник_ФИО);
+                this.columnBoss = new global::System.Data.DataColumn("Boss", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBoss);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnID}, true));
+                this.columnID.AutoIncrement = true;
+                this.columnID.AutoIncrementSeed = -1;
+                this.columnID.AutoIncrementStep = -1;
+                this.columnID.AllowDBNull = false;
+                this.columnID.ReadOnly = true;
+                this.columnID.Unique = true;
                 this.columnСтруктурное_подразделение.MaxLength = 150;
                 this.columnНачальник_ФИО.ReadOnly = true;
                 this.columnНачальник_ФИО.MaxLength = 452;
@@ -2948,28 +2998,28 @@ namespace Employee_Manage_App__WinForms_ {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public structural_division_boss_joinRow Newstructural_division_boss_joinRow() {
-                return ((structural_division_boss_joinRow)(this.NewRow()));
+            public DivisionJoinBossNameRow NewDivisionJoinBossNameRow() {
+                return ((DivisionJoinBossNameRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new structural_division_boss_joinRow(builder);
+                return new DivisionJoinBossNameRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(structural_division_boss_joinRow);
+                return typeof(DivisionJoinBossNameRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.structural_division_boss_joinRowChanged != null)) {
-                    this.structural_division_boss_joinRowChanged(this, new structural_division_boss_joinRowChangeEvent(((structural_division_boss_joinRow)(e.Row)), e.Action));
+                if ((this.DivisionJoinBossNameRowChanged != null)) {
+                    this.DivisionJoinBossNameRowChanged(this, new DivisionJoinBossNameRowChangeEvent(((DivisionJoinBossNameRow)(e.Row)), e.Action));
                 }
             }
             
@@ -2977,8 +3027,8 @@ namespace Employee_Manage_App__WinForms_ {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.structural_division_boss_joinRowChanging != null)) {
-                    this.structural_division_boss_joinRowChanging(this, new structural_division_boss_joinRowChangeEvent(((structural_division_boss_joinRow)(e.Row)), e.Action));
+                if ((this.DivisionJoinBossNameRowChanging != null)) {
+                    this.DivisionJoinBossNameRowChanging(this, new DivisionJoinBossNameRowChangeEvent(((DivisionJoinBossNameRow)(e.Row)), e.Action));
                 }
             }
             
@@ -2986,8 +3036,8 @@ namespace Employee_Manage_App__WinForms_ {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.structural_division_boss_joinRowDeleted != null)) {
-                    this.structural_division_boss_joinRowDeleted(this, new structural_division_boss_joinRowChangeEvent(((structural_division_boss_joinRow)(e.Row)), e.Action));
+                if ((this.DivisionJoinBossNameRowDeleted != null)) {
+                    this.DivisionJoinBossNameRowDeleted(this, new DivisionJoinBossNameRowChangeEvent(((DivisionJoinBossNameRow)(e.Row)), e.Action));
                 }
             }
             
@@ -2995,14 +3045,14 @@ namespace Employee_Manage_App__WinForms_ {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.structural_division_boss_joinRowDeleting != null)) {
-                    this.structural_division_boss_joinRowDeleting(this, new structural_division_boss_joinRowChangeEvent(((structural_division_boss_joinRow)(e.Row)), e.Action));
+                if ((this.DivisionJoinBossNameRowDeleting != null)) {
+                    this.DivisionJoinBossNameRowDeleting(this, new DivisionJoinBossNameRowChangeEvent(((DivisionJoinBossNameRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void Removestructural_division_boss_joinRow(structural_division_boss_joinRow row) {
+            public void RemoveDivisionJoinBossNameRow(DivisionJoinBossNameRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -3029,7 +3079,7 @@ namespace Employee_Manage_App__WinForms_ {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "structural_division_boss_joinDataTable";
+                attribute2.FixedValue = "DivisionJoinBossNameDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -3440,6 +3490,17 @@ namespace Employee_Manage_App__WinForms_ {
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK_employee_structural_division"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public DivisionJoinBossNameRow DivisionJoinBossNameRow {
+                get {
+                    return ((DivisionJoinBossNameRow)(this.GetParentRow(this.Table.ParentRelations["FK_employee_structural_division2"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_employee_structural_division2"]);
                 }
             }
             
@@ -3987,33 +4048,33 @@ namespace Employee_Manage_App__WinForms_ {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Name {
+            public string Position {
                 get {
                     try {
-                        return ((string)(this[this.tableemployeeDataTable.NameColumn]));
+                        return ((string)(this[this.tableemployeeDataTable.PositionColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Name\' в таблице \'employeeDataTable\' равно DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Position\' в таблице \'employeeDataTable\' равно DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableemployeeDataTable.NameColumn] = value;
+                    this[this.tableemployeeDataTable.PositionColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Name1 {
+            public string Division {
                 get {
                     try {
-                        return ((string)(this[this.tableemployeeDataTable.Name1Column]));
+                        return ((string)(this[this.tableemployeeDataTable.DivisionColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Name1\' в таблице \'employeeDataTable\' равно DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Division\' в таблице \'employeeDataTable\' равно DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableemployeeDataTable.Name1Column] = value;
+                    this[this.tableemployeeDataTable.DivisionColumn] = value;
                 }
             }
             
@@ -4115,41 +4176,52 @@ namespace Employee_Manage_App__WinForms_ {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsNameNull() {
-                return this.IsNull(this.tableemployeeDataTable.NameColumn);
+            public bool IsPositionNull() {
+                return this.IsNull(this.tableemployeeDataTable.PositionColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetNameNull() {
-                this[this.tableemployeeDataTable.NameColumn] = global::System.Convert.DBNull;
+            public void SetPositionNull() {
+                this[this.tableemployeeDataTable.PositionColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsName1Null() {
-                return this.IsNull(this.tableemployeeDataTable.Name1Column);
+            public bool IsDivisionNull() {
+                return this.IsNull(this.tableemployeeDataTable.DivisionColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetName1Null() {
-                this[this.tableemployeeDataTable.Name1Column] = global::System.Convert.DBNull;
+            public void SetDivisionNull() {
+                this[this.tableemployeeDataTable.DivisionColumn] = global::System.Convert.DBNull;
             }
         }
         
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class structural_division_boss_joinRow : global::System.Data.DataRow {
+        public partial class DivisionJoinBossNameRow : global::System.Data.DataRow {
             
-            private structural_division_boss_joinDataTable tablestructural_division_boss_join;
+            private DivisionJoinBossNameDataTable tableDivisionJoinBossName;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal structural_division_boss_joinRow(global::System.Data.DataRowBuilder rb) : 
+            internal DivisionJoinBossNameRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tablestructural_division_boss_join = ((structural_division_boss_joinDataTable)(this.Table));
+                this.tableDivisionJoinBossName = ((DivisionJoinBossNameDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int ID {
+                get {
+                    return ((int)(this[this.tableDivisionJoinBossName.IDColumn]));
+                }
+                set {
+                    this[this.tableDivisionJoinBossName.IDColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4157,15 +4229,15 @@ namespace Employee_Manage_App__WinForms_ {
             public string Структурное_подразделение {
                 get {
                     try {
-                        return ((string)(this[this.tablestructural_division_boss_join.Структурное_подразделениеColumn]));
+                        return ((string)(this[this.tableDivisionJoinBossName.Структурное_подразделениеColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Структурное подразделение\' в таблице \'structural_division_b" +
-                                "oss_join\' равно DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Структурное подразделение\' в таблице \'DivisionJoinBossName\'" +
+                                " равно DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablestructural_division_boss_join.Структурное_подразделениеColumn] = value;
+                    this[this.tableDivisionJoinBossName.Структурное_подразделениеColumn] = value;
                 }
             }
             
@@ -4174,40 +4246,79 @@ namespace Employee_Manage_App__WinForms_ {
             public string Начальник_ФИО {
                 get {
                     try {
-                        return ((string)(this[this.tablestructural_division_boss_join.Начальник_ФИОColumn]));
+                        return ((string)(this[this.tableDivisionJoinBossName.Начальник_ФИОColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Начальник ФИО\' в таблице \'structural_division_boss_join\' ра" +
-                                "вно DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Начальник ФИО\' в таблице \'DivisionJoinBossName\' равно DBNul" +
+                                "l.", e);
                     }
                 }
                 set {
-                    this[this.tablestructural_division_boss_join.Начальник_ФИОColumn] = value;
+                    this[this.tableDivisionJoinBossName.Начальник_ФИОColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int Boss {
+                get {
+                    try {
+                        return ((int)(this[this.tableDivisionJoinBossName.BossColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Boss\' в таблице \'DivisionJoinBossName\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDivisionJoinBossName.BossColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsСтруктурное_подразделениеNull() {
-                return this.IsNull(this.tablestructural_division_boss_join.Структурное_подразделениеColumn);
+                return this.IsNull(this.tableDivisionJoinBossName.Структурное_подразделениеColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetСтруктурное_подразделениеNull() {
-                this[this.tablestructural_division_boss_join.Структурное_подразделениеColumn] = global::System.Convert.DBNull;
+                this[this.tableDivisionJoinBossName.Структурное_подразделениеColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsНачальник_ФИОNull() {
-                return this.IsNull(this.tablestructural_division_boss_join.Начальник_ФИОColumn);
+                return this.IsNull(this.tableDivisionJoinBossName.Начальник_ФИОColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetНачальник_ФИОNull() {
-                this[this.tablestructural_division_boss_join.Начальник_ФИОColumn] = global::System.Convert.DBNull;
+                this[this.tableDivisionJoinBossName.Начальник_ФИОColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsBossNull() {
+                return this.IsNull(this.tableDivisionJoinBossName.BossColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetBossNull() {
+                this[this.tableDivisionJoinBossName.BossColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public employeeRow[] GetemployeeRows() {
+                if ((this.Table.ChildRelations["FK_employee_structural_division2"] == null)) {
+                    return new employeeRow[0];
+                }
+                else {
+                    return ((employeeRow[])(base.GetChildRows(this.Table.ChildRelations["FK_employee_structural_division2"])));
+                }
             }
         }
         
@@ -4453,22 +4564,22 @@ namespace Employee_Manage_App__WinForms_ {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public class structural_division_boss_joinRowChangeEvent : global::System.EventArgs {
+        public class DivisionJoinBossNameRowChangeEvent : global::System.EventArgs {
             
-            private structural_division_boss_joinRow eventRow;
+            private DivisionJoinBossNameRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public structural_division_boss_joinRowChangeEvent(structural_division_boss_joinRow row, global::System.Data.DataRowAction action) {
+            public DivisionJoinBossNameRowChangeEvent(DivisionJoinBossNameRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public structural_division_boss_joinRow Row {
+            public DivisionJoinBossNameRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -6538,7 +6649,7 @@ SELECT ID, Name, Boss FROM structural_division WHERE (ID = @ID)";
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT        ID, RTRIM(LastName) + \' \' + RTRIM(FirstName) + \' \' + RTRIM(MiddleNa" +
-                "me) AS ФИО\r\nFROM            employee";
+                "me) AS ФИО\r\nFROM            employee\r\nWHERE        (Status = \'Работает\')";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -6769,8 +6880,8 @@ SELECT ID, Name, Boss FROM structural_division WHERE (ID = @ID)";
             tableMapping.ColumnMappings.Add("Status", "Status");
             tableMapping.ColumnMappings.Add("DateOfEmployment", "DateOfEmployment");
             tableMapping.ColumnMappings.Add("DateOfDismissal", "DateOfDismissal");
-            tableMapping.ColumnMappings.Add("Name", "Name");
-            tableMapping.ColumnMappings.Add("Name1", "Name1");
+            tableMapping.ColumnMappings.Add("Position", "Position");
+            tableMapping.ColumnMappings.Add("Division", "Division");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -6788,7 +6899,7 @@ SELECT ID, Name, Boss FROM structural_division WHERE (ID = @ID)";
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = @"SELECT        employee.ID, employee.LastName, employee.FirstName, employee.MiddleName, employee.DateOfBirth, employee.Education, employee.Status, employee.DateOfEmployment, employee.DateOfDismissal, 
-                         position_employee.Name, structural_division.Name
+                         position_employee.Name AS Position, structural_division.Name AS Division
 FROM            employee INNER JOIN
                          position_employee ON employee.PositionEmployeeID = position_employee.ID INNER JOIN
                          structural_division ON employee.StructuralDivisionID = structural_division.ID";
@@ -6829,7 +6940,7 @@ FROM            employee INNER JOIN
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class structural_division_boss_joinTableAdapter : global::System.ComponentModel.Component {
+    public partial class DivisionJoinBossNameTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -6843,7 +6954,7 @@ FROM            employee INNER JOIN
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public structural_division_boss_joinTableAdapter() {
+        public DivisionJoinBossNameTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -6940,9 +7051,11 @@ FROM            employee INNER JOIN
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "structural_division_boss_join";
+            tableMapping.DataSetTable = "DivisionJoinBossName";
+            tableMapping.ColumnMappings.Add("ID", "ID");
             tableMapping.ColumnMappings.Add("Структурное подразделение", "Структурное подразделение");
             tableMapping.ColumnMappings.Add("Начальник ФИО", "Начальник ФИО");
+            tableMapping.ColumnMappings.Add("Boss", "Boss");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -6959,9 +7072,12 @@ FROM            employee INNER JOIN
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT        structural_division.Name AS [Структурное подразделение], RTRIM(employee.FirstName) + ' ' + RTRIM(employee.LastName) + ' ' + RTRIM(employee.MiddleName) AS [Начальник ФИО]
-FROM            structural_division INNER JOIN
-                         employee ON structural_division.ID = employee.StructuralDivisionID";
+            this._commandCollection[0].CommandText = @"SELECT        structural_division.ID, structural_division.Name AS [Структурное подразделение], RTRIM(employee.FirstName) + ' ' + RTRIM(employee.LastName) + ' ' + RTRIM(employee.MiddleName) AS [Начальник ФИО], 
+                         structural_division.Boss
+FROM            structural_division LEFT OUTER JOIN
+                         employee ON employee.ID = structural_division.Boss
+WHERE        (structural_division.Boss IS NULL) OR
+                         (structural_division.Boss IS NOT NULL)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -6969,7 +7085,7 @@ FROM            structural_division INNER JOIN
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(EmployeeManageAppDBDataSet.structural_division_boss_joinDataTable dataTable) {
+        public virtual int Fill(EmployeeManageAppDBDataSet.DivisionJoinBossNameDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -6982,9 +7098,9 @@ FROM            structural_division INNER JOIN
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual EmployeeManageAppDBDataSet.structural_division_boss_joinDataTable GetData() {
+        public virtual EmployeeManageAppDBDataSet.DivisionJoinBossNameDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            EmployeeManageAppDBDataSet.structural_division_boss_joinDataTable dataTable = new EmployeeManageAppDBDataSet.structural_division_boss_joinDataTable();
+            EmployeeManageAppDBDataSet.DivisionJoinBossNameDataTable dataTable = new EmployeeManageAppDBDataSet.DivisionJoinBossNameDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
