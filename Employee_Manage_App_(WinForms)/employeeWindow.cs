@@ -287,7 +287,6 @@ namespace Employee_Manage_App__WinForms_
                             workbook.Worksheets.Add(this.employeeManageAppDBDataSet.employee.CopyToDataTable(), "employee");
                             workbook.SaveAs(sfd.FileName);
                             MessageBox.Show("Данные в Excel успешно сохранены","Message",MessageBoxButtons.OK,MessageBoxIcon.Information);
-
                         }
                     }
                     catch (Exception ex)

@@ -56,6 +56,17 @@
             this.dataTable1BindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.employeeManageAppDBDataSet1 = new Employee_Manage_App__WinForms_.EmployeeManageAppDBDataSet();
             this.dataGridEmployee = new System.Windows.Forms.DataGridView();
+            this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.middleNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateOfBirthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.educationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateOfEmploymentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateOfDismissalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.positionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.divisionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.employeeDataTableBindingSource4 = new System.Windows.Forms.BindingSource(this.components);
             this.employeeManageAppDBDataSet6 = new Employee_Manage_App__WinForms_.EmployeeManageAppDBDataSet();
             this.employeeDataTableBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
@@ -68,17 +79,6 @@
             this.btnDismissalEmployeeView = new System.Windows.Forms.Button();
             this.employeeManageAppDBDataSet5 = new Employee_Manage_App__WinForms_.EmployeeManageAppDBDataSet();
             this.employeeDataTableBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
-            this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.middleNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateOfBirthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.educationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateOfEmploymentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateOfDismissalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.positionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.divisionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnExcelExport = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable1BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeManageAppDBDataSet)).BeginInit();
@@ -258,7 +258,7 @@
             // btnDelete
             // 
             this.btnDelete.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnDelete.Location = new System.Drawing.Point(401, 426);
+            this.btnDelete.Location = new System.Drawing.Point(557, 426);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(126, 23);
             this.btnDelete.TabIndex = 13;
@@ -309,71 +309,6 @@
             this.dataGridEmployee.Size = new System.Drawing.Size(1160, 364);
             this.dataGridEmployee.TabIndex = 0;
             this.dataGridEmployee.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridEmployee_CellClick);
-            // 
-            // employeeDataTableBindingSource4
-            // 
-            this.employeeDataTableBindingSource4.DataMember = "employeeDataTable";
-            this.employeeDataTableBindingSource4.DataSource = this.employeeManageAppDBDataSet6;
-            // 
-            // employeeManageAppDBDataSet6
-            // 
-            this.employeeManageAppDBDataSet6.DataSetName = "EmployeeManageAppDBDataSet";
-            this.employeeManageAppDBDataSet6.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // employeeDataTableBindingSource2
-            // 
-            this.employeeDataTableBindingSource2.DataMember = "employeeDataTable";
-            this.employeeDataTableBindingSource2.DataSource = this.employeeManageAppDBDataSet4;
-            // 
-            // employeeManageAppDBDataSet4
-            // 
-            this.employeeManageAppDBDataSet4.DataSetName = "EmployeeManageAppDBDataSet";
-            this.employeeManageAppDBDataSet4.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // employeeDataTableBindingSource
-            // 
-            this.employeeDataTableBindingSource.DataMember = "employeeDataTable";
-            this.employeeDataTableBindingSource.DataSource = this.employeeManageAppDBDataSet2;
-            // 
-            // employeeManageAppDBDataSet2
-            // 
-            this.employeeManageAppDBDataSet2.DataSetName = "EmployeeManageAppDBDataSet";
-            this.employeeManageAppDBDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // employeeDataTableTableAdapter
-            // 
-            this.employeeDataTableTableAdapter.ClearBeforeFill = true;
-            // 
-            // employeeManageAppDBDataSet3
-            // 
-            this.employeeManageAppDBDataSet3.DataSetName = "EmployeeManageAppDBDataSet";
-            this.employeeManageAppDBDataSet3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // employeeDataTableBindingSource1
-            // 
-            this.employeeDataTableBindingSource1.DataMember = "employeeDataTable";
-            this.employeeDataTableBindingSource1.DataSource = this.employeeManageAppDBDataSet3;
-            // 
-            // btnDismissalEmployeeView
-            // 
-            this.btnDismissalEmployeeView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnDismissalEmployeeView.Location = new System.Drawing.Point(179, 426);
-            this.btnDismissalEmployeeView.Name = "btnDismissalEmployeeView";
-            this.btnDismissalEmployeeView.Size = new System.Drawing.Size(151, 23);
-            this.btnDismissalEmployeeView.TabIndex = 14;
-            this.btnDismissalEmployeeView.Text = "Уволенные сотрудники";
-            this.btnDismissalEmployeeView.UseVisualStyleBackColor = true;
-            this.btnDismissalEmployeeView.Click += new System.EventHandler(this.btnDismissalEmployeeView_Click);
-            // 
-            // employeeManageAppDBDataSet5
-            // 
-            this.employeeManageAppDBDataSet5.DataSetName = "EmployeeManageAppDBDataSet";
-            this.employeeManageAppDBDataSet5.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // employeeDataTableBindingSource3
-            // 
-            this.employeeDataTableBindingSource3.DataMember = "employeeDataTable";
-            this.employeeDataTableBindingSource3.DataSource = this.employeeManageAppDBDataSet5;
             // 
             // iDDataGridViewTextBoxColumn
             // 
@@ -460,9 +395,74 @@
             this.divisionDataGridViewTextBoxColumn.HeaderText = "Структурное подразделение";
             this.divisionDataGridViewTextBoxColumn.Name = "divisionDataGridViewTextBoxColumn";
             // 
+            // employeeDataTableBindingSource4
+            // 
+            this.employeeDataTableBindingSource4.DataMember = "employeeDataTable";
+            this.employeeDataTableBindingSource4.DataSource = this.employeeManageAppDBDataSet6;
+            // 
+            // employeeManageAppDBDataSet6
+            // 
+            this.employeeManageAppDBDataSet6.DataSetName = "EmployeeManageAppDBDataSet";
+            this.employeeManageAppDBDataSet6.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // employeeDataTableBindingSource2
+            // 
+            this.employeeDataTableBindingSource2.DataMember = "employeeDataTable";
+            this.employeeDataTableBindingSource2.DataSource = this.employeeManageAppDBDataSet4;
+            // 
+            // employeeManageAppDBDataSet4
+            // 
+            this.employeeManageAppDBDataSet4.DataSetName = "EmployeeManageAppDBDataSet";
+            this.employeeManageAppDBDataSet4.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // employeeDataTableBindingSource
+            // 
+            this.employeeDataTableBindingSource.DataMember = "employeeDataTable";
+            this.employeeDataTableBindingSource.DataSource = this.employeeManageAppDBDataSet2;
+            // 
+            // employeeManageAppDBDataSet2
+            // 
+            this.employeeManageAppDBDataSet2.DataSetName = "EmployeeManageAppDBDataSet";
+            this.employeeManageAppDBDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // employeeDataTableTableAdapter
+            // 
+            this.employeeDataTableTableAdapter.ClearBeforeFill = true;
+            // 
+            // employeeManageAppDBDataSet3
+            // 
+            this.employeeManageAppDBDataSet3.DataSetName = "EmployeeManageAppDBDataSet";
+            this.employeeManageAppDBDataSet3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // employeeDataTableBindingSource1
+            // 
+            this.employeeDataTableBindingSource1.DataMember = "employeeDataTable";
+            this.employeeDataTableBindingSource1.DataSource = this.employeeManageAppDBDataSet3;
+            // 
+            // btnDismissalEmployeeView
+            // 
+            this.btnDismissalEmployeeView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnDismissalEmployeeView.Location = new System.Drawing.Point(220, 426);
+            this.btnDismissalEmployeeView.Name = "btnDismissalEmployeeView";
+            this.btnDismissalEmployeeView.Size = new System.Drawing.Size(151, 23);
+            this.btnDismissalEmployeeView.TabIndex = 14;
+            this.btnDismissalEmployeeView.Text = "Уволенные сотрудники";
+            this.btnDismissalEmployeeView.UseVisualStyleBackColor = true;
+            this.btnDismissalEmployeeView.Click += new System.EventHandler(this.btnDismissalEmployeeView_Click);
+            // 
+            // employeeManageAppDBDataSet5
+            // 
+            this.employeeManageAppDBDataSet5.DataSetName = "EmployeeManageAppDBDataSet";
+            this.employeeManageAppDBDataSet5.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // employeeDataTableBindingSource3
+            // 
+            this.employeeDataTableBindingSource3.DataMember = "employeeDataTable";
+            this.employeeDataTableBindingSource3.DataSource = this.employeeManageAppDBDataSet5;
+            // 
             // btnExcelExport
             // 
-            this.btnExcelExport.Location = new System.Drawing.Point(916, 425);
+            this.btnExcelExport.Location = new System.Drawing.Point(877, 426);
             this.btnExcelExport.Name = "btnExcelExport";
             this.btnExcelExport.Size = new System.Drawing.Size(113, 23);
             this.btnExcelExport.TabIndex = 15;
@@ -490,7 +490,7 @@
             this.Controls.Add(this.dataGridEmployee);
             this.Name = "employeeWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "employeeWindow";
+            this.Text = "Сотрудники";
             this.Load += new System.EventHandler(this.employeeWindow_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataTable1BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeManageAppDBDataSet)).EndInit();

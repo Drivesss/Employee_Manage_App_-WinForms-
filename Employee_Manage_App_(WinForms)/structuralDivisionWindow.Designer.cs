@@ -30,6 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridDivision = new System.Windows.Forms.DataGridView();
+            this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.структурноеПодразделениеDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.начальникФИОDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bossDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.divisionJoinBossNameBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.employeeManageAppDBDataSet = new Employee_Manage_App__WinForms_.EmployeeManageAppDBDataSet();
             this.structuraldivisionBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -52,10 +56,6 @@
             this.divisionJoinBossNameTableAdapter = new Employee_Manage_App__WinForms_.EmployeeManageAppDBDataSetTableAdapters.DivisionJoinBossNameTableAdapter();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.структурноеПодразделениеDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.начальникФИОDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bossDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnDeleteBoss = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridDivision)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.divisionJoinBossNameBindingSource)).BeginInit();
@@ -86,6 +86,35 @@
             this.dataGridDivision.Size = new System.Drawing.Size(280, 384);
             this.dataGridDivision.TabIndex = 0;
             this.dataGridDivision.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridDivision_CellClick);
+            // 
+            // iDDataGridViewTextBoxColumn
+            // 
+            this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
+            this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
+            this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
+            this.iDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.iDDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // структурноеПодразделениеDataGridViewTextBoxColumn
+            // 
+            this.структурноеПодразделениеDataGridViewTextBoxColumn.DataPropertyName = "Структурное подразделение";
+            this.структурноеПодразделениеDataGridViewTextBoxColumn.HeaderText = "Структурное подразделение";
+            this.структурноеПодразделениеDataGridViewTextBoxColumn.Name = "структурноеПодразделениеDataGridViewTextBoxColumn";
+            // 
+            // начальникФИОDataGridViewTextBoxColumn
+            // 
+            this.начальникФИОDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.начальникФИОDataGridViewTextBoxColumn.DataPropertyName = "Начальник ФИО";
+            this.начальникФИОDataGridViewTextBoxColumn.HeaderText = "Начальник ФИО";
+            this.начальникФИОDataGridViewTextBoxColumn.Name = "начальникФИОDataGridViewTextBoxColumn";
+            this.начальникФИОDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // bossDataGridViewTextBoxColumn
+            // 
+            this.bossDataGridViewTextBoxColumn.DataPropertyName = "Boss";
+            this.bossDataGridViewTextBoxColumn.HeaderText = "Boss";
+            this.bossDataGridViewTextBoxColumn.Name = "bossDataGridViewTextBoxColumn";
+            this.bossDataGridViewTextBoxColumn.Visible = false;
             // 
             // divisionJoinBossNameBindingSource
             // 
@@ -258,35 +287,6 @@
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // iDDataGridViewTextBoxColumn
-            // 
-            this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
-            this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
-            this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
-            this.iDDataGridViewTextBoxColumn.ReadOnly = true;
-            this.iDDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // структурноеПодразделениеDataGridViewTextBoxColumn
-            // 
-            this.структурноеПодразделениеDataGridViewTextBoxColumn.DataPropertyName = "Структурное подразделение";
-            this.структурноеПодразделениеDataGridViewTextBoxColumn.HeaderText = "Структурное подразделение";
-            this.структурноеПодразделениеDataGridViewTextBoxColumn.Name = "структурноеПодразделениеDataGridViewTextBoxColumn";
-            // 
-            // начальникФИОDataGridViewTextBoxColumn
-            // 
-            this.начальникФИОDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.начальникФИОDataGridViewTextBoxColumn.DataPropertyName = "Начальник ФИО";
-            this.начальникФИОDataGridViewTextBoxColumn.HeaderText = "Начальник ФИО";
-            this.начальникФИОDataGridViewTextBoxColumn.Name = "начальникФИОDataGridViewTextBoxColumn";
-            this.начальникФИОDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // bossDataGridViewTextBoxColumn
-            // 
-            this.bossDataGridViewTextBoxColumn.DataPropertyName = "Boss";
-            this.bossDataGridViewTextBoxColumn.HeaderText = "Boss";
-            this.bossDataGridViewTextBoxColumn.Name = "bossDataGridViewTextBoxColumn";
-            this.bossDataGridViewTextBoxColumn.Visible = false;
-            // 
             // btnDeleteBoss
             // 
             this.btnDeleteBoss.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -318,7 +318,7 @@
             this.Controls.Add(this.dataGridDivision);
             this.Name = "structuralDivisionWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "structuralDivisionWindow";
+            this.Text = "Структурные подрезделения";
             this.Load += new System.EventHandler(this.structuralDivisionWindow_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridDivision)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.divisionJoinBossNameBindingSource)).EndInit();
