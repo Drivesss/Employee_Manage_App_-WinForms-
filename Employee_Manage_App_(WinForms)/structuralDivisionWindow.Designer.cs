@@ -30,14 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridDivision = new System.Windows.Forms.DataGridView();
-            this.structuraldivisionbossjoinBindingSource4 = new System.Windows.Forms.BindingSource(this.components);
-            this.employeeManageAppDBDataSet6 = new Employee_Manage_App__WinForms_.EmployeeManageAppDBDataSet();
-            this.structuraldivisionbossjoinBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
-            this.employeeManageAppDBDataSet5 = new Employee_Manage_App__WinForms_.EmployeeManageAppDBDataSet();
-            this.structuraldivisionbossjoinBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.employeeManageAppDBDataSet3 = new Employee_Manage_App__WinForms_.EmployeeManageAppDBDataSet();
-            this.structuraldivision1BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.structural_division1BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.divisionJoinBossNameBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.employeeManageAppDBDataSet = new Employee_Manage_App__WinForms_.EmployeeManageAppDBDataSet();
             this.structuraldivisionBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label2 = new System.Windows.Forms.Label();
@@ -56,25 +49,16 @@
             this.employeeBossComBoxTableAdapter = new Employee_Manage_App__WinForms_.EmployeeManageAppDBDataSetTableAdapters.employeeBossComBoxTableAdapter();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnSaveBoss = new System.Windows.Forms.Button();
-            this.employeeManageAppDBDataSet2 = new Employee_Manage_App__WinForms_.EmployeeManageAppDBDataSet();
-            this.structuraldivisionbossjoinBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.structural_division_boss_joinTableAdapter = new Employee_Manage_App__WinForms_.EmployeeManageAppDBDataSetTableAdapters.structural_division_boss_joinTableAdapter();
-            this.employeeManageAppDBDataSet4 = new Employee_Manage_App__WinForms_.EmployeeManageAppDBDataSet();
-            this.structuraldivisionbossjoinBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
-            this.employeeManageAppDBDataSet7 = new Employee_Manage_App__WinForms_.EmployeeManageAppDBDataSet();
-            this.structuraldivisionbossjoinBindingSource5 = new System.Windows.Forms.BindingSource(this.components);
+            this.divisionJoinBossNameTableAdapter = new Employee_Manage_App__WinForms_.EmployeeManageAppDBDataSetTableAdapters.DivisionJoinBossNameTableAdapter();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.структурноеПодразделениеDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.начальникФИОDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bossDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnDeleteBoss = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridDivision)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.structuraldivisionbossjoinBindingSource4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.employeeManageAppDBDataSet6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.structuraldivisionbossjoinBindingSource3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.employeeManageAppDBDataSet5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.structuraldivisionbossjoinBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.employeeManageAppDBDataSet3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.structuraldivision1BindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.structural_division1BindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.divisionJoinBossNameBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeManageAppDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.structuraldivisionBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.structuraldivisionBindingSource1)).BeginInit();
@@ -82,23 +66,20 @@
             ((System.ComponentModel.ISupportInitialize)(this.employeeBossComBoxBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeManageAppDBDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.employeeManageAppDBDataSet2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.structuraldivisionbossjoinBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.employeeManageAppDBDataSet4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.structuraldivisionbossjoinBindingSource2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.employeeManageAppDBDataSet7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.structuraldivisionbossjoinBindingSource5)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridDivision
             // 
+            this.dataGridDivision.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.dataGridDivision.AutoGenerateColumns = false;
             this.dataGridDivision.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridDivision.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.iDDataGridViewTextBoxColumn,
             this.структурноеПодразделениеDataGridViewTextBoxColumn,
             this.начальникФИОDataGridViewTextBoxColumn,
-            this.dataGridViewTextBoxColumn1});
-            this.dataGridDivision.DataSource = this.structuraldivisionbossjoinBindingSource5;
+            this.bossDataGridViewTextBoxColumn});
+            this.dataGridDivision.DataSource = this.divisionJoinBossNameBindingSource;
             this.dataGridDivision.Location = new System.Drawing.Point(15, 25);
             this.dataGridDivision.Name = "dataGridDivision";
             this.dataGridDivision.RowHeadersVisible = false;
@@ -106,35 +87,10 @@
             this.dataGridDivision.TabIndex = 0;
             this.dataGridDivision.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridDivision_CellClick);
             // 
-            // structuraldivisionbossjoinBindingSource4
+            // divisionJoinBossNameBindingSource
             // 
-            this.structuraldivisionbossjoinBindingSource4.DataMember = "structural_division_boss_join";
-            this.structuraldivisionbossjoinBindingSource4.DataSource = this.employeeManageAppDBDataSet6;
-            // 
-            // employeeManageAppDBDataSet6
-            // 
-            this.employeeManageAppDBDataSet6.DataSetName = "EmployeeManageAppDBDataSet";
-            this.employeeManageAppDBDataSet6.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // structuraldivisionbossjoinBindingSource3
-            // 
-            this.structuraldivisionbossjoinBindingSource3.DataMember = "structural_division_boss_join";
-            this.structuraldivisionbossjoinBindingSource3.DataSource = this.employeeManageAppDBDataSet5;
-            // 
-            // employeeManageAppDBDataSet5
-            // 
-            this.employeeManageAppDBDataSet5.DataSetName = "EmployeeManageAppDBDataSet";
-            this.employeeManageAppDBDataSet5.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // structuraldivisionbossjoinBindingSource1
-            // 
-            this.structuraldivisionbossjoinBindingSource1.DataMember = "structural_division_boss_join";
-            this.structuraldivisionbossjoinBindingSource1.DataSource = this.employeeManageAppDBDataSet3;
-            // 
-            // employeeManageAppDBDataSet3
-            // 
-            this.employeeManageAppDBDataSet3.DataSetName = "EmployeeManageAppDBDataSet";
-            this.employeeManageAppDBDataSet3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.divisionJoinBossNameBindingSource.DataMember = "DivisionJoinBossName";
+            this.divisionJoinBossNameBindingSource.DataSource = this.employeeManageAppDBDataSet;
             // 
             // employeeManageAppDBDataSet
             // 
@@ -166,12 +122,14 @@
             // 
             // comboBoxDivision
             // 
+            this.comboBoxDivision.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxDivision.DataSource = this.structuraldivisionBindingSource1;
             this.comboBoxDivision.DisplayMember = "Name";
             this.comboBoxDivision.FormattingEnabled = true;
             this.comboBoxDivision.Location = new System.Drawing.Point(313, 26);
             this.comboBoxDivision.Name = "comboBoxDivision";
-            this.comboBoxDivision.Size = new System.Drawing.Size(859, 21);
+            this.comboBoxDivision.Size = new System.Drawing.Size(700, 21);
             this.comboBoxDivision.TabIndex = 5;
             this.comboBoxDivision.ValueMember = "ID";
             this.comboBoxDivision.SelectionChangeCommitted += new System.EventHandler(this.comboBoxDivision_SelectionChangeCommitted);
@@ -184,6 +142,9 @@
             // dataGridDivisionEmployee
             // 
             this.dataGridDivisionEmployee.AllowUserToAddRows = false;
+            this.dataGridDivisionEmployee.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridDivisionEmployee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridDivisionEmployee.Location = new System.Drawing.Point(313, 106);
             this.dataGridDivisionEmployee.Name = "dataGridDivisionEmployee";
@@ -193,6 +154,8 @@
             // 
             // comboBoxBossEmployee
             // 
+            this.comboBoxBossEmployee.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxBossEmployee.DataSource = this.employeeBossComBoxBindingSource;
             this.comboBoxBossEmployee.DisplayMember = "ФИО";
             this.comboBoxBossEmployee.FormattingEnabled = true;
@@ -249,7 +212,8 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(220, 415);
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnSave.Location = new System.Drawing.Point(139, 415);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 10;
@@ -259,6 +223,7 @@
             // 
             // btnSaveBoss
             // 
+            this.btnSaveBoss.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSaveBoss.Location = new System.Drawing.Point(1019, 66);
             this.btnSaveBoss.Name = "btnSaveBoss";
             this.btnSaveBoss.Size = new System.Drawing.Size(153, 23);
@@ -267,39 +232,39 @@
             this.btnSaveBoss.UseVisualStyleBackColor = true;
             this.btnSaveBoss.Click += new System.EventHandler(this.btnSaveBoss_Click);
             // 
-            // employeeManageAppDBDataSet2
+            // divisionJoinBossNameTableAdapter
             // 
-            this.employeeManageAppDBDataSet2.DataSetName = "EmployeeManageAppDBDataSet";
-            this.employeeManageAppDBDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.divisionJoinBossNameTableAdapter.ClearBeforeFill = true;
             // 
-            // structuraldivisionbossjoinBindingSource
+            // btnDelete
             // 
-            this.structuraldivisionbossjoinBindingSource.DataMember = "structural_division_boss_join";
-            this.structuraldivisionbossjoinBindingSource.DataSource = this.employeeManageAppDBDataSet;
+            this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnDelete.Location = new System.Drawing.Point(220, 415);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnDelete.TabIndex = 12;
+            this.btnDelete.Text = "Удалить";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
-            // structural_division_boss_joinTableAdapter
+            // btnAdd
             // 
-            this.structural_division_boss_joinTableAdapter.ClearBeforeFill = true;
+            this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnAdd.Location = new System.Drawing.Point(15, 415);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnAdd.TabIndex = 13;
+            this.btnAdd.Text = "Добавить";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // employeeManageAppDBDataSet4
+            // iDDataGridViewTextBoxColumn
             // 
-            this.employeeManageAppDBDataSet4.DataSetName = "EmployeeManageAppDBDataSet";
-            this.employeeManageAppDBDataSet4.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // structuraldivisionbossjoinBindingSource2
-            // 
-            this.structuraldivisionbossjoinBindingSource2.DataMember = "structural_division_boss_join";
-            this.structuraldivisionbossjoinBindingSource2.DataSource = this.employeeManageAppDBDataSet4;
-            // 
-            // employeeManageAppDBDataSet7
-            // 
-            this.employeeManageAppDBDataSet7.DataSetName = "EmployeeManageAppDBDataSet";
-            this.employeeManageAppDBDataSet7.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // structuraldivisionbossjoinBindingSource5
-            // 
-            this.structuraldivisionbossjoinBindingSource5.DataMember = "structural_division_boss_join";
-            this.structuraldivisionbossjoinBindingSource5.DataSource = this.employeeManageAppDBDataSet7;
+            this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
+            this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
+            this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
+            this.iDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.iDDataGridViewTextBoxColumn.Visible = false;
             // 
             // структурноеПодразделениеDataGridViewTextBoxColumn
             // 
@@ -309,23 +274,38 @@
             // 
             // начальникФИОDataGridViewTextBoxColumn
             // 
+            this.начальникФИОDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.начальникФИОDataGridViewTextBoxColumn.DataPropertyName = "Начальник ФИО";
             this.начальникФИОDataGridViewTextBoxColumn.HeaderText = "Начальник ФИО";
             this.начальникФИОDataGridViewTextBoxColumn.Name = "начальникФИОDataGridViewTextBoxColumn";
             this.начальникФИОDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn1
+            // bossDataGridViewTextBoxColumn
             // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "ID";
-            this.dataGridViewTextBoxColumn1.HeaderText = "ID";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.bossDataGridViewTextBoxColumn.DataPropertyName = "Boss";
+            this.bossDataGridViewTextBoxColumn.HeaderText = "Boss";
+            this.bossDataGridViewTextBoxColumn.Name = "bossDataGridViewTextBoxColumn";
+            this.bossDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // btnDeleteBoss
+            // 
+            this.btnDeleteBoss.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDeleteBoss.Location = new System.Drawing.Point(1019, 24);
+            this.btnDeleteBoss.Name = "btnDeleteBoss";
+            this.btnDeleteBoss.Size = new System.Drawing.Size(153, 23);
+            this.btnDeleteBoss.TabIndex = 14;
+            this.btnDeleteBoss.Text = "Убрать начальника";
+            this.btnDeleteBoss.UseVisualStyleBackColor = true;
+            this.btnDeleteBoss.Click += new System.EventHandler(this.btnDeleteBoss_Click);
             // 
             // structuralDivisionWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1184, 450);
+            this.Controls.Add(this.btnDeleteBoss);
+            this.Controls.Add(this.btnAdd);
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnSaveBoss);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.label4);
@@ -341,14 +321,7 @@
             this.Text = "structuralDivisionWindow";
             this.Load += new System.EventHandler(this.structuralDivisionWindow_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridDivision)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.structuraldivisionbossjoinBindingSource4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.employeeManageAppDBDataSet6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.structuraldivisionbossjoinBindingSource3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.employeeManageAppDBDataSet5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.structuraldivisionbossjoinBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.employeeManageAppDBDataSet3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.structuraldivision1BindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.structural_division1BindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.divisionJoinBossNameBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeManageAppDBDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.structuraldivisionBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.structuraldivisionBindingSource1)).EndInit();
@@ -356,12 +329,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.employeeBossComBoxBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeManageAppDBDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.employeeManageAppDBDataSet2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.structuraldivisionbossjoinBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.employeeManageAppDBDataSet4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.structuraldivisionbossjoinBindingSource2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.employeeManageAppDBDataSet7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.structuraldivisionbossjoinBindingSource5)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -388,25 +355,14 @@
         private EmployeeManageAppDBDataSetTableAdapters.employeeBossComBoxTableAdapter employeeBossComBoxTableAdapter;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnSaveBoss;
-        private EmployeeManageAppDBDataSet employeeManageAppDBDataSet2;
-        private System.Windows.Forms.BindingSource structuraldivision1BindingSource;
-        private System.Windows.Forms.BindingSource structural_division1BindingSource;
+        private System.Windows.Forms.BindingSource divisionJoinBossNameBindingSource;
+        private EmployeeManageAppDBDataSetTableAdapters.DivisionJoinBossNameTableAdapter divisionJoinBossNameTableAdapter;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource structuraldivisionbossjoinBindingSource;
-        private EmployeeManageAppDBDataSetTableAdapters.structural_division_boss_joinTableAdapter structural_division_boss_joinTableAdapter;
-        private EmployeeManageAppDBDataSet employeeManageAppDBDataSet3;
-        private System.Windows.Forms.BindingSource structuraldivisionbossjoinBindingSource1;
-        private EmployeeManageAppDBDataSet employeeManageAppDBDataSet4;
-        private System.Windows.Forms.BindingSource structuraldivisionbossjoinBindingSource2;
-        private EmployeeManageAppDBDataSet employeeManageAppDBDataSet5;
-        private System.Windows.Forms.BindingSource structuraldivisionbossjoinBindingSource3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dateOfBirthDataGridViewTextBoxColumn;
-        private EmployeeManageAppDBDataSet employeeManageAppDBDataSet6;
-        private System.Windows.Forms.BindingSource structuraldivisionbossjoinBindingSource4;
-        private EmployeeManageAppDBDataSet employeeManageAppDBDataSet7;
-        private System.Windows.Forms.BindingSource structuraldivisionbossjoinBindingSource5;
         private System.Windows.Forms.DataGridViewTextBoxColumn структурноеПодразделениеDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn начальникФИОDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bossDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button btnDeleteBoss;
     }
 }

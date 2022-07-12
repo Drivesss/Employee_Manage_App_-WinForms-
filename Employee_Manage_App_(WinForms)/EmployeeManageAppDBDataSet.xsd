@@ -311,7 +311,8 @@ SELECT ID, RTRIM(LastName) + ' ' + RTRIM(FirstName) + ' ' + RTRIM(MiddleName) AS
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        ID, RTRIM(LastName) + ' ' + RTRIM(FirstName) + ' ' + RTRIM(MiddleName) AS ФИО
-FROM            employee</CommandText>
+FROM            employee
+WHERE        (Status = 'Работает')</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -353,12 +354,13 @@ FROM            employee INNER JOIN
             </Mappings>
             <Sources />
           </TableAdapter>
-          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="structural_division_boss_joinTableAdapter" GeneratorDataComponentClassName="structural_division_boss_joinTableAdapter" Name="structural_division_boss_join" UserDataComponentName="structural_division_boss_joinTableAdapter">
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DivisionJoinBossNameTableAdapter" GeneratorDataComponentClassName="DivisionJoinBossNameTableAdapter" Name="DivisionJoinBossName" UserDataComponentName="DivisionJoinBossNameTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="EmployeeManageAppDBConnectionString (Settings)" DbObjectName="dbo.structural_division" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="EmployeeManageAppDBConnectionString (Settings)" DbObjectName="dbo.structural_division" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        structural_division.ID, structural_division.Name AS [Структурное подразделение], RTRIM(employee.FirstName) + ' ' + RTRIM(employee.LastName) + ' ' + RTRIM(employee.MiddleName) AS [Начальник ФИО]
+                    <CommandText>SELECT        structural_division.ID, structural_division.Name AS [Структурное подразделение], RTRIM(employee.FirstName) + ' ' + RTRIM(employee.LastName) + ' ' + RTRIM(employee.MiddleName) AS [Начальник ФИО], 
+                         structural_division.Boss
 FROM            structural_division LEFT OUTER JOIN
                          employee ON employee.ID = structural_division.Boss
 WHERE        (structural_division.Boss IS NULL) OR
@@ -369,9 +371,10 @@ WHERE        (structural_division.Boss IS NULL) OR
               </DbSource>
             </MainSource>
             <Mappings>
+              <Mapping SourceColumn="ID" DataSetColumn="ID" />
               <Mapping SourceColumn="Структурное подразделение" DataSetColumn="Структурное подразделение" />
               <Mapping SourceColumn="Начальник ФИО" DataSetColumn="Начальник ФИО" />
-              <Mapping SourceColumn="ID" DataSetColumn="ID" />
+              <Mapping SourceColumn="Boss" DataSetColumn="Boss" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -571,14 +574,14 @@ WHERE        (structural_division.Boss IS NULL) OR
               </xs:element>
               <xs:element name="DateOfEmployment" msprop:Generator_ColumnPropNameInTable="DateOfEmploymentColumn" msprop:Generator_ColumnPropNameInRow="DateOfEmployment" msprop:Generator_UserColumnName="DateOfEmployment" msprop:Generator_ColumnVarNameInTable="columnDateOfEmployment" type="xs:dateTime" minOccurs="0" />
               <xs:element name="DateOfDismissal" msprop:Generator_ColumnPropNameInTable="DateOfDismissalColumn" msprop:Generator_ColumnPropNameInRow="DateOfDismissal" msprop:Generator_UserColumnName="DateOfDismissal" msprop:Generator_ColumnVarNameInTable="columnDateOfDismissal" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="Position" msprop:Generator_ColumnPropNameInRow="Position" msprop:Generator_ColumnPropNameInTable="PositionColumn" msprop:Generator_ColumnVarNameInTable="columnPosition" msprop:Generator_UserColumnName="Position" minOccurs="0">
+              <xs:element name="Position" msprop:Generator_ColumnPropNameInTable="PositionColumn" msprop:Generator_ColumnPropNameInRow="Position" msprop:Generator_UserColumnName="Position" msprop:Generator_ColumnVarNameInTable="columnPosition" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="150" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Division" msprop:Generator_ColumnPropNameInRow="Division" msprop:Generator_ColumnPropNameInTable="DivisionColumn" msprop:Generator_ColumnVarNameInTable="columnDivision" msprop:Generator_UserColumnName="Division" minOccurs="0">
+              <xs:element name="Division" msprop:Generator_ColumnPropNameInTable="DivisionColumn" msprop:Generator_ColumnPropNameInRow="Division" msprop:Generator_UserColumnName="Division" msprop:Generator_ColumnVarNameInTable="columnDivision" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="150" />
@@ -588,24 +591,25 @@ WHERE        (structural_division.Boss IS NULL) OR
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="structural_division_boss_join" msprop:Generator_RowEvHandlerName="structural_division_boss_joinRowChangeEventHandler" msprop:Generator_RowDeletedName="structural_division_boss_joinRowDeleted" msprop:Generator_RowDeletingName="structural_division_boss_joinRowDeleting" msprop:Generator_RowEvArgName="structural_division_boss_joinRowChangeEvent" msprop:Generator_TablePropName="structural_division_boss_join" msprop:Generator_RowChangedName="structural_division_boss_joinRowChanged" msprop:Generator_UserTableName="structural_division_boss_join" msprop:Generator_RowChangingName="structural_division_boss_joinRowChanging" msprop:Generator_RowClassName="structural_division_boss_joinRow" msprop:Generator_TableClassName="structural_division_boss_joinDataTable" msprop:Generator_TableVarName="tablestructural_division_boss_join">
+        <xs:element name="DivisionJoinBossName" msprop:Generator_RowClassName="DivisionJoinBossNameRow" msprop:Generator_RowEvHandlerName="DivisionJoinBossNameRowChangeEventHandler" msprop:Generator_RowDeletedName="DivisionJoinBossNameRowDeleted" msprop:Generator_RowDeletingName="DivisionJoinBossNameRowDeleting" msprop:Generator_RowEvArgName="DivisionJoinBossNameRowChangeEvent" msprop:Generator_TablePropName="DivisionJoinBossName" msprop:Generator_RowChangedName="DivisionJoinBossNameRowChanged" msprop:Generator_UserTableName="DivisionJoinBossName" msprop:Generator_RowChangingName="DivisionJoinBossNameRowChanging" msprop:Generator_TableClassName="DivisionJoinBossNameDataTable" msprop:Generator_TableVarName="tableDivisionJoinBossName">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="Структурное_x0020_подразделение" msprop:Generator_ColumnPropNameInTable="Структурное_подразделениеColumn" msprop:Generator_ColumnPropNameInRow="Структурное_подразделение" msprop:Generator_UserColumnName="Структурное подразделение" msprop:Generator_ColumnVarNameInTable="columnСтруктурное_подразделение" minOccurs="0">
+              <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_UserColumnName="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnVarNameInTable="columnID" type="xs:int" />
+              <xs:element name="Структурное_x0020_подразделение" msprop:Generator_UserColumnName="Структурное подразделение" msprop:Generator_ColumnPropNameInTable="Структурное_подразделениеColumn" msprop:Generator_ColumnPropNameInRow="Структурное_подразделение" msprop:Generator_ColumnVarNameInTable="columnСтруктурное_подразделение" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="150" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Начальник_x0020_ФИО" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInTable="Начальник_ФИОColumn" msprop:Generator_ColumnPropNameInRow="Начальник_ФИО" msprop:Generator_UserColumnName="Начальник ФИО" msprop:Generator_ColumnVarNameInTable="columnНачальник_ФИО" minOccurs="0">
+              <xs:element name="Начальник_x0020_ФИО" msdata:ReadOnly="true" msprop:Generator_UserColumnName="Начальник ФИО" msprop:Generator_ColumnPropNameInTable="Начальник_ФИОColumn" msprop:Generator_ColumnPropNameInRow="Начальник_ФИО" msprop:Generator_ColumnVarNameInTable="columnНачальник_ФИО" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="452" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_UserColumnName="ID" type="xs:int" />
+              <xs:element name="Boss" msprop:Generator_UserColumnName="Boss" msprop:Generator_ColumnPropNameInTable="BossColumn" msprop:Generator_ColumnPropNameInRow="Boss" msprop:Generator_ColumnVarNameInTable="columnBoss" type="xs:int" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -635,8 +639,8 @@ WHERE        (structural_division.Boss IS NULL) OR
       <xs:selector xpath=".//mstns:employeeDataTable" />
       <xs:field xpath="mstns:ID" />
     </xs:unique>
-    <xs:unique name="structural_division_boss_join_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:structural_division_boss_join" />
+    <xs:unique name="DivisionJoinBossName_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:DivisionJoinBossName" />
       <xs:field xpath="mstns:ID" />
     </xs:unique>
   </xs:element>
@@ -644,7 +648,7 @@ WHERE        (structural_division.Boss IS NULL) OR
     <xs:appinfo>
       <msdata:Relationship name="FK_employee_position_employee" msdata:parent="position_employee" msdata:child="employee" msdata:parentkey="ID" msdata:childkey="PositionEmployeeID" msprop:Generator_UserParentTable="position_employee" msprop:Generator_UserChildTable="employee" msprop:Generator_RelationVarName="relationFK_employee_position_employee" msprop:Generator_ChildPropName="GetemployeeRows" msprop:Generator_UserRelationName="FK_employee_position_employee" msprop:Generator_ParentPropName="position_employeeRow" />
       <msdata:Relationship name="FK_employee_structural_division" msdata:parent="structural_division" msdata:child="employee" msdata:parentkey="ID" msdata:childkey="StructuralDivisionID" msprop:Generator_UserParentTable="structural_division" msprop:Generator_UserChildTable="employee" msprop:Generator_RelationVarName="relationFK_employee_structural_division" msprop:Generator_ChildPropName="GetemployeeRows" msprop:Generator_UserRelationName="FK_employee_structural_division" msprop:Generator_ParentPropName="structural_divisionRow" />
-      <msdata:Relationship name="FK_employee_structural_division1" msdata:parent="structural_division_boss_join" msdata:child="employee" msdata:parentkey="ID" msdata:childkey="StructuralDivisionID" msprop:Generator_UserParentTable="structural_division_boss_join" msprop:Generator_UserChildTable="employee" msprop:Generator_RelationVarName="relationFK_employee_structural_division1" msprop:Generator_UserRelationName="FK_employee_structural_division1" msprop:Generator_ChildPropName="GetemployeeRows" msprop:Generator_ParentPropName="structural_division_boss_joinRow" />
+      <msdata:Relationship name="FK_employee_structural_division2" msdata:parent="DivisionJoinBossName" msdata:child="employee" msdata:parentkey="ID" msdata:childkey="StructuralDivisionID" msprop:Generator_UserParentTable="DivisionJoinBossName" msprop:Generator_UserChildTable="employee" msprop:Generator_RelationVarName="relationFK_employee_structural_division2" msprop:Generator_ChildPropName="GetemployeeRows" msprop:Generator_ParentPropName="DivisionJoinBossNameRow" msprop:Generator_UserRelationName="FK_employee_structural_division2" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>

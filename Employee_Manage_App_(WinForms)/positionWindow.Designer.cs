@@ -52,6 +52,8 @@
             // 
             // dataGridPosition
             // 
+            this.dataGridPosition.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.dataGridPosition.AutoGenerateColumns = false;
             this.dataGridPosition.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridPosition.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -134,6 +136,9 @@
             // dataGridSelectedEmployee
             // 
             this.dataGridSelectedEmployee.AllowUserToAddRows = false;
+            this.dataGridSelectedEmployee.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridSelectedEmployee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridSelectedEmployee.Location = new System.Drawing.Point(313, 53);
             this.dataGridSelectedEmployee.Name = "dataGridSelectedEmployee";
@@ -147,6 +152,7 @@
             // 
             // btnSave
             // 
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnSave.Location = new System.Drawing.Point(220, 415);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
