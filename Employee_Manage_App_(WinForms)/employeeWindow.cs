@@ -104,17 +104,17 @@ namespace Employee_Manage_App__WinForms_
                 employeeTableAdapter.Update(this.employeeManageAppDBDataSet.employee);
 
 
-                //// Команда удаления из списка соискателей 
-                //SqlCommand DeleteCommand = new SqlCommand("DELETE FROM applicant WHERE ID = @ID");
-                //DeleteCommand.Connection = applicantTableAdapter.Connection;
-                //DeleteCommand.Connection.Open();
+                // Команда удаления из списка соискателей 
+                SqlCommand DeleteCommand = new SqlCommand("DELETE FROM applicant WHERE ID = @ID");
+                DeleteCommand.Connection = applicantTableAdapter.Connection;
+                DeleteCommand.Connection.Open();
 
-                //DeleteCommand.Parameters.AddWithValue("@ID", IDComboBox);
+                DeleteCommand.Parameters.AddWithValue("@ID", IDComboBox);
 
-                //applicantTableAdapter.Adapter.DeleteCommand = DeleteCommand;
-                //applicantTableAdapter.Adapter.DeleteCommand.ExecuteNonQuery();
-                //DeleteCommand.Connection.Close();
-                //applicantTableAdapter.Update(this.employeeManageAppDBDataSet.applicant);
+                applicantTableAdapter.Adapter.DeleteCommand = DeleteCommand;
+                applicantTableAdapter.Adapter.DeleteCommand.ExecuteNonQuery();
+                DeleteCommand.Connection.Close();
+                applicantTableAdapter.Update(this.employeeManageAppDBDataSet.applicant);
 
                 //Обновил данные в таблице
                 employeeWindow_Load(sender, e);
