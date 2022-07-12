@@ -79,6 +79,7 @@
             this.dateOfDismissalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.positionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.divisionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnExcelExport = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable1BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeManageAppDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).BeginInit();
@@ -257,7 +258,7 @@
             // btnDelete
             // 
             this.btnDelete.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnDelete.Location = new System.Drawing.Point(732, 426);
+            this.btnDelete.Location = new System.Drawing.Point(401, 426);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(126, 23);
             this.btnDelete.TabIndex = 13;
@@ -356,7 +357,7 @@
             // btnDismissalEmployeeView
             // 
             this.btnDismissalEmployeeView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnDismissalEmployeeView.Location = new System.Drawing.Point(340, 426);
+            this.btnDismissalEmployeeView.Location = new System.Drawing.Point(179, 426);
             this.btnDismissalEmployeeView.Name = "btnDismissalEmployeeView";
             this.btnDismissalEmployeeView.Size = new System.Drawing.Size(151, 23);
             this.btnDismissalEmployeeView.TabIndex = 14;
@@ -456,14 +457,25 @@
             // 
             this.divisionDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.divisionDataGridViewTextBoxColumn.DataPropertyName = "Division";
-            this.divisionDataGridViewTextBoxColumn.HeaderText = "Структкрное подразделение";
+            this.divisionDataGridViewTextBoxColumn.HeaderText = "Структурное подразделение";
             this.divisionDataGridViewTextBoxColumn.Name = "divisionDataGridViewTextBoxColumn";
+            // 
+            // btnExcelExport
+            // 
+            this.btnExcelExport.Location = new System.Drawing.Point(916, 425);
+            this.btnExcelExport.Name = "btnExcelExport";
+            this.btnExcelExport.Size = new System.Drawing.Size(113, 23);
+            this.btnExcelExport.TabIndex = 15;
+            this.btnExcelExport.Text = "Экспорт в Excel";
+            this.btnExcelExport.UseVisualStyleBackColor = true;
+            this.btnExcelExport.Click += new System.EventHandler(this.btnExcelExport_Click);
             // 
             // employeeWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1184, 461);
+            this.Controls.Add(this.btnExcelExport);
             this.Controls.Add(this.btnDismissalEmployeeView);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnSave);
@@ -561,5 +573,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dateOfDismissalDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn positionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn divisionDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button btnExcelExport;
     }
 }

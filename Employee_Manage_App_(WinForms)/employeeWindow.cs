@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClosedXML.Excel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -271,6 +272,30 @@ namespace Employee_Manage_App__WinForms_
             Form DismissalEmployeeWindow = new DismissalEmployeeWindow();
             DismissalEmployeeWindow.ShowDialog();
             
+        }
+
+        private void btnExcelExport_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog sfd = new SaveFileDialog() { Filter = "Excel Workbook|*.xlsx" })
+            {
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        using (XLWorkbook workbook = new XLWorkbook())
+                        {
+                            workbook.Worksheets.Add(this.employeeManageAppDBDataSet.employee.CopyToDataTable(), "employee");
+                            workbook.SaveAs(sfd.FileName);
+                            MessageBox.Show("Данные в Excel успешно сохранены","Message",MessageBoxButtons.OK,MessageBoxIcon.Information);
+
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
         }
     }
 }
